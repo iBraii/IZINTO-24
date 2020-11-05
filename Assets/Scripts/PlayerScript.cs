@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public Rigidbody cmp_rb;
+    public GameObject cmp_escudo;
+    public bool usarescudo;
     public int energy;
     public bool AtqGiratorio;
     // Start is called before the first frame update
@@ -17,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         AtaqueGiratorio();
+        Escudo();
     }
     void AtaqueGiratorio()
     {
@@ -31,7 +34,22 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void Escudo()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && (usarescudo == false))
+        {
+            cmp_escudo.gameObject.SetActive(true);
+            usarescudo = true;
+            Debug.Log("activar escudo");
+        }
 
+        if (Input.GetKeyDown(KeyCode.Z) && (usarescudo == true))
+        {
+            cmp_escudo.gameObject.SetActive(false);
+            usarescudo = false;
+            Debug.Log("desactivar escudo");
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
