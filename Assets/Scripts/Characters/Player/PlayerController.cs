@@ -8,6 +8,12 @@ public class PlayerController : MonoBehaviour
     private GroundStatsUpdater cmp_grnd_Updater;
     private Movement cmp_mov;
     private Rotatement cmp_rot;
+    private Attacks cmp_atk;
+    private Timers cmp_timers;
+
+    public GameObject enemy_detect;
+    public bool Lanza_act;
+
 
     //-----Escoger Teclas------//
     public KeyCode key_up;
@@ -15,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public KeyCode key_der;
     public KeyCode key_izq;
     public KeyCode key_jump;
-    public KeyCode key_hability;
+    public KeyCode key_ability;
     //-------------------------//
 
     // Start is called before the first frame update
@@ -25,6 +31,8 @@ public class PlayerController : MonoBehaviour
         cmp_grnd_Updater = GetComponent<GroundStatsUpdater>();
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
+        cmp_atk = GetComponent<Attacks>();
+        cmp_timers = GetComponent<Timers>();
     }
 
     // Update is called once per frame
@@ -33,8 +41,8 @@ public class PlayerController : MonoBehaviour
         GroundUpdater();
         PlayerJump();
         PlayerWalk();
-
-        //cmp_rot.ForLoopRot(0, 1, 0, 1.5f, false);
+        AtqGiratorio();
+        AtqLanza();
     }
         
     void GroundUpdater()
@@ -78,10 +86,42 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+       
     }
 
-    
+    void AtqGiratorio()
+    {
+        /*if(Input.GetKey(key_ability))
+        {
+            cmp_atk.SwordAtk();
+            cmp_rot.ForLoopRot(0, -1, 0, 20, true);
+        }    */
+    }
 
+    void AtqLanza()
+    {
+        if (Input.GetKeyDown(key_ability))
+        {
+            cmp_mov.Move_in_transform(10);
+            if (enemy_detect != null)
+            {
+                cmp_atk.SpearAtk(1, enemy_detect);
+            }
+        }        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            enemy_detect = other.gameObject;
+        }
+    }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == enemy_detect)
+        {
+            enemy_detect = null;
+        }
+    }
 }

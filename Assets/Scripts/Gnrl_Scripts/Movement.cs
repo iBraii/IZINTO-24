@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -14,7 +15,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
     public void Move_in_X(float spd_mov, int dir_mov)
@@ -37,6 +38,9 @@ public class Movement : MonoBehaviour
         cmp_rb.AddForce(new Vector3(0, jmp_force, 0));
     }
 
-    
+    public void Move_in_transform(float speed)
+    {
+        cmp_rb.velocity = transform.forward * speed;
+    }
 
 }

@@ -8,6 +8,7 @@ public class PlayerModelo : MonoBehaviour
     public float jmp_force;
     public int atk_damage;
     public bool grounded;
+    public bool atk_active;
 
     // Start is called before the first frame update
     void Start()

@@ -92,4 +92,9 @@ public class Rotatement : MonoBehaviour
     {        
         transform.Rotate(new Vector3(0, 0, dir_mov) * Time.deltaTime * spd_mov, Space.World);
     }
+
+    public void InstantRotation(float x,float y, float z,Space rot_spd)
+    {
+        gameObject.transform.Rotate(x, y, z, rot_spd);
+    }
 }
