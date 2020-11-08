@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Timers cmp_timers;
 
     public GameObject enemy_detect;
-    public bool Lanza_act;
+
 
 
     //-----Escoger Teclas------//
@@ -43,8 +43,10 @@ public class PlayerController : MonoBehaviour
         PlayerWalk();
         AtqGiratorio();
         AtqLanza();
-    }
+
         
+    }
+
     void GroundUpdater()
     {
         cmp_modelo_Ply.grounded = cmp_grnd_Updater.grounded;
@@ -52,41 +54,68 @@ public class PlayerController : MonoBehaviour
 
     void PlayerJump()
     {
-        if (Input.GetKeyDown(key_jump) && cmp_modelo_Ply.grounded==true)
+        if (Input.GetKeyDown(key_jump) && cmp_modelo_Ply.grounded == true)
         {
-            
+
             cmp_mov.Jump(cmp_modelo_Ply.jmp_force);
         }
-        
+
+        if (cmp_grnd_Updater.overEnemy == true)
+        {
+            cmp_mov.Jump(50);
+            cmp_mov.Move_in_transform(-3);
+        }
+
     }
 
     void PlayerWalk()
     {
-        if (cmp_modelo_Ply.grounded == true)
+        if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
         {
+            float angl_rot = gameObject.transform.eulerAngles.y % 360;
+
             if (Input.GetKey(key_der))
             {
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
-                cmp_rot.Rote_in_Y(cmp_modelo_Ply.spd_mov, 90);
+                angl_rot = 90;
             }
             if (Input.GetKey(key_izq))
             {
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
-                cmp_rot.Rote_in_Y(cmp_modelo_Ply.spd_mov, 270);
+                angl_rot = 270;
             }
             if (Input.GetKey(key_up))
             {
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
-                cmp_rot.Rote_in_Y(cmp_modelo_Ply.spd_mov, 0);
+                angl_rot = 0;
             }
             if (Input.GetKey(key_down))
             {
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
-                cmp_rot.Rote_in_Y(cmp_modelo_Ply.spd_mov, 180);
+                angl_rot = 180;
             }
+            //------------------------------------------------//
+            if (Input.GetKey(key_der) & Input.GetKey(key_up))
+            {
+                angl_rot = 45;
+            }
+            else if (Input.GetKey(key_der) & Input.GetKey(key_down))
+            {
+                angl_rot = 135;
+            }
+            if (Input.GetKey(key_izq) & Input.GetKey(key_up))
+            {
+                angl_rot = 315;
+            }
+            else if (Input.GetKey(key_izq) & Input.GetKey(key_down))
+            {
+                angl_rot = 225;
+            }
+
+            cmp_rot.Rote_in_Y(cmp_modelo_Ply.spd_mov, angl_rot);
         }
 
-       
+
     }
 
     void AtqGiratorio()
@@ -100,18 +129,27 @@ public class PlayerController : MonoBehaviour
 
     void AtqLanza()
     {
-        if (Input.GetKeyDown(key_ability))
+        if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
         {
-            cmp_mov.Move_in_transform(10);
+            cmp_modelo_Ply.walk_active = false;
+            cmp_modelo_Ply.atk_active = true;
+
+            cmp_mov.Move_in_transform(-10);
             if (enemy_detect != null)
             {
                 cmp_atk.SpearAtk(1, enemy_detect);
             }
-        }        
+        }
+
+        if (cmp_modelo_Ply.atk_active == true)
+        {
+            cmp_modelo_Ply.atk_active = cmp_timers.Timer_for_bools(true, 50);
+            cmp_modelo_Ply.walk_active = cmp_timers.Timer_for_bools(false, 50);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             enemy_detect = other.gameObject;
         }

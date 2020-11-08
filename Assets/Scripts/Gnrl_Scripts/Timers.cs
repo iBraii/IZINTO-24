@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Timers : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +21,9 @@ public class Timers : MonoBehaviour
     {
         bool rtrn_bool = actual_bool;
         float timer = 0;
-        timer += Time.deltaTime;        
-        if(timer >= max_timer)
+
+        for (timer = 0; timer <= max_timer; timer +=Time.deltaTime)
         {
-            Debug.Log("kou es puto");
             if (rtrn_bool == true)
             {
                 rtrn_bool = false;

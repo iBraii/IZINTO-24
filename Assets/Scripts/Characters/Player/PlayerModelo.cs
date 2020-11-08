@@ -9,11 +9,13 @@ public class PlayerModelo : MonoBehaviour
     public int atk_damage;
     public bool grounded;
     public bool atk_active;
+    public bool walk_active;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        atk_active = false;
+        walk_active = true;
     }
 
     // Update is called once per frame

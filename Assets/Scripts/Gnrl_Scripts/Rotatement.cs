@@ -33,14 +33,16 @@ public class Rotatement : MonoBehaviour
     // All stayNFreeze need to be placed into an update
     public void ForStayNFreeze_Rot_X(float stayNum_Axis)
     {
-        
+        //En reparación . . . [Proximamente]
     }
 
 
     public void Rote_in_X(float spd_mov, int dir_mov)
     {
+        //En reparación . . . [Proximamente]
+
         //rb.velocity = new Vector3(spd_mov * dir_mov * Time.deltaTime, rb.velocity.y, rb.velocity.z);
-        transform.Rotate(new Vector3(dir_mov,0,0) * Time.deltaTime * spd_mov, Space.World);
+        //transform.Rotate(new Vector3(dir_mov,0,0) * Time.deltaTime * spd_mov, Space.World);
     }
 
     public void Rote_in_Y(float spd_mov, float angle)
@@ -90,7 +92,8 @@ public class Rotatement : MonoBehaviour
 
     public void Rote_in_Z(float spd_mov, int dir_mov)
     {        
-        transform.Rotate(new Vector3(0, 0, dir_mov) * Time.deltaTime * spd_mov, Space.World);
+        //En reparación . . . [Proximamente]
+        //transform.Rotate(new Vector3(0, 0, dir_mov) * Time.deltaTime * spd_mov, Space.World);
     }
 
     public void InstantRotation(float x,float y, float z,Space rot_spd)
