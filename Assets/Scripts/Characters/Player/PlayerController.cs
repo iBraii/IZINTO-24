@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Rotatement cmp_rot;
     private Attacks cmp_atk;
     private Timers cmp_timers;
+    private Life cmp_life;
 
     public GameObject enemy_detect;
 
@@ -33,18 +34,26 @@ public class PlayerController : MonoBehaviour
         cmp_rot = GetComponent<Rotatement>();
         cmp_atk = GetComponent<Attacks>();
         cmp_timers = GetComponent<Timers>();
+        cmp_life = GetComponent<Life>();
+        cmp_life.life = cmp_modelo_Ply.playerLife;
     }
 
     // Update is called once per frame
     void Update()
     {
+        cmp_modelo_Ply.playerLife = cmp_life.life;
         GroundUpdater();
         PlayerJump();
         PlayerWalk();
         AtqGiratorio();
         AtqLanza();
+        Die();
 
-        
+        // Prueba energia del player
+        /*if(Input.GetKeyDown(KeyCode.G))
+        {
+            DamageItself(1);
+        }*/
     }
 
     void GroundUpdater()
@@ -160,6 +169,20 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject == enemy_detect)
         {
             enemy_detect = null;
+        }
+    }
+
+    public void DamageItself(int dmg)
+    {
+        cmp_life.LoseLife(dmg);
+    }
+
+    void Die()
+    {
+        if(cmp_modelo_Ply.playerLife <= 0)
+        {
+            Debug.Log("Moriste");
+            gameObject.SetActive(false);
         }
     }
 }
