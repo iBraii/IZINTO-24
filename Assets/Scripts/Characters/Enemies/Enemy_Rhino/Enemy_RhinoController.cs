@@ -39,5 +39,9 @@ public class Enemy_RhinoController : MonoBehaviour
             random_rot = Random.Range(135f, 225f);
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+        }
     }
 }
