@@ -1217,6 +1217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_detect: {fileID: 0}
+  protecting: 0
+  shield: {fileID: 1308280564}
   key_up: 119
   key_down: 115
   key_der: 100
@@ -1268,6 +1270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 3
   maxlife: 3
+  protec: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2533,7 +2536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1308280565
 BoxCollider:
   m_ObjectHideFlags: 0

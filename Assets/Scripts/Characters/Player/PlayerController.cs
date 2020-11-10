@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject enemy_detect;
 
-
+    public bool protecting;
+    public GameObject shield;
 
     //-----Escoger Teclas------//
     public KeyCode key_up;
@@ -36,6 +37,8 @@ public class PlayerController : MonoBehaviour
         cmp_timers = GetComponent<Timers>();
         cmp_life = GetComponent<Life>();
         cmp_life.life = cmp_modelo_Ply.playerLife;
+        protecting = false;
+        cmp_life.protec = protecting;
     }
 
     // Update is called once per frame
@@ -48,12 +51,17 @@ public class PlayerController : MonoBehaviour
         AtqGiratorio();
         AtqLanza();
         Die();
+        EscudoUptater();
 
         // Prueba energia del player
-        /*if(Input.GetKeyDown(KeyCode.G))
+        if(Input.GetKeyDown(KeyCode.G))
         {
             DamageItself(1);
-        }*/
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Escudo();
+        }
     }
 
     void GroundUpdater()
@@ -169,6 +177,24 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject == enemy_detect)
         {
             enemy_detect = null;
+        }
+    }
+
+    void Escudo()
+    {
+        cmp_life.ProtectLife();
+
+    }
+    void EscudoUptater()
+    {
+        if (protecting == false)
+        {
+            shield.gameObject.SetActive(false);
+        }
+
+        else
+        {
+            shield.gameObject.SetActive(true);
         }
     }
 
