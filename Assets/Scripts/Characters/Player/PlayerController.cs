@@ -183,7 +183,6 @@ public class PlayerController : MonoBehaviour
     void Escudo()
     {
         cmp_life.ProtectLife();
-
     }
     void EscudoUptater()
     {
