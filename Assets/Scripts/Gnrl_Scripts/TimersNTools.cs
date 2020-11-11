@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Timers : MonoBehaviour
+public class TimersNTools : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
+
+    } 
+
+    //---Timer en reparacion---
     public bool Timer_for_bools(bool actual_bool, float max_timer)
     {
         bool rtrn_bool = actual_bool;

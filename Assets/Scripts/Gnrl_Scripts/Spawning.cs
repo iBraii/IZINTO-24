@@ -63,6 +63,53 @@ public class Spawning : MonoBehaviour
             int array_size = obj_spwn_Array.Length;
             obj_spwn_Array = IncreaseArray(obj_spwn_Array, 1);
             obj_spwn_Array[array_size] = Instantiate(object_spawned);
+            if (obj_spwn_Array[array_size].activeSelf == false)
+            {
+                obj_spwn_Array[array_size].SetActive(true);
+            }
+        }
+    }
+
+    public void ArraySpawnGeneretor(GameObject object_spawned, Vector3 spw_pos, Vector3 obj_angl_rot)
+    {
+        objActiveCounter = obj_spwn_Array.Length;
+        for (int i = 0; i < obj_spwn_Array.Length; i++)
+        {
+            if (obj_spwn_Array[i].activeSelf == false)
+            {
+                objActiveCounter--;
+            }
+        }
+
+
+        if (objActiveCounter < obj_spwn_Array.Length)
+        {
+            bool close_loop = false;
+            while (close_loop == false)
+            {
+                for (int i = 0; i < obj_spwn_Array.Length; i++)
+                {
+                    if (obj_spwn_Array[i].activeSelf == false)
+                    {
+                        obj_spwn_Array[i].SetActive(true);
+                        obj_spwn_Array[i].transform.position = spw_pos;
+                        obj_spwn_Array[i].transform.eulerAngles = obj_angl_rot;
+                        close_loop = true;
+                        i = obj_spwn_Array.Length;
+                        Debug.Log(i);
+                    }
+                }
+            }
+        }
+        else
+        {
+            int array_size = obj_spwn_Array.Length;
+            obj_spwn_Array = IncreaseArray(obj_spwn_Array, 1);
+            obj_spwn_Array[array_size] = Instantiate(object_spawned);
+            if (obj_spwn_Array[array_size].activeSelf == false)
+            {
+                obj_spwn_Array[array_size].SetActive(true);
+            }
         }
     }
 

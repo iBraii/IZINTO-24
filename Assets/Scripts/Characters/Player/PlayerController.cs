@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Movement cmp_mov;
     private Rotatement cmp_rot;
     private Attacks cmp_atk;
-    private Timers cmp_timers;
+    private TimersNTools cmp_timers;
     private Life cmp_life;
 
     public GameObject enemy_detect;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
         cmp_atk = GetComponent<Attacks>();
-        cmp_timers = GetComponent<Timers>();
+        cmp_timers = GetComponent<TimersNTools>();
         cmp_life = GetComponent<Life>();
         cmp_life.life = cmp_modelo_Ply.playerLife;
         protecting = false;
