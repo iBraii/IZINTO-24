@@ -45,4 +45,11 @@ public class Enemy_LionController : MonoBehaviour
             helmet.gameObject.SetActive(true);
         }
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+        }
+    }
 }
