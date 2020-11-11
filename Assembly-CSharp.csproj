@@ -58,6 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camara.cs" />
+    <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Boss\Enemy_BossController.cs" />
+    <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Boss\Enemy_BossModel.cs" />
+    <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Lion\Enemy_LionController.cs" />
+    <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Lion\Enemy_LionModel.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Lion\LionSpawner.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Rhino\Enemy_RhinoController.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Rhino\Enemy_RhinoModel.cs" />
@@ -66,8 +70,10 @@
     <Compile Include="Assets\Scripts\Characters\Player\PlayerModelo.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Attacks.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\GroundStatsUpdater.cs" />
+    <Compile Include="Assets\Scripts\Gnrl_Scripts\Life.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Rotatement.cs" />
+    <Compile Include="Assets\Scripts\Gnrl_Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Spawning.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Timers.cs" />
     <Reference Include="UnityEngine">
