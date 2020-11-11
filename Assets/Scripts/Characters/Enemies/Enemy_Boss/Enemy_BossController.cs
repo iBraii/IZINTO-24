@@ -12,6 +12,13 @@ public class Enemy_BossController : MonoBehaviour
     public GameObject martiloProyectil;
     private Vector3 boss_pos;
 
+    public Transform myTransform;
+    public List<Transform> martilloPosiciones;
+    public bool golpeAlSuelo;
+    public int lugarGolpeMartillo;
+    public float tMartillo;
+    public float tMVolverInicio;
+    public float tMSiguienteataque;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +34,8 @@ public class Enemy_BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GolpeconMartillo();
+
         boss_pos = new Vector3(gameObject.transform.position.x + 3, gameObject.transform.position.y, gameObject.transform.position.z);
 
         Vector3 angl_target = (ply.transform.position - transform.position);
@@ -75,5 +84,41 @@ public class Enemy_BossController : MonoBehaviour
     public void Despawn()
     {
         cmp_spwn.ArrayDespawn();
+    }
+    void GolpeconMartillo()
+    {
+        if (golpeAlSuelo == true & lugarGolpeMartillo <= 5)
+        {
+            PosicionMartillo();
+            if (tMartillo >= tMVolverInicio)
+            {
+                myTransform.transform.position = martilloPosiciones[0].transform.position;
+            }
+        }
+
+        if (lugarGolpeMartillo >= 6)
+        {
+            golpeAlSuelo = false;
+            lugarGolpeMartillo = 1;
+            //tMartillo = 3;
+        }
+    }
+    void GolpeMartillo()
+    {
+        //Debug.Log("Funciona" + lugarGolpeMartillo);
+        myTransform.transform.position = martilloPosiciones[lugarGolpeMartillo].transform.position;
+    }
+    void PosicionMartillo()
+    {
+        tMartillo += Time.deltaTime;
+        if (tMartillo >= tMSiguienteataque)
+        {
+            if (lugarGolpeMartillo <= 4)
+            {
+                GolpeMartillo();
+            }
+            lugarGolpeMartillo += 1;
+            tMartillo = 0;
+        }
     }
 }
