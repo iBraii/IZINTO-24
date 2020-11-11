@@ -7,6 +7,7 @@ public class Enemy_LionController : MonoBehaviour
     private Life cmp_life;
     public bool EnemyHasHelmet;
     public GameObject helmet;
+    private Enemy_LionModel cmp_enemyLionMod;
 
     // Start is called before the first frame update
     void Start()
@@ -14,12 +15,14 @@ public class Enemy_LionController : MonoBehaviour
         cmp_life = GetComponent<Life>();
         EnemyHasHelmet = false;
         cmp_life.protec = EnemyHasHelmet;
+        cmp_enemyLionMod = GetComponent<Enemy_LionModel>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CascoUpdater();
+        Die();                   
         if(helmet.gameObject.activeInHierarchy == true)
         {
             Casco();
@@ -45,11 +48,16 @@ public class Enemy_LionController : MonoBehaviour
             helmet.gameObject.SetActive(true);
         }
     }
-    private void OnCollisionEnter(Collision other)
+    void Die()
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (cmp_enemyLionMod.enemyLife <= 0)
         {
-            other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+            Debug.Log("Moriste");
+            gameObject.SetActive(false);
         }
+    }
+    public void DamageItself(int dmg)
+    {
+        cmp_life.LoseLife(dmg);
     }
 }

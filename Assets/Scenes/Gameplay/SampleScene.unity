@@ -563,6 +563,7 @@ GameObject:
   - component: {fileID: 187861493}
   - component: {fileID: 187861492}
   - component: {fileID: 187861497}
+  - component: {fileID: 187861498}
   - component: {fileID: 187861496}
   m_Layer: 9
   m_Name: EnemyLion
@@ -656,11 +657,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 187861491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c428aafc12969a148a09ba43dd4736ac, type: 3}
+  m_Script: {fileID: 11500000, guid: a00e028f0ad2a6e488067de8bf9a7652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHasHelmet: 0
-  helmet: {fileID: 1318240406}
+  spd_mov: 0
+  jmp_force: 0
+  atk_damage: 0
+  enemyLife: 3
+  atk_active: 0
+  walk_active: 0
 --- !u!114 &187861497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,9 +678,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec987e52e80986b4089028827237535f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  maxlife: 0
+  life: 3
+  maxlife: 3
   protec: 0
+--- !u!114 &187861498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187861491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe7d94978a661c4894a952f68f90bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHasHelmet: 0
+  helmet: {fileID: 1318240406}
 --- !u!1 &268934838
 GameObject:
   m_ObjectHideFlags: 0
