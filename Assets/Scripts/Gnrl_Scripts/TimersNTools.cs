@@ -24,7 +24,7 @@ public class TimersNTools : MonoBehaviour
         bool rtrn_bool = actual_bool;
         float timer = 0;
 
-        for (timer = 0; timer <= max_timer; timer +=Time.deltaTime)
+        /*for (timer = 0; timer <= max_timer; timer +=Time.deltaTime)
         {
             if (rtrn_bool == true)
             {
@@ -34,7 +34,21 @@ public class TimersNTools : MonoBehaviour
             {
                 rtrn_bool = true;
             }
+        }*/
+        while(timer <= max_timer)
+        {
+            timer += Time.deltaTime;
+            if (rtrn_bool == true)
+            {
+                rtrn_bool = false;
+            }
+            else
+            {
+                rtrn_bool = true;
+            }
         }
+        
         return rtrn_bool;
     }
+
 }

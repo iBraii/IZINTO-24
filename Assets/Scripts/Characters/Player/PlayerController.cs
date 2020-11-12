@@ -48,11 +48,12 @@ public class PlayerController : MonoBehaviour
         GroundUpdater();
         PlayerJump();
         PlayerWalk();
-        AtqGiratorio();
+        //AtqGiratorio();
         AtqLanza();
         Die();
         EscudoUptater();
-
+        AtackBoolUpdater();
+        
         // Prueba energia del player
         if(Input.GetKeyDown(KeyCode.G))
         {
@@ -62,11 +63,24 @@ public class PlayerController : MonoBehaviour
         {
             Escudo();
         }
+
     }
 
     void GroundUpdater()
     {
         cmp_modelo_Ply.grounded = cmp_grnd_Updater.grounded;
+    }
+    void AtackBoolUpdater()
+    {
+        cmp_modelo_Ply.atk_active = cmp_atk.atacking;
+        if (cmp_modelo_Ply.atk_active == true)
+        {
+            cmp_modelo_Ply.walk_active = false;
+        }
+        else
+        {
+            cmp_modelo_Ply.walk_active = true;
+        }
     }
 
     void PlayerJump()
@@ -137,48 +151,51 @@ public class PlayerController : MonoBehaviour
 
     void AtqGiratorio()
     {
-        /*if(Input.GetKey(key_ability))
+        if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
-            cmp_atk.SwordAtk();
-            cmp_rot.ForLoopRot(0, -1, 0, 20, true);
-        }    */
+
+            cmp_atk.atacking = true;
+
+        }    
+        if (cmp_modelo_Ply.atk_active==true)
+        {
+            cmp_atk.SwordAtk(1,2);
+        }
     }
 
     void AtqLanza()
     {
         if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
         {
-            cmp_modelo_Ply.walk_active = false;
-            cmp_modelo_Ply.atk_active = true;
+            cmp_atk.atacking = true;
 
             cmp_mov.Move_in_transform(-10);
-            if (enemy_detect != null)
+            /*if (enemy_detect != null)
             {
-                cmp_atk.SpearAtk(1, enemy_detect);
-            }
+                //cmp_atk.SpearAtk(1, enemy_detect);
+            }*/
         }
 
         if (cmp_modelo_Ply.atk_active == true)
         {
-            cmp_modelo_Ply.atk_active = cmp_timers.Timer_for_bools(true, 50);
-            cmp_modelo_Ply.walk_active = cmp_timers.Timer_for_bools(false, 50);
+            cmp_atk.SpearAtk(1, 2);
         }
     }
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             enemy_detect = other.gameObject;
         }
-    }
+    }*/
 
-    private void OnTriggerExit(Collider other)
+    /*private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == enemy_detect)
         {
             enemy_detect = null;
         }
-    }
+    }*/
 
     void Escudo()
     {

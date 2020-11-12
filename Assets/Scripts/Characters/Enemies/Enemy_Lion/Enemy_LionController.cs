@@ -24,11 +24,13 @@ public class Enemy_LionController : MonoBehaviour
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
         follow = true;
+        cmp_life.life = cmp_enemyLionMod.enemyLife;
     }
 
     // Update is called once per frame
     void Update()
     {
+        cmp_enemyLionMod.enemyLife = cmp_life.life;
         CascoUpdater();
         Die();                   
         if(helmet.gameObject.activeInHierarchy == true)

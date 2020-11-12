@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Rotatement : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -82,26 +82,71 @@ public class Rotatement : MonoBehaviour
             }
         }
 
-        if(gameObject.transform.eulerAngles.y % 360 != angle)
+        if (gameObject.transform.eulerAngles.y % 360 != angle)
         {
-            transform.Rotate(new Vector3(0,(Time.deltaTime * spd_mov * rot_dir), 0));
+            transform.Rotate(new Vector3(0, (Time.deltaTime * spd_mov * rot_dir), 0));
 
         }
 
     }
 
     public void Rote_in_Z(float spd_mov, int dir_mov)
-    {        
+    {
         //En reparación . . . [Proximamente]
         //transform.Rotate(new Vector3(0, 0, dir_mov) * Time.deltaTime * spd_mov, Space.World);
     }
 
-    public void InstantRotation(float x,float y, float z,Space rot_spd)
+    public void InstantRotation(float x, float y, float z, Space rot_spd)
     {
         gameObject.transform.Rotate(x, y, z, rot_spd);
     }
     public void LookSmt(Transform target, float angle)
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z) - transform.position), angle * Time.deltaTime);
+    }
+
+    public void Rote_in_Y_inverse(float spd_mov, float angle)
+    {
+        float may_angle;
+        float men_angle;
+        int rot_dir;
+        angle = angle % 360;
+
+        if (gameObject.transform.eulerAngles.y % 360 >= angle)
+        {
+            may_angle = gameObject.transform.eulerAngles.y % 360;
+            men_angle = angle;
+
+            if (may_angle - men_angle >= 180)
+            {
+                rot_dir = 1;
+            }
+            else
+            {
+                rot_dir = -1;
+            }
+
+        }
+        else
+        {
+            men_angle = gameObject.transform.eulerAngles.y;
+            may_angle = angle;
+
+            if (may_angle - men_angle >= 180)
+            {
+                rot_dir = -1;
+            }
+            else
+            {
+                rot_dir = 1;
+            }
+        }
+
+        if (gameObject.transform.eulerAngles.y % 360 != angle)
+        {
+            transform.Rotate(new Vector3(0, (Time.deltaTime * spd_mov * rot_dir), 0));
+
+        }
+
     }
 }
