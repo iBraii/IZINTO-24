@@ -8,6 +8,10 @@ public class Enemy_LionController : MonoBehaviour
     public bool EnemyHasHelmet;
     public GameObject helmet;
     private Enemy_LionModel cmp_enemyLionMod;
+    private Movement cmp_mov;
+    private Rotatement cmp_rot;
+    public Transform target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +20,8 @@ public class Enemy_LionController : MonoBehaviour
         EnemyHasHelmet = false;
         cmp_life.protec = EnemyHasHelmet;
         cmp_enemyLionMod = GetComponent<Enemy_LionModel>();
+        cmp_mov = GetComponent<Movement>();
+        cmp_rot = GetComponent<Rotatement>();
     }
 
     // Update is called once per frame
@@ -31,6 +37,7 @@ public class Enemy_LionController : MonoBehaviour
         {
             cmp_life.protec = false;
         }
+        FollowPlayer();
     }
     void Casco()
     {
@@ -59,5 +66,13 @@ public class Enemy_LionController : MonoBehaviour
     public void DamageItself(int dmg)
     {
         cmp_life.LoseLife(dmg);
+    }
+    void FollowPlayer()
+    {
+        if(gameObject.activeInHierarchy == true)
+        {
+            cmp_mov.Move_Towards(target, 3);
+            cmp_rot.LookSmt(target, 50);
+        }
     }
 }

@@ -100,4 +100,8 @@ public class Rotatement : MonoBehaviour
     {
         gameObject.transform.Rotate(x, y, z, rot_spd);
     }
+    public void LookSmt(Transform target, float angle)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position), angle * Time.deltaTime);
+    }
 }

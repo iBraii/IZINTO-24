@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         cmp_rb = GetComponent<Rigidbody>();
+        cmp_rb.centerOfMass = new Vector3(0, 50, 0);
     }
 
     // Update is called once per frame
@@ -41,6 +42,10 @@ public class Movement : MonoBehaviour
     public void Move_in_transform(float speed)
     {
         cmp_rb.velocity = transform.forward * speed;
+    }
+    public void Move_Towards(Transform target, float distance)
+    {
+        transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, distance * Time.deltaTime);
     }
 
 }
