@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
     }
     public void Move_Towards(Transform target, float distance)
     {
-        transform.position = Vector3.MoveTowards(gameObject.transform.position, target.transform.position, distance * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(gameObject.transform.position, new Vector3(target.position.x, transform.position.y, target.position.z), distance * Time.deltaTime);
     }
 
 }

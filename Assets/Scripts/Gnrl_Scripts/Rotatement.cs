@@ -102,6 +102,6 @@ public class Rotatement : MonoBehaviour
     }
     public void LookSmt(Transform target, float angle)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position), angle * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z) - transform.position), angle * Time.deltaTime);
     }
 }

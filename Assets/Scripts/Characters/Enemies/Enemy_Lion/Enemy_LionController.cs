@@ -6,6 +6,7 @@ public class Enemy_LionController : MonoBehaviour
 {
     private Life cmp_life;
     public bool EnemyHasHelmet;
+    public bool follow;
     public GameObject helmet;
     private Enemy_LionModel cmp_enemyLionMod;
     private Movement cmp_mov;
@@ -22,6 +23,7 @@ public class Enemy_LionController : MonoBehaviour
         cmp_enemyLionMod = GetComponent<Enemy_LionModel>();
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
+        follow = true;
     }
 
     // Update is called once per frame
@@ -37,7 +39,12 @@ public class Enemy_LionController : MonoBehaviour
         {
             cmp_life.protec = false;
         }
-        FollowPlayer();
+        
+        DetectIfClose();
+        if(follow == true)
+        {
+            FollowPlayer();
+        }    
     }
     void Casco()
     {
@@ -73,6 +80,17 @@ public class Enemy_LionController : MonoBehaviour
         {
             cmp_mov.Move_Towards(target, 3);
             cmp_rot.LookSmt(target, 50);
+        }
+    }
+    void DetectIfClose()
+    {
+        if(Vector3.Distance(target.transform.position, transform.position) < 1.5f)
+        {
+            follow = false;
+        }
+        else
+        {
+            follow = true;
         }
     }
 }
