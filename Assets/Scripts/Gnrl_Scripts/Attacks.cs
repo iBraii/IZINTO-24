@@ -37,15 +37,16 @@ public class Attacks : MonoBehaviour
     {
 
     }
-    public void SwordAtk(float time_atk, int atk_dmg)
+    public void SwordAtk( int atk_dmg)
     {
         //atacking = true;
         if (sword_obj && sword_obj.activeSelf==false)
         {
             sword_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
             sword_obj.SetActive(true);
+            //StartCoroutine(WaitCounterToFalseATK(time_atk, sword_obj));
         }
-            StartCoroutine(WaitCounterToFalseATK(time_atk, sword_obj));
+        
 
         if (atacking == true)
         {
@@ -55,7 +56,7 @@ public class Attacks : MonoBehaviour
         }
     }
 
-    public void SpearAtk(float time_atk, int atk_dmg)
+    public void SpearAtk( int atk_dmg)
     {
         if (spear_obj && spear_obj.activeSelf == false)
         {
@@ -63,7 +64,6 @@ public class Attacks : MonoBehaviour
             spear_obj.SetActive(true);
             //cmp_mov.Move_in_transform(-10);
         }
-        StartCoroutine(WaitCounterToFalseATK(time_atk, spear_obj));
 
         if (atacking == true)
         {
@@ -75,11 +75,11 @@ public class Attacks : MonoBehaviour
         //Funcion que haga daño al enemigo
     }
 
-    IEnumerator WaitCounterToFalseATK(float seconds, GameObject desact_obj)
+    public IEnumerator WaitCounterToFalseATK(float seconds, GameObject desact_obj)
     {
         if (atacking == true)
         {
-            //Debug.Log("StarCount");
+            Debug.Log("StarCount");
             //cmp_modelo_Ply.walk_active = false;
             yield return new WaitForSeconds(seconds);
             atacking = false;
@@ -91,5 +91,9 @@ public class Attacks : MonoBehaviour
             //Debug.Log("EndCount");
         }
 
+    }
+    public void WaitCounterCaller(float secs, GameObject dscObj)
+    {
+        StartCoroutine(WaitCounterToFalseATK(secs, dscObj));
     }
 }

@@ -153,13 +153,12 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
-
             cmp_atk.atacking = true;
-
+            cmp_atk.WaitCounterCaller(1, cmp_atk.sword_obj);
         }    
         if (cmp_modelo_Ply.atk_active==true)
         {
-            cmp_atk.SwordAtk(1,2);
+            cmp_atk.SwordAtk(2);
         }
     }
 
@@ -168,8 +167,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-
             cmp_mov.Move_in_transform(-10);
+            cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
             /*if (enemy_detect != null)
             {
                 //cmp_atk.SpearAtk(1, enemy_detect);
@@ -178,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
         if (cmp_modelo_Ply.atk_active == true)
         {
-            cmp_atk.SpearAtk(1, 2);
+            cmp_atk.SpearAtk( 2);
         }
     }
     /*private void OnTriggerEnter(Collider other)

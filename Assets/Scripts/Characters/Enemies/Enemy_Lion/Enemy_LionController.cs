@@ -12,6 +12,7 @@ public class Enemy_LionController : MonoBehaviour
     private Movement cmp_mov;
     private Rotatement cmp_rot;
     public Transform target;
+    private Attacks cmp_atk;
 
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class Enemy_LionController : MonoBehaviour
         cmp_enemyLionMod = GetComponent<Enemy_LionModel>();
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
+        cmp_atk = GetComponent<Attacks>();
         follow = true;
         cmp_life.life = cmp_enemyLionMod.enemyLife;
     }
@@ -32,8 +34,9 @@ public class Enemy_LionController : MonoBehaviour
     {
         cmp_enemyLionMod.enemyLife = cmp_life.life;
         CascoUpdater();
-        Die();                   
-        if(helmet.gameObject.activeInHierarchy == true)
+        Die();
+        AttackBoolUpdater();
+        if (helmet.gameObject.activeInHierarchy == true)
         {
             Casco();
         }
@@ -41,12 +44,14 @@ public class Enemy_LionController : MonoBehaviour
         {
             cmp_life.protec = false;
         }
-        
+
         DetectIfClose();
-        if(follow == true)
+        if (follow == true)
         {
             FollowPlayer();
-        }    
+        }
+        AtqGiratorio();
+        //AtqLanza();
     }
     void Casco()
     {
@@ -78,7 +83,7 @@ public class Enemy_LionController : MonoBehaviour
     }
     void FollowPlayer()
     {
-        if(gameObject.activeInHierarchy == true)
+        if(gameObject.activeInHierarchy == true & cmp_enemyLionMod.walk_active == true)
         {
             cmp_mov.Move_Towards(target, 3);
             cmp_rot.LookSmt(target, 50);
@@ -93,6 +98,49 @@ public class Enemy_LionController : MonoBehaviour
         else
         {
             follow = true;
+        }
+    }
+    void AttackBoolUpdater()
+    {
+        cmp_enemyLionMod.atk_active = cmp_atk.atacking;
+        if (cmp_enemyLionMod.atk_active == true)
+        {
+            cmp_enemyLionMod.walk_active = false;
+        }
+        else
+        {
+            cmp_enemyLionMod.walk_active = true;
+        }
+    }
+    void AtqGiratorio()
+    {
+        if (follow == false)
+        {
+            cmp_atk.atacking = true;
+            cmp_atk.WaitCounterCaller(1, cmp_atk.sword_obj);
+        }
+        if (cmp_enemyLionMod.atk_active == true)
+        {
+            cmp_atk.SwordAtk(2);
+        }
+    }
+
+    void AtqLanza()
+    {
+        if (follow == false)
+        {
+            cmp_atk.atacking = true;
+            cmp_mov.Move_in_transform(10);
+            cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
+            /*if (enemy_detect != null)
+            {
+                //cmp_atk.SpearAtk(1, enemy_detect);
+            }*/
+        }
+
+        if (cmp_enemyLionMod.atk_active == true)
+        {
+            cmp_atk.SpearAtk(2);
         }
     }
 }
