@@ -57,6 +57,7 @@ public class Enemy_BossController : MonoBehaviour
     {
         cmp_life.LoseLife(dmg);
     }
+    /*
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -64,6 +65,7 @@ public class Enemy_BossController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DamageItself(1);
         }
     }
+    */
     void Die()
     {
         if (cmp_enemy_model.bosslife <= 0)

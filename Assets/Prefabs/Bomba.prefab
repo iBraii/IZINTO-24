@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4390763543082939033}
   - component: {fileID: 4390763543082939038}
   - component: {fileID: 4390763543082939013}
+  - component: {fileID: -512756388675912198}
+  - component: {fileID: -5898708156258867937}
   m_Layer: 0
   m_Name: Bomba
   m_TagString: Untagged
@@ -107,10 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b7d28c2d7a1824788bb7d1bd58e842, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 16
-  playerPosition1: {fileID: 0}
+  speed: 10
   explosion: {fileID: 2273993426428722565, guid: af6c8729dc372b448b27ad9b2e8cbb52,
     type: 3}
+  spawnexplosion: 1
 --- !u!54 &4390763543082939013
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -127,3 +129,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-512756388675912198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390763543082939039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e983c3bd40d54fe49b7e315333ca6ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tag_name_obj: Player
+  itm_dmg: 1
+--- !u!114 &-5898708156258867937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390763543082939039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9dee38834cd9e498403e506837c3d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cmp_rb: {fileID: 4390763543082939013}

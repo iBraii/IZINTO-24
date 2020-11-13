@@ -48,7 +48,7 @@ public class BossHammer : MonoBehaviour
         }
 
     }
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -56,6 +56,7 @@ public class BossHammer : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DamageItself(1);
         }
     }
+    */
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Boss"))

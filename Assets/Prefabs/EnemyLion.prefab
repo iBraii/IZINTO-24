@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyHasHelmet: 0
+  follow: 0
   helmet: {fileID: 8520493945647843246}
   target: {fileID: 0}
 --- !u!114 &8520493946643975872
