@@ -9,6 +9,7 @@ public class PlayerModelo : MonoBehaviour
     public int atk_damage;
     public int playerLife;
     public bool grounded;
+    public bool onHazzard;
     public bool atk_active;
     public bool walk_active;
     public bool using_weapon;
