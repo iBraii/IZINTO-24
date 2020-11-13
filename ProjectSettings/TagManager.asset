@@ -9,6 +9,10 @@ TagManager:
   - Rhino
   - Boss
   - Ground
+  - pruebaT
+  - Spear
+  - Sword
+  - Shield
   layers:
   - Default
   - TransparentFX

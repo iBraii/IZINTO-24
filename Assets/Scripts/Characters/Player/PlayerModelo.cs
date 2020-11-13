@@ -11,12 +11,15 @@ public class PlayerModelo : MonoBehaviour
     public bool grounded;
     public bool atk_active;
     public bool walk_active;
-
+    public bool using_weapon;
+    public GameObject weapon;
     // Start is called before the first frame update
     void Start()
     {
         atk_active = false;
         walk_active = true;
+        using_weapon = false;
+        weapon = null;
     }
 
     // Update is called once per frame
