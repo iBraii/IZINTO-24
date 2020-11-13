@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Rhino
   - Boss
+  - Ground
   layers:
   - Default
   - TransparentFX
