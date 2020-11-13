@@ -8,6 +8,8 @@ public class RhinoSpawner : MonoBehaviour
     public GameObject[] rhinos_obj;
 
     public Vector3 generate_pos;
+    float timer = 0;
+    public float max_timer = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class RhinoSpawner : MonoBehaviour
     //---Falta personalizar segun el desafio---//
     void SpawnRhyno()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.R))
         {
             cmp_spwn.ArraySpawnGeneretor(rhinos_obj[0], generate_pos);
@@ -33,6 +36,14 @@ public class RhinoSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             cmp_spwn.ArrayDespawn();
+        }
+        */
+        
+        timer += Time.deltaTime;
+        if (timer >= max_timer)
+        {
+            cmp_spwn.ArraySpawnGeneretor(rhinos_obj[0], generate_pos);
+            timer = 0;
         }
     }
 }

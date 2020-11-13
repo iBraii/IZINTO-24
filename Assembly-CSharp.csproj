@@ -57,7 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Camara.cs" />
+    <Compile Include="Assets\BombScript.cs" />
+    <Compile Include="Assets\DestroyGameobject.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Boss\Enemy_BossController.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Boss\Enemy_BossModel.cs" />
     <Compile Include="Assets\Scripts\Characters\Enemies\Enemy_Lion\Enemy_LionController.cs" />
@@ -70,12 +71,16 @@
     <Compile Include="Assets\Scripts\Characters\Player\PlayerModelo.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Attacks.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\GroundStatsUpdater.cs" />
+    <Compile Include="Assets\Scripts\Gnrl_Scripts\InstantTrigerDamage.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Life.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Rotatement.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\Gnrl_Scripts\Spawning.cs" />
-    <Compile Include="Assets\Scripts\Gnrl_Scripts\Timers.cs" />
+    <Compile Include="Assets\Scripts\Gnrl_Scripts\TimersNTools.cs" />
+    <Compile Include="Assets\Scripts\Obj&amp;Props\BossHammer\BossHammer.cs" />
+    <Compile Include="Assets\Scripts\Obj&amp;Props\Hazards\FireHazard.cs" />
+    <Compile Include="Assets\Scripts\UI&amp;UX\Camara.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
