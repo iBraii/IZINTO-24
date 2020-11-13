@@ -8,6 +8,8 @@ public class LionSpawner : MonoBehaviour
     public GameObject[] Lions_obj;
 
     public Vector3 generate_pos;
+    float timer = 0;
+    public float max_timer = 4;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class LionSpawner : MonoBehaviour
     //---Falta personalizar segun el desafio---//
     void SpawnLion()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.L))
         {
             cmp_spwn.ArraySpawnGeneretor(Lions_obj[0], generate_pos);
@@ -33,6 +36,13 @@ public class LionSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             cmp_spwn.ArrayDespawn();
+        }
+        */
+        timer += Time.deltaTime;
+        if (timer >= max_timer)
+        {
+            cmp_spwn.ArraySpawnGeneretor(Lions_obj[0], generate_pos);
+            timer = 0;
         }
     }
 }
