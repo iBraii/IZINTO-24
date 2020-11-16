@@ -27,6 +27,11 @@ public class Enemy_LionController : MonoBehaviour
         cmp_atk = GetComponent<Attacks>();
         follow = true;
         cmp_life.life = cmp_enemyLionMod.enemyLife;
+        if (GameObject.Find("Player"))
+        {
+            target = GameObject.Find("Player").transform;
+        }
+        
     }
 
     // Update is called once per frame
@@ -48,7 +53,11 @@ public class Enemy_LionController : MonoBehaviour
         DetectIfClose();
         if (follow == true)
         {
-            FollowPlayer();
+            if(target != null)
+            {
+                FollowPlayer();
+            }
+            
         }
         AtqGiratorio();
         //AtqLanza();

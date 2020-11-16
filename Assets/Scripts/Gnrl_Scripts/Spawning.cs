@@ -63,6 +63,7 @@ public class Spawning : MonoBehaviour
             int array_size = obj_spwn_Array.Length;
             obj_spwn_Array = IncreaseArray(obj_spwn_Array, 1);
             obj_spwn_Array[array_size] = Instantiate(object_spawned);
+            obj_spwn_Array[array_size].transform.position = spw_pos;
             if (obj_spwn_Array[array_size].activeSelf == false)
             {
                 obj_spwn_Array[array_size].SetActive(true);

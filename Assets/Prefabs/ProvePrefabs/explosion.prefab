@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcb878f2f62e1dc4ca339c29adc8c6ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 2982963043497751614, guid: ade3dae7a6f8dbc43823467258f353e1, type: 3}
+  enemy: {fileID: 7228512038537995159, guid: 2ff45a45fd2d0e944a521fc611ddbeef, type: 3}
   frecuencia: 10
   retardo: 0.5
 --- !u!114 &6807217443157093650
