@@ -13,6 +13,8 @@ TagManager:
   - Spear
   - Sword
   - Shield
+  - Dummy
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,11 @@ public class InstantTrigerDamage : MonoBehaviour
                 other.GetComponent<Enemy_LionController>().DamageItself(itm_dmg);
                 Debug.Log("Lion: auch");
             }
+            if (other.GetComponent<Dummy>())
+            {
+                other.GetComponent<Dummy>().DamageDummy(itm_dmg);
+                Debug.Log("Dummy: auch");
+            }
         }
     }
 }
