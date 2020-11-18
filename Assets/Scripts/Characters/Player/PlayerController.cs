@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         cmp_modelo_Ply.playerLife = cmp_life.life;
+        protecting = cmp_life.protec;
         GroundUpdater();
         PlayerJump();
         PlayerWalk();

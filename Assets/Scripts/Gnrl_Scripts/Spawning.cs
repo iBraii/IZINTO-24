@@ -11,15 +11,17 @@ public class Spawning : MonoBehaviour
     {
 
         objActiveCounter = obj_spwn_Array.Length;
-        for (int i = 0; i < obj_spwn_Array.Length; i++)
+        if (obj_spwn_Array.Length != 0)
         {
+            for (int i = 0; i < obj_spwn_Array.Length; i++)
+            {
 
-            obj_spwn_Array[i].SetActive(false);
+                obj_spwn_Array[i].SetActive(false);
 
-            objActiveCounter--;
+                objActiveCounter--;
 
+            }
         }
-
     }
 
     // Update is called once per frame
