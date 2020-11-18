@@ -2,39 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Desafio2 : MonoBehaviour
+public class Desafio3 : MonoBehaviour
 {
     private LevelStats cmp_levelSt;
     private Spawning cmp_spwn;
+    private PlayerModelo cmp_plyMod;
 
     public float timer;
     public bool timerstart;
-    public int enemyCountForEnd;
-    public List<float> opcionesTimer;
+    public float maxChallengeTime;
     public GameObject[] spawner;
     public GameObject[] itmsObj;
     public Vector3 itmPosGen;
 
-    public int enemysBefDesf;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         cmp_spwn = GetComponent<Spawning>();
+        if (GameObject.Find("Player"))
+        {
+            cmp_plyMod = GameObject.Find("Player").GetComponent<PlayerModelo>();
+        }
         if (GameObject.Find("LevelStat"))
         {
             cmp_levelSt = GameObject.Find("LevelStat").GetComponent<LevelStats>();
-            enemysBefDesf = cmp_levelSt.enemyKillCounter;
         }
-        EmpezarDesafio2();
-        
+
     }
     // Update is called once per frame
     void Update()
     {
-        EnemyChecker();
+        TimeChecker();
         if (timerstart == true)
-        {      
+        {
             Timer();
             if (GameObject.Find("LevelStat"))
             {
@@ -42,18 +43,18 @@ public class Desafio2 : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
-            {
-            TerminarDesafio2();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.O))
+        /*if (Input.GetKeyDown(KeyCode.M))
         {
-            EmpezarDesafio2();
+            TerminarDesafio3();
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            EmpezarDesafio3();
         }
-        
+
     }
-    public void EmpezarDesafio2()
+    public void EmpezarDesafio3()
     {
         timer = 0;
         timerstart = true;
@@ -63,21 +64,22 @@ public class Desafio2 : MonoBehaviour
             spawner[i].SetActive(true);
         }
     }
-    public void TerminarDesafio2()
+    public void TerminarDesafio3()
     {
         for (int i = 0; i < spawner.Length; i++)
         {
             spawner[i].SetActive(false);
+            Debug.Log(i);
         }
         cmp_levelSt.challengeActive = false;
         timerstart = false;
-        if (timer < opcionesTimer[0])
+        if (cmp_plyMod.playerLife >= 3)
         {
-            cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0,itmsObj.Length)],itmPosGen);
+            cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
             Debug.Log("2 armas");
         }
-        else if (timer < opcionesTimer[1])
+        else if (cmp_plyMod.playerLife == 2)
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
             Debug.Log("1 arma");
@@ -91,12 +93,11 @@ public class Desafio2 : MonoBehaviour
     {
         timer += Time.deltaTime;
     }
-
-    public void EnemyChecker()
+    public void TimeChecker()
     {
-        if (cmp_levelSt.enemyKillCounter >= enemyCountForEnd + enemysBefDesf && cmp_levelSt.challengeActive == true)
+        if(timer >= maxChallengeTime & cmp_levelSt.challengeActive == true)
         {
-            TerminarDesafio2();
+            TerminarDesafio3();
             gameObject.SetActive(false);
         }
     }
