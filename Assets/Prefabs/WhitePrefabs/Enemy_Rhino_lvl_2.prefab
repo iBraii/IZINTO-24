@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 1949363059115010995}
   - component: {fileID: 1949363059115010999}
   m_Layer: 9
-  m_Name: Enemy_Rhino
+  m_Name: Enemy_Rhino_lvl_2
   m_TagString: Rhino
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 942140d7aa3831447b53031995f89226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd_mov: 25
+  spd_mov: 35
   atk_damage: 0
 --- !u!114 &1949363059115010996
 MonoBehaviour:

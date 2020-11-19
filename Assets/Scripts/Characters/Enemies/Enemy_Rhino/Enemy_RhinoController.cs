@@ -25,7 +25,7 @@ public class Enemy_RhinoController : MonoBehaviour
     }
     void Move()
     {
-        cmp_mov.Move_in_transform(-25);
+        cmp_mov.Move_in_transform(-cmp_RhinoMod.spd_mov);
     }
     private void OnCollisionEnter(Collision other)
     {
