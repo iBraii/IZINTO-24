@@ -42,7 +42,7 @@ public class Desafio2 : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        /*if (Input.GetKeyDown(KeyCode.P))
             {
             TerminarDesafio2();
         }
@@ -50,10 +50,10 @@ public class Desafio2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             EmpezarDesafio2();
-        }
+        }*/
         
     }
-    public void EmpezarDesafio2()
+    public void EmpezarDesafio()
     {
         timer = 0;
         timerstart = true;

@@ -48,13 +48,13 @@ public class Desafio3 : MonoBehaviour
             TerminarDesafio3();
         }*/
 
-        if (Input.GetKeyDown(KeyCode.U))
+        /*if (Input.GetKeyDown(KeyCode.U))
         {
             EmpezarDesafio3();
-        }
+        }*/
 
     }
-    public void EmpezarDesafio3()
+    public void EmpezarDesafio()
     {
         timer = 0;
         timerstart = true;
