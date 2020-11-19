@@ -8,6 +8,7 @@ public class LevelStats : MonoBehaviour
     public float timerChallenge;
     public bool challengeActive;
     public GameObject[] enemyArray;
+    public GameObject[] rhinoArray;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,13 @@ public class LevelStats : MonoBehaviour
             {
                 enemyArray[i].SetActive(false);
             }
+            rhinoArray = GameObject.FindGameObjectsWithTag("Rhino");
+            for (int i = 0; i < rhinoArray.Length; i++)
+            {
+                rhinoArray[i].SetActive(false);
+            }
         }
+       
     }
 
 }
