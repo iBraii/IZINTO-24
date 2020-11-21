@@ -99,7 +99,7 @@ public class Enemy_LionController : MonoBehaviour
         if(gameObject.activeInHierarchy == true & cmp_enemyLionMod.walk_active == true)
         {
             cmp_mov.Move_Towards(target, 3);
-            cmp_rot.LookSmt(target, 50);
+            cmp_rot.LookSmt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), 50 * Time.deltaTime);
         }
     }
     void DetectIfClose()

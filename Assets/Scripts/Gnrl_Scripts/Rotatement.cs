@@ -96,15 +96,15 @@ public class Rotatement : MonoBehaviour
         //transform.Rotate(new Vector3(0, 0, dir_mov) * Time.deltaTime * spd_mov, Space.World);
     }
 
-    public void InstantRotation(float x, float y, float z, Space rot_spd)
+    public void InstantRotation(float x, float y, float z, Space rot_spc)
     {
-        gameObject.transform.Rotate(x, y, z, rot_spd);
+        gameObject.transform.Rotate(x, y, z, rot_spc);
     }
-    public void LookSmt(Transform target, float angle)
+    public void LookSmt(Vector3 targetPos, float angle)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z) - transform.position), angle * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), angle/* * Time.deltaTime*/);
     }
-
+        
     public void Rote_in_Y_inverse(float spd_mov, float angle)
     {
         float may_angle;

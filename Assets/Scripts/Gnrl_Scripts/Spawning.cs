@@ -6,10 +6,14 @@ public class Spawning : MonoBehaviour
 {
     public GameObject[] obj_spwn_Array;
     public int objActiveCounter;
+    public GameObject latestGen;
     // Start is called before the first frame update
     void Start()
     {
-
+        if (latestGen == null)
+        {
+            latestGen = obj_spwn_Array[0];
+        }
         objActiveCounter = obj_spwn_Array.Length;
         if (obj_spwn_Array.Length != 0)
         {
@@ -27,19 +31,33 @@ public class Spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CounterUpdater();
+    }
 
+    private void CounterUpdater()
+    {
+        int tempCounter = obj_spwn_Array.Length;
+        //objActiveCounter = obj_spwn_Array.Length;
+        for (int i = 0; i < obj_spwn_Array.Length; i++)
+        {
+            if (obj_spwn_Array[i].activeSelf == false)
+            {
+                tempCounter--;
+            }
+        }
+        objActiveCounter = tempCounter;
     }
 
     public void ArraySpawnGeneretor(GameObject object_spawned, Vector3 spw_pos)
     {
-        objActiveCounter = obj_spwn_Array.Length;
+        /*objActiveCounter = obj_spwn_Array.Length;
         for (int i = 0; i < obj_spwn_Array.Length; i++)
         {
             if (obj_spwn_Array[i].activeSelf == false)
             {
                 objActiveCounter--;
             }
-        }
+        }*/
 
 
         if (objActiveCounter < obj_spwn_Array.Length)
@@ -52,10 +70,11 @@ public class Spawning : MonoBehaviour
                     if (obj_spwn_Array[i].activeSelf == false)
                     {
                         obj_spwn_Array[i].SetActive(true);
+                        latestGen = obj_spwn_Array[i];
                         obj_spwn_Array[i].transform.position = spw_pos;
                         close_loop = true;
                         i = obj_spwn_Array.Length;
-                        Debug.Log(i);
+                        //Debug.Log(i);
                     }
                 }
             }
@@ -69,20 +88,21 @@ public class Spawning : MonoBehaviour
             if (obj_spwn_Array[array_size].activeSelf == false)
             {
                 obj_spwn_Array[array_size].SetActive(true);
+                latestGen = obj_spwn_Array[array_size];
             }
         }
     }
 
     public void ArraySpawnGeneretor(GameObject object_spawned, Vector3 spw_pos, Vector3 obj_angl_rot)
     {
-        objActiveCounter = obj_spwn_Array.Length;
+        /*objActiveCounter = obj_spwn_Array.Length;
         for (int i = 0; i < obj_spwn_Array.Length; i++)
         {
             if (obj_spwn_Array[i].activeSelf == false)
             {
                 objActiveCounter--;
             }
-        }
+        }*/
 
 
         if (objActiveCounter < obj_spwn_Array.Length)
@@ -95,11 +115,12 @@ public class Spawning : MonoBehaviour
                     if (obj_spwn_Array[i].activeSelf == false)
                     {
                         obj_spwn_Array[i].SetActive(true);
+                        latestGen = obj_spwn_Array[i];
                         obj_spwn_Array[i].transform.position = spw_pos;
                         obj_spwn_Array[i].transform.eulerAngles = obj_angl_rot;
                         close_loop = true;
                         i = obj_spwn_Array.Length;
-                        Debug.Log(i);
+                        //Debug.Log(i);
                     }
                 }
             }
@@ -112,20 +133,21 @@ public class Spawning : MonoBehaviour
             if (obj_spwn_Array[array_size].activeSelf == false)
             {
                 obj_spwn_Array[array_size].SetActive(true);
+                latestGen = obj_spwn_Array[array_size];
             }
         }
     }
 
     public void ArrayDespawn()
     {
-        objActiveCounter = obj_spwn_Array.Length;
+        /*objActiveCounter = obj_spwn_Array.Length;
         for (int i = 0; i < obj_spwn_Array.Length; i++)
         {
             if (obj_spwn_Array[i].activeSelf == false)
             {
                 objActiveCounter--;
             }
-        }
+        }*/
 
         bool close_loop = false;
         if (objActiveCounter > 0)
