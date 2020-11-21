@@ -95,7 +95,7 @@ public class Desafio3 : MonoBehaviour
     }
     public void TimeChecker()
     {
-        if(timer >= maxChallengeTime & cmp_levelSt.challengeActive == true)
+        if(timer >= maxChallengeTime && cmp_levelSt.challengeActive == true)
         {
             TerminarDesafio3();
             gameObject.SetActive(false);

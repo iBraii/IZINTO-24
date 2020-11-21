@@ -61,6 +61,7 @@ public class Desafio1 : MonoBehaviour
     }
     public void EmpezarDesafio()
     {
+        
         timer = 0;
         timerstart = true;
         cmp_levelSt.challengeActive = true;
@@ -68,9 +69,11 @@ public class Desafio1 : MonoBehaviour
         {
             spawner[i].SetActive(true);
         }
+        Debug.Log("Empezo");
     }
     public void TerminarDesafio1()
     {
+        
         for (int i = 0; i < spawner.Length; i++)
         {
             spawner[i].SetActive(false);
@@ -78,6 +81,7 @@ public class Desafio1 : MonoBehaviour
         }
         cmp_levelSt.challengeActive = false;
         timerstart = false;
+        Debug.Log("termino");
         if (cmp_plyMod.playerLife >= 3)
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
@@ -93,6 +97,7 @@ public class Desafio1 : MonoBehaviour
         {
             Debug.Log("ninguna arma");
         }
+        Debug.Log("termino");
     }
     public void Timer()
     {
@@ -100,11 +105,14 @@ public class Desafio1 : MonoBehaviour
     }
     public void TimeChecker()
     {
-        if (timer >= maxChallengeTime & cmp_levelSt.challengeActive == true)
+        if (timer >= maxChallengeTime && cmp_levelSt.challengeActive == true)
         {
+            Debug.Log("timeC");
             TerminarDesafio1();
             gameObject.SetActive(false);
+           
         }
+        
     }
 }
 

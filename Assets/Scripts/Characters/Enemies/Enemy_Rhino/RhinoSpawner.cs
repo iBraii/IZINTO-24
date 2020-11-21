@@ -5,45 +5,43 @@ using UnityEngine;
 public class RhinoSpawner : MonoBehaviour
 {
     private Spawning cmp_spwn;
-    public GameObject[] rhinos_obj;
+    public GameObject[] rhino_obj;
+    public int maxSceneObjs;
 
-    public Vector3 generate_pos;
     float timer = 0;
     public float max_timer = 4;
+
+    public Vector3[] spawnPositions;
     // Start is called before the first frame update
     void Start()
     {
         cmp_spwn = GetComponent<Spawning>();
-        cmp_spwn.obj_spwn_Array = rhinos_obj;
-
+        cmp_spwn.obj_spwn_Array = rhino_obj;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SpawnRhyno();
+        if (cmp_spwn.objActiveCounter < maxSceneObjs)
+        {
+            SpawnRhino();
+        }
+
     }
-
-    //---Falta personalizar segun el desafio---//
-    void SpawnRhyno()
+    /*public Vector3 RhinoDir(int dirRhino)
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            cmp_spwn.ArraySpawnGeneretor(rhinos_obj[0], generate_pos);
-        }
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            cmp_spwn.ArrayDespawn();
-        }
-        */
-        
+        return
+    }*/
+    void SpawnRhino()
+    {
         timer += Time.deltaTime;
         if (timer >= max_timer)
         {
-            cmp_spwn.ArraySpawnGeneretor(rhinos_obj[0], generate_pos);
+            
+            cmp_spwn.ArraySpawnGeneretor(rhino_obj[0], spawnPositions[Random.Range(0, spawnPositions.Length)]);
             timer = 0;
         }
     }
+
 }

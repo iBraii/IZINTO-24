@@ -5,7 +5,7 @@ using UnityEngine;
 public class BombScript : MonoBehaviour
 {
     public float speed;
-    private Vector3 goplayerPosition1;
+    public Vector3 goplayerPosition1;
     public GameObject explosion;
     public bool spawnexplosion = true;
     private Movement cmp_mov;
@@ -33,7 +33,7 @@ public class BombScript : MonoBehaviour
         {
             spawnexplosion = false;
             Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

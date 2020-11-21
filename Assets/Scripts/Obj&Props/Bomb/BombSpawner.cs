@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LionSpawner : MonoBehaviour
+public class BombSpawner : MonoBehaviour
 {
     private Spawning cmp_spwn;
-    public GameObject[] lion_obj;
+    public GameObject[] bomb_obj;
     public int maxSceneObjs;
 
     float timer = 0;
@@ -16,7 +16,7 @@ public class LionSpawner : MonoBehaviour
     void Start()
     {
         cmp_spwn = GetComponent<Spawning>();
-        cmp_spwn.obj_spwn_Array = lion_obj;
+        cmp_spwn.obj_spwn_Array = bomb_obj;
     }
 
     // Update is called once per frame
@@ -24,30 +24,33 @@ public class LionSpawner : MonoBehaviour
     {
         if (cmp_spwn.objActiveCounter < maxSceneObjs)
         {
-            SpawnLion();
+            SpawnBomb();
         }
 
     }
 
-    void SpawnLion()
+    void SpawnBomb()
     {
         timer += Time.deltaTime;
         if (timer >= max_timer)
         {
-            RechargeLife();
-            cmp_spwn.ArraySpawnGeneretor(lion_obj[0], spawnPositions[Random.Range(0, spawnPositions.Length)]);
-
+            //RechargePosition();
+            cmp_spwn.ArraySpawnGeneretor(bomb_obj[0], spawnPositions[Random.Range(0, spawnPositions.Length)]);
+            cmp_spwn.latestGen.GetComponent<BombScript>().goplayerPosition1 = GameObject.FindWithTag("Player").transform.position;
             timer = 0;
         }
     }
 
-    void RechargeLife()
+    void RechargePosition()
     {
         for (int i = 0; i < cmp_spwn.obj_spwn_Array.Length; i++)
         {
             if (cmp_spwn.obj_spwn_Array[i].activeSelf == false)
             {
-                cmp_spwn.obj_spwn_Array[i].GetComponent<Enemy_LionModel>().enemyLife = 1;
+                if (cmp_spwn.obj_spwn_Array[i].GetComponent<SpearProyectil>().target != null)
+                {
+                    cmp_spwn.obj_spwn_Array[i].GetComponent<SpearProyectil>().RotToPlayer();
+                }
             }
         }
     }

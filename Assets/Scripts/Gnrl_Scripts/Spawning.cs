@@ -10,7 +10,7 @@ public class Spawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (latestGen == null)
+        if (latestGen == null && obj_spwn_Array != null && obj_spwn_Array.Length > 0)
         {
             latestGen = obj_spwn_Array[0];
         }

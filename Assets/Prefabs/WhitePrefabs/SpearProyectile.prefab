@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  movSpd: 10
+  movSpd: 30
 --- !u!114 &7848573696380838421
 MonoBehaviour:
   m_ObjectHideFlags: 0
