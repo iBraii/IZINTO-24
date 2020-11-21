@@ -22,6 +22,7 @@ public class LionSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cmp_spwn.CounterUpdater();
         if (cmp_spwn.objActiveCounter < maxSceneObjs)
         {
             SpawnLion();

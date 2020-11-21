@@ -31,10 +31,10 @@ public class Spawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CounterUpdater();
+        //CounterUpdater();
     }
 
-    private void CounterUpdater()
+    public void CounterUpdater()
     {
         int tempCounter = obj_spwn_Array.Length;
         //objActiveCounter = obj_spwn_Array.Length;
@@ -58,7 +58,7 @@ public class Spawning : MonoBehaviour
                 objActiveCounter--;
             }
         }*/
-
+        CounterUpdater();
 
         if (objActiveCounter < obj_spwn_Array.Length)
         {
@@ -103,7 +103,7 @@ public class Spawning : MonoBehaviour
                 objActiveCounter--;
             }
         }*/
-
+        CounterUpdater();
 
         if (objActiveCounter < obj_spwn_Array.Length)
         {
@@ -148,7 +148,7 @@ public class Spawning : MonoBehaviour
                 objActiveCounter--;
             }
         }*/
-
+        CounterUpdater();
         bool close_loop = false;
         if (objActiveCounter > 0)
         {
