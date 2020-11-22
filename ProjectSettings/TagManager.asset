@@ -15,6 +15,7 @@ TagManager:
   - Shield
   - Dummy
   - Door
+  - Barra
   layers:
   - Default
   - TransparentFX
