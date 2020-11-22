@@ -44,4 +44,17 @@ public class Enemy_RhinoController : MonoBehaviour
             other.gameObject.GetComponent<PlayerController>().DamageItself(1);
         }
     }
+    private void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            random_rot = Random.Range(135f, 225f);
+            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+        }
+        if (other.gameObject.CompareTag("Rhino"))
+        {
+            random_rot = Random.Range(135f, 225f);
+            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+        }
+    }
 }
