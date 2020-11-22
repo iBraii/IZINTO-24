@@ -6,17 +6,29 @@ public class PlayerView : MonoBehaviour
     private GameObject Barra;
     private PlayerModelo cmp_playerMod;
     public GameObject DamageIndicator;
+    public GameObject spearImage;
+    public GameObject swordImage;
     // Start is called before the first frame update
     void Start()
     {
         cmp_playerMod = GetComponent<PlayerModelo>();
         Barra = GameObject.FindGameObjectWithTag("Barra");
+        
+       
+            swordImage.SetActive(false);
+            spearImage.SetActive(false);
+
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
         LiveChecker();
+        WeaponChecker();
+
+    
     }
     void LiveChecker ()
     {
@@ -39,5 +51,28 @@ public class PlayerView : MonoBehaviour
         {
             Barra.transform.localScale = new Vector2(0f, 0.25f);
         }
+    }
+    public void WeaponChecker()
+    {
+        if (cmp_playerMod.weapon.CompareTag("Sword"))
+
+        {
+            swordImage.SetActive(true);
+            spearImage.SetActive(false);
+           
+        }
+        else if (cmp_playerMod.weapon.CompareTag("Spear"))
+        {
+            spearImage.SetActive(true);
+            swordImage.SetActive(false);
+        }
+        else
+        {
+            swordImage.SetActive(false);
+            spearImage.SetActive(false);
+        }
+
+
+
     }
 }
