@@ -5,7 +5,6 @@ using UnityEngine;
 public class InstantTrigerDamage : MonoBehaviour
 {
     public string tag_name_obj;
-
     public int itm_dmg;
     // Start is called before the first frame update
     void Start()

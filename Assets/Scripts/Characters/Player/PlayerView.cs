@@ -5,6 +5,7 @@ public class PlayerView : MonoBehaviour
 {
     private GameObject Barra;
     private PlayerModelo cmp_playerMod;
+    public GameObject DamageIndicator;
     // Start is called before the first frame update
     void Start()
     {

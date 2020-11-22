@@ -16,6 +16,7 @@ TagManager:
   - Dummy
   - Door
   - Barra
+  - DmgInd
   layers:
   - Default
   - TransparentFX

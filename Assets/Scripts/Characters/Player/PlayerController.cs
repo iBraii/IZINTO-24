@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private PlayerModelo cmp_modelo_Ply;
+    private PlayerView cmp_plyView;
     private GroundStatsUpdater cmp_grnd_Updater;
     private Movement cmp_mov;
     private Rotatement cmp_rot;
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Life cmp_life;
 
     public GameObject enemy_detect;
-
+    public float timer;
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         cmp_modelo_Ply = GetComponent<PlayerModelo>();
+        cmp_plyView = GetComponent<PlayerView>();
         cmp_grnd_Updater = GetComponent<GroundStatsUpdater>();
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent<Rotatement>();
@@ -56,6 +58,15 @@ public class PlayerController : MonoBehaviour
         EscudoUptater();
         AtackBoolUpdater();
         WeaponUpdater();
+        if(cmp_plyView.DamageIndicator.activeInHierarchy == true)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 1.5f)
+            {
+                timer = 0;
+                cmp_plyView.DamageIndicator.SetActive(false);   
+            }
+        }
         // Prueba energia del player
         if (Input.GetKeyDown(KeyCode.G))
         {
@@ -229,6 +240,7 @@ public class PlayerController : MonoBehaviour
     public void DamageItself(int dmg)
     {
         cmp_life.LoseLife(dmg);
+        cmp_plyView.DamageIndicator.SetActive(true);
     }
 
     void Die()
