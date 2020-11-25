@@ -1033,7 +1033,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16000
+  m_Name: pb_Mesh44414
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5519,6 +5519,7 @@ GameObject:
   - component: {fileID: 1352023534}
   - component: {fileID: 1352023533}
   - component: {fileID: 1352023532}
+  - component: {fileID: 1352023535}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5929,10 +5930,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_detect: {fileID: 0}
+  timer: 0
   protecting: 0
   shield: {fileID: 1712666982}
   usingSpear: 0
   usingSword: 0
+  plyChaController: {fileID: 1352023535}
+  turnSmoothTime: 0.1
+  turnSmoothVelocity: 0
   key_up: 119
   key_down: 115
   key_der: 100
@@ -5952,7 +5957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dc295de6acd6748bfa34215ae60003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd_mov: 1000
+  spd_mov: 5
   jmp_force: 1500
   atk_damage: 0
   playerLife: 3
@@ -5974,6 +5979,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8385184524a4e4281a4715213fc433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!143 &1352023535
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352023520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1401143324
 Mesh:
   m_ObjectHideFlags: 0

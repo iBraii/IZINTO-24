@@ -47,7 +47,7 @@ public class PlayerView : MonoBehaviour
             barra.transform.localScale = new Vector2(0.75f, 0.25f);
             barra.transform.localPosition = new Vector2(-355f, 131f);
         }
-        else if (cmp_playerMod.playerLife <=0)
+        else if (cmp_playerMod.playerLife < 1)
         {
             barra.transform.localScale = new Vector2(0f, 0.25f);
         }

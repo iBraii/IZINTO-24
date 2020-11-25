@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
+    public CharacterController plyChaController;
+    public float turnSmoothTime = 0.1f;
+    public float turnSmoothVelocity;
     
 
     //-----Escoger Teclas------//
@@ -45,15 +48,18 @@ public class PlayerController : MonoBehaviour
         protecting = false;
         cmp_life.protec = protecting;
     }
-
+    private void FixedUpdate()
+    {
+       // PlayerWalk();
+    }
     // Update is called once per frame
     void Update()
     {
         cmp_modelo_Ply.playerLife = cmp_life.life;
         protecting = cmp_life.protec;
-        GroundUpdater();
-        PlayerJump();
-        PlayerWalk();
+        //GroundUpdater();
+        //PlayerJump();
+        //PlayerWalk();
         Die();
         EscudoUptater();
         AtackBoolUpdater();
@@ -115,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerWalk()
     {
-        if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
+        /*if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
         {
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
 
@@ -157,9 +163,18 @@ public class PlayerController : MonoBehaviour
                 angl_rot = 225;
             }
 
-            cmp_rot.Rote_in_Y(200, angl_rot);
-        }
-
+            cmp_rot.Rote_in_Y(1000, angl_rot);
+        }*/
+        /*float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f,vertical).normalized;
+        if(direction.magnitude>=0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            plyChaController.Move(direction * cmp_modelo_Ply.spd_mov * Time.deltaTime);
+        }*/
 
     }
 

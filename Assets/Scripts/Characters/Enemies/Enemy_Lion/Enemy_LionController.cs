@@ -5,15 +5,16 @@ using UnityEngine;
 public class Enemy_LionController : MonoBehaviour
 {
     private Life cmp_life;
-    public bool EnemyHasHelmet;
+    public bool EnemyHasHelmet,EnemyHasShield;
+    public bool enemyWeapon;
     public bool follow;
-    public GameObject helmet;
+    public GameObject helmet,shield;
     private Enemy_LionModel cmp_enemyLionMod;
     private Movement cmp_mov;
     private Rotatement cmp_rot;
     public Transform target;
     private Attacks cmp_atk;
-
+    private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class Enemy_LionController : MonoBehaviour
         if (GameObject.Find("Player"))
         {
             target = GameObject.Find("Player").transform;
+            player = GameObject.Find("Player");
         }
         
     }
@@ -39,11 +41,12 @@ public class Enemy_LionController : MonoBehaviour
     {
         cmp_enemyLionMod.enemyLife = cmp_life.life;
         CascoUpdater();
+        ShieldUpdater();
         Die();
         AttackBoolUpdater();
-        if (helmet.gameObject.activeInHierarchy == true)
+        if (EnemyHasShield == true)
         {
-            Casco();
+            Shield();
         }
         else
         {
@@ -59,10 +62,21 @@ public class Enemy_LionController : MonoBehaviour
             }
             
         }
-        AtqGiratorio();
-        //AtqLanza();
+        if(enemyWeapon == false)
+        {
+            AtqGiratorio();
+        }
+        else
+        {
+            AtqLanza();
+        }
+        
     }
     void Casco()
+    {
+        cmp_life.ProtectLife();
+    }
+    void Shield()
     {
         cmp_life.ProtectLife();
     }
@@ -76,6 +90,29 @@ public class Enemy_LionController : MonoBehaviour
         else
         {
             helmet.gameObject.SetActive(true);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject == player && EnemyHasHelmet == true)
+        {
+            Casco();
+        }
+        else if (collision.gameObject == player && EnemyHasHelmet == false)
+        {
+            cmp_life.protec = false;
+        }
+    }
+    void ShieldUpdater()
+    {
+        if (EnemyHasShield == false)
+        {
+            shield.gameObject.SetActive(false);
+        }
+
+        else
+        {
+            shield.gameObject.SetActive(true);
         }
     }
     void Die()
