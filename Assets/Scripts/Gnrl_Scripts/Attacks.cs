@@ -39,7 +39,7 @@ public class Attacks : MonoBehaviour
     }
     public void SwordAtk( int atk_dmg)
     {
-        //atacking = true;
+        atacking = true;
         if (sword_obj && sword_obj.activeSelf==false)
         {
             sword_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
@@ -62,7 +62,7 @@ public class Attacks : MonoBehaviour
         {
             spear_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
             spear_obj.SetActive(true);
-            //cmp_mov.Move_in_transform(-10);
+            cmp_mov.Move_in_transform(-10);
         }
 
         if (atacking == true)

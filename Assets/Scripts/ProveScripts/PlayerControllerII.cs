@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerII : MonoBehaviour
 {
     private PlayerModelo cmp_modelo_Ply;
     private PlayerView cmp_plyView;
@@ -12,17 +12,12 @@ public class PlayerController : MonoBehaviour
     private Attacks cmp_atk;
     private TimersNTools cmp_timers;
     private Life cmp_life;
-    private testscript cmp_test;
 
-    public bool inmune;
     public GameObject enemy_detect;
-    public float timer, inmuneTimer;
+    public float timer;
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
-    public CharacterController plyChaController;
-    public float turnSmoothTime = 0.1f;
-    public float turnSmoothVelocity;
     
 
     //-----Escoger Teclas------//
@@ -38,8 +33,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inmuneTimer = 0;
-        cmp_test = GetComponent<testscript>();
         cmp_modelo_Ply = GetComponent<PlayerModelo>();
         cmp_plyView = GetComponent<PlayerView>();
         cmp_grnd_Updater = GetComponent<GroundStatsUpdater>();
@@ -54,7 +47,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-       PlayerWalk();
+        PlayerWalk();
     }
     // Update is called once per frame
     void Update()
@@ -63,7 +56,7 @@ public class PlayerController : MonoBehaviour
         protecting = cmp_life.protec;
         GroundUpdater();
         PlayerJump();
-        //PlayerWalk();
+        
         Die();
         EscudoUptater();
         AtackBoolUpdater();
@@ -80,25 +73,13 @@ public class PlayerController : MonoBehaviour
         // Prueba energia del player
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
-            {
-                DamageItself(1);
-            }
+            DamageItself(1);
         }
         /*if (Input.GetKeyDown(KeyCode.C))
         {
             Escudo();
         }*/
-        if(inmune == true)
-        {
-            float mxtimer = 1.5f;
-            inmuneTimer += Time.deltaTime;
-            if(inmuneTimer >= mxtimer)
-            {
-                inmune = false;
-                inmuneTimer = 0;
-            }
-        }
+        
     }
 
     void GroundUpdater()
@@ -140,26 +121,40 @@ public class PlayerController : MonoBehaviour
         if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
         {
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
-
+            /*float x = 0;
+            float z = 0;*/
             if (Input.GetKey(key_der))
             {
+                //z = 1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 90;
             }
             if (Input.GetKey(key_izq))
             {
+                //z = -1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 270;
             }
+            else
+            {
+                //z = 0;
+            }
+
             if (Input.GetKey(key_up))
             {
+                //x = 1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 0;
             }
             if (Input.GetKey(key_down))
             {
+                //x = -1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 180;
+            }
+            else
+            {
+                //x = 0;
             }
             //------------------------------------------------//
             if (Input.GetKey(key_der) & Input.GetKey(key_up))
@@ -179,18 +174,10 @@ public class PlayerController : MonoBehaviour
                 angl_rot = 225;
             }
 
+            //cmp_mov.CharMov(new Vector3(x, 0,z), cmp_modelo_Ply.spd_mov);
             cmp_rot.Rote_in_Y(100, angl_rot);
         }
-        /*float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f,vertical).normalized;
-        if(direction.magnitude>=0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            plyChaController.Move(direction * cmp_modelo_Ply.spd_mov * Time.deltaTime);
-        }*/
+
 
     }
 
@@ -222,7 +209,7 @@ public class PlayerController : MonoBehaviour
 
         if (cmp_modelo_Ply.atk_active == true)
         {
-            cmp_atk.SpearAtk(2);
+            cmp_atk.SpearAtk( 2);
         }
     }
     
@@ -272,7 +259,6 @@ public class PlayerController : MonoBehaviour
     {
         cmp_life.LoseLife(dmg);
         cmp_plyView.DamageIndicator.SetActive(true);
-        inmune = true;
     }
 
     void Die()
