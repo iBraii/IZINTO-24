@@ -62,15 +62,7 @@ public class Enemy_LionController : MonoBehaviour
             }
             
         }
-        if(enemyWeapon == false)
-        {
-            AtqGiratorio();
-        }
-        else
-        {
-            AtqLanza();
-        }
-        
+        EnemyAttack();  
     }
     void Casco()
     {
@@ -162,7 +154,7 @@ public class Enemy_LionController : MonoBehaviour
             cmp_enemyLionMod.walk_active = true;
         }
     }
-    void AtqGiratorio()
+    void EnemyAttack()
     {
         if (follow == false)
         {
@@ -175,7 +167,7 @@ public class Enemy_LionController : MonoBehaviour
         }
     }
 
-    void AtqLanza()
+    /*void AtqLanza()
     {
         if (follow == false)
         {
@@ -185,12 +177,12 @@ public class Enemy_LionController : MonoBehaviour
             /*if (enemy_detect != null)
             {
                 //cmp_atk.SpearAtk(1, enemy_detect);
-            }*/
+            }
         }
 
         if (cmp_enemyLionMod.atk_active == true)
         {
             cmp_atk.SpearAtk(2);
         }
-    }
+    }*/
 }

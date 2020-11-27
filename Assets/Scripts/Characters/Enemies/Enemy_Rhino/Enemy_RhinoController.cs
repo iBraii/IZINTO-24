@@ -41,11 +41,22 @@ public class Enemy_RhinoController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+            if(GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
+            {
+                other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+            }     
+            random_rot = Random.Range(135f, 225f);
+            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+        }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            random_rot = Random.Range(135f, 225f);
+            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
     }
-    private void OnCollisionStay(Collision other)
+    /*private void OnCollisionStay(Collision other)
     {
+        
         if (other.gameObject.CompareTag("Wall"))
         {
             random_rot = Random.Range(135f, 225f);
@@ -56,5 +67,5 @@ public class Enemy_RhinoController : MonoBehaviour
             random_rot = Random.Range(135f, 225f);
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
-    }
+    }*/
 }

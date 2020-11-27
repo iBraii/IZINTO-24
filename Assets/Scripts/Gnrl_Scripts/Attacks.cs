@@ -51,7 +51,7 @@ public class Attacks : MonoBehaviour
         if (atacking == true)
         {
             Vector3 strt_ply_rot = transform.eulerAngles;
-            cmp_rot.ForLoopRot(0, -1, 0, 2.1f, true);
+            //cmp_rot.ForLoopRot(0, -1, 0, 2.1f, true);
 
         }
     }
@@ -71,8 +71,6 @@ public class Attacks : MonoBehaviour
             
 
         }
-        //Debug.Log("insertar funcion que le pega al enemigo" + enemy_detected);
-        //Funcion que haga daño al enemigo
     }
 
     public IEnumerator WaitCounterToFalseATK(float seconds, GameObject desact_obj)

@@ -24,8 +24,11 @@ public class InstantTrigerDamage : MonoBehaviour
         {
             if(other.GetComponent<PlayerController>())
             {
-                other.GetComponent<PlayerController>().DamageItself(itm_dmg);
-                Debug.Log("Player: auch");
+                if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
+                {
+                    other.GetComponent<PlayerController>().DamageItself(itm_dmg);
+                    Debug.Log("Player: auch");
+                }                   
             }
             if (other.GetComponent<Enemy_BossController>())
             {

@@ -40,7 +40,10 @@ public class FireHazard : MonoBehaviour
 
         if (timer >=maxTime)
         {
-            target.GetComponent<PlayerController>().DamageItself(dmg);
+            if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
+            {
+                target.GetComponent<PlayerController>().DamageItself(dmg);
+            }
             Debug.Log("a ver pegale");
             timer = 0;  
         }

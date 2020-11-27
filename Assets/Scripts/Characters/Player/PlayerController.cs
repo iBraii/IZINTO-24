@@ -12,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private Attacks cmp_atk;
     private TimersNTools cmp_timers;
     private Life cmp_life;
+    private testscript cmp_test;
 
+    public bool inmune;
     public GameObject enemy_detect;
-    public float timer;
+    public float timer, inmuneTimer;
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inmuneTimer = 0;
+        cmp_test = GetComponent<testscript>();
         cmp_modelo_Ply = GetComponent<PlayerModelo>();
         cmp_plyView = GetComponent<PlayerView>();
         cmp_grnd_Updater = GetComponent<GroundStatsUpdater>();
@@ -76,13 +80,25 @@ public class PlayerController : MonoBehaviour
         // Prueba energia del player
         if (Input.GetKeyDown(KeyCode.G))
         {
-            DamageItself(1);
+            if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
+            {
+                DamageItself(1);
+            }
         }
         /*if (Input.GetKeyDown(KeyCode.C))
         {
             Escudo();
         }*/
-        
+        if(inmune == true)
+        {
+            float mxtimer = 1.5f;
+            inmuneTimer += Time.deltaTime;
+            if(inmuneTimer >= mxtimer)
+            {
+                inmune = false;
+                inmuneTimer = 0;
+            }
+        }
     }
 
     void GroundUpdater()
@@ -180,7 +196,7 @@ public class PlayerController : MonoBehaviour
 
     void AtqGiratorio()
     {
-        if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
+        if(Input.GetKeyDown(key_ability) && cmp_test.groundedPlayer)
         {
             cmp_atk.atacking = true;
             cmp_atk.WaitCounterCaller(1, cmp_atk.sword_obj);
@@ -193,10 +209,10 @@ public class PlayerController : MonoBehaviour
 
     void AtqLanza()
     {
-        if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
+        if (Input.GetKeyDown(key_ability) & cmp_test.groundedPlayer)
         {
             cmp_atk.atacking = true;
-            cmp_mov.Move_in_transform(-10);
+            //cmp_mov.Move_in_transform(-10);
             cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
             /*if (enemy_detect != null)
             {
@@ -206,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
         if (cmp_modelo_Ply.atk_active == true)
         {
-            cmp_atk.SpearAtk( 2);
+            cmp_atk.SpearAtk(2);
         }
     }
     
@@ -256,6 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         cmp_life.LoseLife(dmg);
         cmp_plyView.DamageIndicator.SetActive(true);
+        inmune = true;
     }
 
     void Die()
