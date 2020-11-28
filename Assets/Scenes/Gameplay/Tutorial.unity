@@ -1033,7 +1033,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16000
+  m_Name: pb_Mesh18408
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5929,6 +5929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_detect: {fileID: 0}
+  timer: 0
   protecting: 0
   shield: {fileID: 1712666982}
   usingSpear: 0
@@ -5952,7 +5953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dc295de6acd6748bfa34215ae60003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spd_mov: 1000
+  spd_mov: 250
   jmp_force: 1500
   atk_damage: 0
   playerLife: 3

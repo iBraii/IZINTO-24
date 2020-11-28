@@ -70,7 +70,6 @@ public class Enemy_BossController : MonoBehaviour
     {
         if (cmp_enemy_model.bosslife <= 0)
         {
-            Debug.Log("Murió el boss");
             gameObject.SetActive(false);
         }
     }
@@ -107,7 +106,6 @@ public class Enemy_BossController : MonoBehaviour
     }
     void GolpeMartillo()
     {
-        //Debug.Log("Funciona" + lugarGolpeMartillo);
         myTransform.transform.position = martilloPosiciones[lugarGolpeMartillo].transform.position;
     }
     void PosicionMartillo()

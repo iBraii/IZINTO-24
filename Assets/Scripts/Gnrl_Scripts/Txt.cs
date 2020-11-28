@@ -22,7 +22,7 @@ public class Txt : MonoBehaviour
     {
         if(GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 1 && GameObject.Find("Desafio1"))
         {
-            elTexto.text = ("" + GameObject.Find("Desafio1").GetComponent<Desafio1>().timer);
+            elTexto.text = ("" + GameObject.Find("Desafio1").GetComponent<Desafio1>().timer.ToString("00"));
         }
         if (GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 2 && GameObject.Find("Desafio2"))
         {

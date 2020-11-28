@@ -74,7 +74,6 @@ public class Spawning : MonoBehaviour
                         obj_spwn_Array[i].transform.position = spw_pos;
                         close_loop = true;
                         i = obj_spwn_Array.Length;
-                        //Debug.Log(i);
                     }
                 }
             }
@@ -120,7 +119,6 @@ public class Spawning : MonoBehaviour
                         obj_spwn_Array[i].transform.eulerAngles = obj_angl_rot;
                         close_loop = true;
                         i = obj_spwn_Array.Length;
-                        //Debug.Log(i);
                     }
                 }
             }
@@ -175,7 +173,6 @@ public class Spawning : MonoBehaviour
         }
         else
         {
-            Debug.Log("Empty Slot");
         }
     }
 

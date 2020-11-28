@@ -201,13 +201,11 @@ public class PlayerController : MonoBehaviour
         {
             if (usingSword == true)
             {
-                AtqGiratorio();       
-                //Debug.Log("tengo una espada");
+                AtqGiratorio();      
             }
             else if (usingSpear == true)
             {
                 AtqLanza();
-                //Debug.Log("tengo una lanza");
             }
         }
     }
@@ -247,7 +245,6 @@ public class PlayerController : MonoBehaviour
     {
         if(cmp_modelo_Ply.playerLife <= 0)
         {
-            Debug.Log("Moriste");
             gameObject.SetActive(false);
         }
     }

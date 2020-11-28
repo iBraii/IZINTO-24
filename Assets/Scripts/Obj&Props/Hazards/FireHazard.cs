@@ -41,7 +41,6 @@ public class FireHazard : MonoBehaviour
         if (timer >=maxTime)
         {
             target.GetComponent<PlayerController>().DamageItself(dmg);
-            Debug.Log("a ver pegale");
             timer = 0;  
         }
     }
@@ -61,7 +60,6 @@ public class FireHazard : MonoBehaviour
     {
         if (other.gameObject.CompareTag(targetTag))
         {
-            //Debug.Log(". . .");
             CountNHit(other.gameObject);
         }
     }

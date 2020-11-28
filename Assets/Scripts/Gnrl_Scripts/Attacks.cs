@@ -71,7 +71,6 @@ public class Attacks : MonoBehaviour
             
 
         }
-        //Debug.Log("insertar funcion que le pega al enemigo" + enemy_detected);
         //Funcion que haga daño al enemigo
     }
 
@@ -79,7 +78,6 @@ public class Attacks : MonoBehaviour
     {
         if (atacking == true)
         {
-            Debug.Log("StarCount");
             //cmp_modelo_Ply.walk_active = false;
             yield return new WaitForSeconds(seconds);
             atacking = false;

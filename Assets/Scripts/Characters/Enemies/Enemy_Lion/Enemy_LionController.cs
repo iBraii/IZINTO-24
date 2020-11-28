@@ -86,7 +86,6 @@ public class Enemy_LionController : MonoBehaviour
             {
             GameObject.Find("LevelStat").GetComponent<LevelStats>().enemyKillCounter++;
             }
-            Debug.Log("Moriste");
             gameObject.SetActive(false);
         }
     }
