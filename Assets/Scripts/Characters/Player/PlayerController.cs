@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -279,8 +281,9 @@ public class PlayerController : MonoBehaviour
     {
         if(cmp_modelo_Ply.playerLife <= 0)
         {
-            Debug.Log("Moriste");
-            gameObject.SetActive(false);
+            SceneManager.LoadScene("Derrota");
+            //gameObject.SetActive(false);
+            //El problema de que el player se desactive o se destruya, es que el script no llama a la barra de vida para que baje
         }
     }
 

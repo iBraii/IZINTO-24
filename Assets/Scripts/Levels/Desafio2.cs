@@ -75,16 +75,10 @@ public class Desafio2 : MonoBehaviour
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0,itmsObj.Length)],itmPosGen);
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
-            Debug.Log("2 armas");
         }
         else if (timer < opcionesTimer[1])
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
-            Debug.Log("1 arma");
-        }
-        else
-        {
-            Debug.Log("ninguna arma");
         }
     }
     public void Timer()

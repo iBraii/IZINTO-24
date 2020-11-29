@@ -69,7 +69,6 @@ public class Desafio3 : MonoBehaviour
         for (int i = 0; i < spawner.Length; i++)
         {
             spawner[i].SetActive(false);
-            Debug.Log(i);
         }
         cmp_levelSt.challengeActive = false;
         timerstart = false;
@@ -77,16 +76,10 @@ public class Desafio3 : MonoBehaviour
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
-            Debug.Log("2 armas");
         }
         else if (cmp_plyMod.playerLife == 2)
         {
             cmp_spwn.ArraySpawnGeneretor(itmsObj[Random.Range(0, itmsObj.Length)], itmPosGen);
-            Debug.Log("1 arma");
-        }
-        else
-        {
-            Debug.Log("ninguna arma");
         }
     }
     public void Timer()
