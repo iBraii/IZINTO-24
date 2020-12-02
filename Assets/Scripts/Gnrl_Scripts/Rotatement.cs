@@ -104,6 +104,17 @@ public class Rotatement : MonoBehaviour
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), angle/* * Time.deltaTime*/);
     }
+    public void Rote_Y_Two(Vector3 move, float spd, float smoothVel)
+    {
+        if (move.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVel, 0.1f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            gameObject.transform.forward = move;
+        }
+
+    }
         
     public void Rote_in_Y_inverse(float spd_mov, float angle)
     {

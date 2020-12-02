@@ -22,6 +22,13 @@ public class BossHammer : MonoBehaviour
         timer = 0;
         //cmp_tools.Timer_for_bools()
     }
+    private void OnEnable()
+    {
+        to_down = false;
+        timer = 0;
+        cmp_rot.InstantRotation(180, 0, 0, Space.World);
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -48,24 +55,25 @@ public class BossHammer : MonoBehaviour
         }
 
     }
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&&to_down==true)
         {
             other.gameObject.GetComponent<PlayerController>().DamageItself(1);
         }
     }
-    */
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
 
         }
-        else
+        else if (to_down == true)
         {
-            GameObject.Find("Boss").GetComponent<Enemy_BossController>().Despawn();
+            //GameObject.Find("Boss").GetComponent<Enemy_BossController>().Despawn();
+            gameObject.SetActive(false);
         }
     }
 }

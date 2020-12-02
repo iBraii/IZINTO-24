@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController plyChaController;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
-    
 
+    public Vector3 rotatioProves;
     //-----Escoger Teclas------//
     public KeyCode key_up;
     public KeyCode key_down;
@@ -142,26 +142,40 @@ public class PlayerController : MonoBehaviour
         if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
         {
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
-
+            float hor = 0;
+            float ver = 0;
             if (Input.GetKey(key_der))
             {
+                hor = -1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 90;
             }
-            if (Input.GetKey(key_izq))
+            else if (Input.GetKey(key_izq))
             {
+                hor = 1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 270;
             }
+            else
+            {
+                hor = 0;
+            }
+
             if (Input.GetKey(key_up))
             {
+                ver = -1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 0;
             }
-            if (Input.GetKey(key_down))
+            else if (Input.GetKey(key_down))
             {
+                ver = 1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 180;
+            }
+            else
+            {
+                ver = 0;
             }
             //------------------------------------------------//
             if (Input.GetKey(key_der) & Input.GetKey(key_up))
@@ -180,8 +194,9 @@ public class PlayerController : MonoBehaviour
             {
                 angl_rot = 225;
             }
-
-            cmp_rot.Rote_in_Y(100, angl_rot);
+            rotatioProves = new Vector3(hor, 0f, ver);
+            //cmp_rot.Rote_in_Y(100, angl_rot);
+            cmp_rot.Rote_Y_Two(/*new Vector3(hor, 0f, ver)*/rotatioProves.normalized,1.0f, 1.0f);
         }
         /*float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
