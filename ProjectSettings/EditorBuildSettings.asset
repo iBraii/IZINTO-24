@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Gameplay/Tutorial.unity
     guid: ab0d43353c588ed49bebc8b6bdada303
   - enabled: 1
-    path: Assets/Scenes/Gameplay/WhiteBlocking.unity
+    path: Assets/Scenes/Gameplay/Nivel 1.unity
     guid: 4ae0daa0227418b459675f92ee8c5404
   - enabled: 1
     path: Assets/Scenes/Gameplay/Nivel 2.unity
