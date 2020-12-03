@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 541630598}
   - component: {fileID: 541630597}
   - component: {fileID: 541630596}
+  - component: {fileID: 541630599}
   m_Layer: 5
   m_Name: returnButton
   m_TagString: Untagged
@@ -479,9 +480,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 399026164}
-        m_MethodName: Change
-        m_Mode: 5
+      - m_Target: {fileID: 541630599}
+        m_MethodName: LvlBackScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -527,6 +528,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541630594}
   m_CullTransparentMesh: 0
+--- !u!114 &541630599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541630594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37448bb234805064d9e03cf12ea81d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlSetObj: {fileID: 0}
+  scnManager: {fileID: 399026163}
+  sceneNames:
+  - Tutorial
+  - Nivel 1
+  - Nivel 2
+  - Nivel 3
 --- !u!1 &748987047
 GameObject:
   m_ObjectHideFlags: 0
