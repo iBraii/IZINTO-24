@@ -95,7 +95,9 @@
      <Compile Include="Assets\Scripts\ProveScripts\PlayerControllerII.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\Camara.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\DoorsTransition.cs" />
+     <Compile Include="Assets\Scripts\UI&amp;UX\LvlSetValue.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\Pause.cs" />
+     <Compile Include="Assets\Scripts\UI&amp;UX\SceneSelector.cs" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -627,6 +629,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Cinemachine">
+ <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -665,6 +670,9 @@
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
  <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="com.unity.cinemachine.editor">
+ <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.ProBuilder.AddOns.Editor">
  <HintPath>C:/Users/swdel/Documents/IZINTO-24/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
