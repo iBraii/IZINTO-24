@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Life cmp_life;
     private testscript cmp_test;
 
-    public bool inmune;
+    public bool inmune, dying;
     public GameObject enemy_detect;
     public float timer, inmuneTimer;
     public bool protecting;
@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public CharacterController plyChaController;
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
+    public Animator Anim;
+    public float dieAnimTimer;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -56,16 +58,36 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-       PlayerWalk();
+        if(dying == false)
+        {
+            PlayerWalk();
+        }    
     }
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(key_der) || Input.GetKey(key_izq) || Input.GetKey(key_down) || Input.GetKey(key_up))
+        {
+            Anim.SetBool("Walking", true);
+        }
+        else
+        {
+            Anim.SetBool("Walking", false);
+        }
+        if(cmp_atk.atacking && usingSword == true)
+        {
+            Anim.SetBool("SwordAtk", true);
+        }
+        else
+        {
+            Anim.SetBool("SwordAtk", false);
+        }
+
+
         cmp_modelo_Ply.playerLife = cmp_life.life;
         protecting = cmp_life.protec;
         GroundUpdater();
         PlayerJump();
-        //PlayerWalk();
         Die();
         EscudoUptater();
         AtackBoolUpdater();
@@ -141,17 +163,20 @@ public class PlayerController : MonoBehaviour
     {
         if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
         {
+            
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
             float hor = 0;
             float ver = 0;
             if (Input.GetKey(key_der))
             {
+                
                 hor = -1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 90;
             }
             else if (Input.GetKey(key_izq))
             {
+
                 hor = 1;
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 270;
@@ -163,12 +188,14 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(key_up))
             {
+
                 ver = -1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 0;
             }
             else if (Input.GetKey(key_down))
             {
+
                 ver = 1;
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 180;
@@ -216,7 +243,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-            cmp_atk.WaitCounterCaller(1, cmp_atk.sword_obj);
+            cmp_atk.WaitCounterCaller(5, cmp_atk.sword_obj);
         }    
         if (cmp_modelo_Ply.atk_active==true)
         {
@@ -294,9 +321,18 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        if(cmp_modelo_Ply.playerLife <= 0)
+        if (cmp_modelo_Ply.playerLife <= 0)
         {
-            SceneManager.LoadScene("Derrota");
+            Anim.SetBool("Die", true);
+            dieAnimTimer += Time.deltaTime;
+            dying = true;
+
+            if(dieAnimTimer >= 3)
+            {
+                dying = false;
+                SceneManager.LoadScene("Derrota");
+                dieAnimTimer = 0;
+            }
             //gameObject.SetActive(false);
             //El problema de que el player se desactive o se destruya, es que el script no llama a la barra de vida para que baje
         }
