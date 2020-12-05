@@ -162,8 +162,8 @@ public class PlayerController : MonoBehaviour
 
         if (cmp_grnd_Updater.overEnemy == true)
         {
-            cmp_mov.Jump(50);
-            cmp_mov.Move_in_transform(-3);
+            cmp_mov.Jump(600);
+            cmp_mov.Move_in_transform(-6);
         }
 
     }
@@ -355,7 +355,7 @@ public class PlayerController : MonoBehaviour
             if (cmp_modelo_Ply.weapon != other.gameObject && cmp_modelo_Ply.weapon != null)
             {
                 cmp_modelo_Ply.weapon.SetActive(true);
-                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x + 3, transform.position.y,transform.position.z);
+                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x, transform.position.y,transform.position.z);
                 cmp_modelo_Ply.weapon = other.gameObject;               
             }   
             usingSword = true;
@@ -369,7 +369,7 @@ public class PlayerController : MonoBehaviour
             if (cmp_modelo_Ply.weapon != other.gameObject && cmp_modelo_Ply.weapon != null)
             {
                 cmp_modelo_Ply.weapon.SetActive(true);
-                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x + 3, transform.position.y, transform.position.z);
+                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
                 cmp_modelo_Ply.weapon = other.gameObject;
             }
             usingSpear = true;
@@ -377,10 +377,11 @@ public class PlayerController : MonoBehaviour
             cmp_modelo_Ply.weapon = other.gameObject;
             other.gameObject.SetActive(false);
         }
-        else if (other.gameObject.CompareTag("Shield") && Input.GetKeyDown(key_pickUp))
+        else if (other.gameObject.CompareTag("Shield") && Input.GetKeyDown(key_pickUp) && protecting == false)
         {
             Escudo();
             other.gameObject.SetActive(false);
         }
     }
+    
 }

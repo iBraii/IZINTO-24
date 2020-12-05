@@ -8,6 +8,8 @@ public class PlayerView : MonoBehaviour
     public GameObject DamageIndicator;
     public GameObject spearImage;
     public GameObject swordImage;
+    public GameObject spearObj;
+    public GameObject swordObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,22 +63,34 @@ public class PlayerView : MonoBehaviour
                 swordImage.SetActive(true);
                 spearImage.SetActive(false);
 
+                swordObj.SetActive(true);
+                spearObj.SetActive(false);
+
             }
             else if (cmp_playerMod.weapon.CompareTag("Spear"))
             {
                 spearImage.SetActive(true);
                 swordImage.SetActive(false);
+
+                spearObj.SetActive(true);
+                swordObj.SetActive(false);
             }
             else
             {
                 swordImage.SetActive(false);
                 spearImage.SetActive(false);
+
+                swordObj.SetActive(false);
+                spearObj.SetActive(false);
             }
         }
         else
         {
             swordImage.SetActive(false);
             spearImage.SetActive(false);
+
+            swordObj.SetActive(false);
+            spearObj.SetActive(false);
         }
     }
 }
