@@ -83,6 +83,15 @@ public class PlayerController : MonoBehaviour
             Anim.SetBool("SwordAtk", false);
         }
 
+        if (cmp_atk.atacking && usingSpear == true)
+        {
+            Anim.SetBool("SpearAtk", true);
+        }
+        else
+        {
+            Anim.SetBool("SpearAtk", false);
+        }
+
 
         cmp_modelo_Ply.playerLife = cmp_life.life;
         protecting = cmp_life.protec;
@@ -243,7 +252,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-            cmp_atk.WaitCounterCaller(5, cmp_atk.sword_obj);
+            cmp_atk.WaitCounterCaller(1.04f, cmp_atk.sword_obj);
         }    
         if (cmp_modelo_Ply.atk_active==true)
         {
@@ -315,8 +324,8 @@ public class PlayerController : MonoBehaviour
     public void DamageItself(int dmg)
     {
         cmp_life.LoseLife(dmg);
-        cmp_plyView.DamageIndicator.SetActive(true);
         inmune = true;
+        cmp_plyView.DamageIndicator.SetActive(true);
     }
 
     void Die()

@@ -1451,12 +1451,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!95 &484113301 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7612108992024405000, guid: 58ead7d4f13648e4492549765c831ccc,
-    type: 3}
-  m_PrefabInstance: {fileID: 1379527227}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &526066873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,11 +2482,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 355144732140519760, guid: 58ead7d4f13648e4492549765c831ccc,
-        type: 3}
-      propertyPath: Anim
-      value: 
-      objectReference: {fileID: 484113301}
     - target: {fileID: 355144732140519763, guid: 58ead7d4f13648e4492549765c831ccc,
         type: 3}
       propertyPath: DamageIndicator
@@ -3652,7 +3641,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-3786
+  m_Name: pb_Mesh-203342
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
