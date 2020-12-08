@@ -112,7 +112,7 @@ public class Rotatement : MonoBehaviour
             float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref smoothVel, 0.1f);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            gameObject.transform.forward = move;
+            //gameObject.transform.forward = move;
         }
 
     }

@@ -193,15 +193,29 @@ public class PlayerController : MonoBehaviour
             float ver = 0;
             if (Input.GetKey(key_der))
             {
-                
-                hor = -1;
+
+                if (hor < -1)
+                {
+                    hor -= Time.deltaTime * 0.1f;
+                }
+                else if (hor > -1)
+                {
+                    hor = -1;
+                }
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 90;
             }
             else if (Input.GetKey(key_izq))
             {
 
-                hor = 1;
+                if (hor < 1)
+                {
+                    hor += Time.deltaTime * 0.1f;
+                }
+                else if (hor > 1)
+                {
+                    hor = 1;
+                }
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 270;
             }
@@ -213,14 +227,28 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(key_up))
             {
 
-                ver = -1;
+                if (ver < -1)
+                {
+                    ver -= Time.deltaTime * 0.1f;
+                }
+                else if (ver > -1)
+                {
+                    ver = -1;
+                }
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 0;
             }
             else if (Input.GetKey(key_down))
             {
 
-                ver = 1;
+                if (ver < 1)
+                {
+                    ver += Time.deltaTime * 0.1f;
+                }
+                else if (ver > 1)
+                {
+                    ver = 1;
+                }
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 180;
             }
