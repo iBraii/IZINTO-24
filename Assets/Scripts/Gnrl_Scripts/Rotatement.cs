@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rotatement : MonoBehaviour
 {
+    public float smoothVel;
 
     // Start is called before the first frame update
     void Start()
@@ -104,7 +105,7 @@ public class Rotatement : MonoBehaviour
     {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetPos - transform.position), angle/* * Time.deltaTime*/);
     }
-    public void Rote_Y_Two(Vector3 move, float spd, float smoothVel)
+    public void Rote_Y_Two(Vector3 move, float spd/*, float smoothVel*/)
     {
         if (move.magnitude >= 0.1f)
         {

@@ -1,26 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class PlayerView : MonoBehaviour
 {
-    private GameObject barra;
+    private GameObject heart1;
+    private GameObject heart2;
+    private GameObject heart3;
+    private GameObject spearImage;
+    private GameObject swordImage;
+    private GameObject shieldImage;
+    public GameObject damageIndicator;
+
+    private PlayerController cmp_ctrl;
     private PlayerModelo cmp_playerMod;
-    public GameObject DamageIndicator;
-    public GameObject spearImage;
-    public GameObject swordImage;
+    
+    
     public GameObject spearObj;
     public GameObject swordObj;
     // Start is called before the first frame update
     void Start()
     {
+        cmp_ctrl = GetComponent<PlayerController>();
         cmp_playerMod = GetComponent<PlayerModelo>();
-        barra = GameObject.FindGameObjectWithTag("Barra");
+        heart1 = GameObject.Find("Heart1");
+        heart2 = GameObject.Find("Heart2");
+        heart3 = GameObject.Find("Heart3");
+        swordImage = GameObject.Find("SwordImage");
+        spearImage = GameObject.Find("SpearImage");
+        shieldImage = GameObject.Find("Shield1");
         
-       
-            swordImage.SetActive(false);
-            spearImage.SetActive(false);
-
-       
 
     }
 
@@ -29,29 +38,34 @@ public class PlayerView : MonoBehaviour
     {
         LiveChecker();
         WeaponChecker();
-
+        ShieldChecker();
     
     }
     void LiveChecker ()
     {
         if (cmp_playerMod.playerLife >= 3)
         {
-            barra.transform.localScale = new Vector2(1.70f, 0.25f);
-            barra.transform.localPosition = new Vector2(-310f, 131f);
+            heart1.SetActive(true);
+            heart2.SetActive(true);
+            heart3.SetActive(true);
         }
         else if (cmp_playerMod.playerLife ==2)
         {
-            barra.transform.localScale = new Vector2(1.15f, 0.25f);
-            barra.transform.localPosition = new Vector2(-335f, 131f);
+            heart1.SetActive(true);
+            heart2.SetActive(true);
+            heart3.SetActive(false);
         }
         else if (cmp_playerMod.playerLife ==1)
         {
-            barra.transform.localScale = new Vector2(0.75f, 0.25f);
-            barra.transform.localPosition = new Vector2(-355f, 131f);
+            heart1.SetActive(true);
+            heart2.SetActive(false);
+            heart3.SetActive(false);
         }
         else if (cmp_playerMod.playerLife < 1)
         {
-            barra.transform.localScale = new Vector2(0f, 0.25f);
+            heart1.SetActive(false);
+            heart2.SetActive(false);
+            heart3.SetActive(false);
         }
     }
     public void WeaponChecker()
@@ -91,6 +105,17 @@ public class PlayerView : MonoBehaviour
 
             swordObj.SetActive(false);
             spearObj.SetActive(false);
+        }
+    }
+    void ShieldChecker()
+    {
+        if(cmp_ctrl.protecting == true)
+        {
+            shieldImage.SetActive(true);
+        }
+        else
+        {
+            shieldImage.SetActive(false);
         }
     }
 }

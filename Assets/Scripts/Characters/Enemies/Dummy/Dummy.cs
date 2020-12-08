@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dummy : MonoBehaviour
 {
+    public Animator Anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,6 @@ public class Dummy : MonoBehaviour
     }
     public void DamageDummy(int dmg)
     {
-
+        Anim.SetBool("Golpeado", true);
     }
 }

@@ -6,7 +6,7 @@ public class Life : MonoBehaviour
 {
     public int life;
     public int maxlife;
-
+    public float lifeTimer;
     public bool protec;
     // Start is called before the first frame update
     void Start()

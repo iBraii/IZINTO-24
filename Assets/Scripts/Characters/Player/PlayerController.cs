@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public float turnSmoothVelocity;
     public Animator Anim;
     public float dieAnimTimer;
+    public float recoverLifeTimer;
+    public bool recoverLife;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -97,17 +99,30 @@ public class PlayerController : MonoBehaviour
         protecting = cmp_life.protec;
         GroundUpdater();
         PlayerJump();
+        
+        if(recoverLife == true)
+        {
+            RecoverLife();
+        }
+        else
+        {
+            recoverLifeTimer += Time.deltaTime;
+            if (recoverLifeTimer >= 15)
+            {
+                recoverLife = true;
+            }
+        }
         Die();
         EscudoUptater();
         AtackBoolUpdater();
         WeaponUpdater();
-        if(cmp_plyView.DamageIndicator.activeInHierarchy == true)
+        if(cmp_plyView.damageIndicator.activeInHierarchy == true)
         {
             timer += Time.deltaTime;
             if (timer >= 1.5f)
             {
                 timer = 0;
-                cmp_plyView.DamageIndicator.SetActive(false);   
+                cmp_plyView.damageIndicator.SetActive(false);   
             }
         }
         // Prueba energia del player
@@ -232,7 +247,7 @@ public class PlayerController : MonoBehaviour
             }
             rotatioProves = new Vector3(hor, 0f, ver);
             //cmp_rot.Rote_in_Y(100, angl_rot);
-            cmp_rot.Rote_Y_Two(/*new Vector3(hor, 0f, ver)*/rotatioProves.normalized,1.0f, 1.0f);
+            cmp_rot.Rote_Y_Two(/*new Vector3(hor, 0f, ver)*/rotatioProves.normalized,1.0f/*, 1.0f*/);
         }
         /*float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -324,8 +339,16 @@ public class PlayerController : MonoBehaviour
     public void DamageItself(int dmg)
     {
         cmp_life.LoseLife(dmg);
+        recoverLife = false;
+        recoverLifeTimer = 0;
         inmune = true;
-        cmp_plyView.DamageIndicator.SetActive(true);
+        cmp_plyView.damageIndicator.SetActive(true);
+    }
+    void RecoverLife()
+    { 
+        cmp_life.GainLife(1);
+        recoverLifeTimer = 0;
+        recoverLife = false;  
     }
 
     void Die()
