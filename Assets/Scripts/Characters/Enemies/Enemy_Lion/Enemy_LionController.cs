@@ -15,6 +15,7 @@ public class Enemy_LionController : MonoBehaviour
     public Transform target;
     private Attacks cmp_atk;
     private GameObject player;
+    public Animator Anim;
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +59,13 @@ public class Enemy_LionController : MonoBehaviour
         {
             if(target != null)
             {
+                Anim.SetBool("Walking", true);
                 FollowPlayer();
             }
+            
+        }
+        else
+        {
             
         }
         EnemyAttack();  

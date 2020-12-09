@@ -62,7 +62,7 @@ public class Attacks : MonoBehaviour
         {
             spear_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
             spear_obj.SetActive(true);
-            cmp_mov.Move_in_transform(-10);
+            cmp_mov.Move_in_transform(-20);
         }
 
         if (atacking == true)

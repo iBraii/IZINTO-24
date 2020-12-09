@@ -242,6 +242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   offset: {x: 0, y: 0, z: 12}
+  position: {x: 0, y: 0, z: 0}
+  limits: 0
 --- !u!1 &1663270319010111431
 GameObject:
   m_ObjectHideFlags: 0

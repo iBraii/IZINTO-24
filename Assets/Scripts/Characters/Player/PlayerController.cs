@@ -68,14 +68,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(key_der) || Input.GetKey(key_izq) || Input.GetKey(key_down) || Input.GetKey(key_up))
+        /*if(Input.GetKey(key_der) || Input.GetKey(key_izq) || Input.GetKey(key_down) || Input.GetKey(key_up))
         {
             Anim.SetBool("Walking", true);
         }
         else
         {
             Anim.SetBool("Walking", false);
-        }
+        }*/
         if(cmp_atk.atacking && usingSword == true)
         {
             Anim.SetBool("SwordAtk", true);
@@ -194,28 +194,28 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(key_der))
             {
 
-                if (hor < -1)
+                /*if (hor < -1)
                 {
                     hor -= Time.deltaTime * 0.1f;
                 }
                 else if (hor > -1)
-                {
+                {*/
                     hor = -1;
-                }
+                //}
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 90;
             }
             else if (Input.GetKey(key_izq))
             {
 
-                if (hor < 1)
+                /*if (hor < 1)
                 {
                     hor += Time.deltaTime * 0.1f;
                 }
                 else if (hor > 1)
-                {
+                {*/
                     hor = 1;
-                }
+                //}
                 cmp_mov.Move_in_X(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 270;
             }
@@ -227,28 +227,28 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(key_up))
             {
 
-                if (ver < -1)
+                /*if (ver < -1)
                 {
                     ver -= Time.deltaTime * 0.1f;
                 }
                 else if (ver > -1)
-                {
+                {*/
                     ver = -1;
-                }
+                //}
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, 1);
                 angl_rot = 0;
             }
             else if (Input.GetKey(key_down))
             {
 
-                if (ver < 1)
+                /*if (ver < 1)
                 {
                     ver += Time.deltaTime * 0.1f;
                 }
                 else if (ver > 1)
-                {
+                {*/
                     ver = 1;
-                }
+                //}
                 cmp_mov.Move_in_Z(cmp_modelo_Ply.spd_mov, -1);
                 angl_rot = 180;
             }
@@ -276,7 +276,16 @@ public class PlayerController : MonoBehaviour
             rotatioProves = new Vector3(hor, 0f, ver);
             //cmp_rot.Rote_in_Y(100, angl_rot);
             cmp_rot.Rote_Y_Two(/*new Vector3(hor, 0f, ver)*/rotatioProves.normalized,1.0f/*, 1.0f*/);
+            if(hor != 0 || ver != 0)
+            {
+                Anim.SetBool("Walking", true);
+            }
+            else
+            {
+                Anim.SetBool("Walking", false);
+            }
         }
+        
         /*float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f,vertical).normalized;
