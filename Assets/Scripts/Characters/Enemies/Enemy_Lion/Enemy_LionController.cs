@@ -16,12 +16,14 @@ public class Enemy_LionController : MonoBehaviour
     private Attacks cmp_atk;
     private GameObject player;
     public Animator Anim;
+    public bool dying = false;
+    public float dieAnimTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         cmp_life = GetComponent<Life>();
-        EnemyHasHelmet = false;
+        //EnemyHasHelmet = false;
         cmp_life.protec = EnemyHasHelmet;
         cmp_enemyLionMod = GetComponent<Enemy_LionModel>();
         cmp_mov = GetComponent<Movement>();
@@ -35,6 +37,13 @@ public class Enemy_LionController : MonoBehaviour
             player = GameObject.Find("Player");
         }
         
+    }
+    private void OnEnable()
+    {
+        cmp_life.life = 1;
+        dying = false;
+        dieAnimTimer = 0;
+        Shield();
     }
 
     // Update is called once per frame
@@ -90,7 +99,7 @@ public class Enemy_LionController : MonoBehaviour
             helmet.gameObject.SetActive(true);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject == player && EnemyHasHelmet == true)
         {
@@ -100,7 +109,7 @@ public class Enemy_LionController : MonoBehaviour
         {
             cmp_life.protec = false;
         }
-    }
+    }*/  //Este colision enter no hacia nada aparentemente util, lo he comentado temporalmente
     void ShieldUpdater()
     {
         if (EnemyHasShield == false)
@@ -121,7 +130,19 @@ public class Enemy_LionController : MonoBehaviour
             {
             GameObject.Find("LevelStat").GetComponent<LevelStats>().enemyKillCounter++;
             }
-            gameObject.SetActive(false);
+
+
+            Anim.SetBool("Die", true);
+            dieAnimTimer += Time.deltaTime;
+            dying = true;
+
+            if (dieAnimTimer >= 1.5f)
+            {
+                dying = false;
+                gameObject.SetActive(false);
+                dieAnimTimer = 0;
+            }
+            //gameObject.SetActive(false);
         }
     }
     public void DamageItself(int dmg)
@@ -130,7 +151,7 @@ public class Enemy_LionController : MonoBehaviour
     }
     void FollowPlayer()
     {
-        if(gameObject.activeInHierarchy == true & cmp_enemyLionMod.walk_active == true)
+        if(gameObject.activeInHierarchy == true && cmp_enemyLionMod.walk_active == true && dying == false)
         {
             cmp_mov.Move_Towards(target, 3);
             cmp_rot.LookSmt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z), 50 * Time.deltaTime);
@@ -153,22 +174,24 @@ public class Enemy_LionController : MonoBehaviour
         if (cmp_enemyLionMod.atk_active == true)
         {
             cmp_enemyLionMod.walk_active = false;
+            Anim.SetBool("Atack", true);
         }
         else
         {
             cmp_enemyLionMod.walk_active = true;
+            Anim.SetBool("Atack", false);
         }
     }
     void EnemyAttack()
     {
-        if (follow == false)
+        if (follow == false && dying == false)
         {
             cmp_atk.atacking = true;
             cmp_atk.WaitCounterCaller(1, cmp_atk.sword_obj);
         }
         if (cmp_enemyLionMod.atk_active == true)
         {
-            cmp_atk.SwordAtk(2);
+            cmp_atk.SwordAtk(cmp_enemyLionMod.atk_damage);
         }
     }
 

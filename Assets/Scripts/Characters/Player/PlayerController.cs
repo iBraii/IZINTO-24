@@ -153,6 +153,14 @@ public class PlayerController : MonoBehaviour
     {
         cmp_modelo_Ply.grounded = cmp_grnd_Updater.grounded;
         cmp_modelo_Ply.onHazzard = cmp_grnd_Updater.overHazard;
+        if(cmp_modelo_Ply.grounded == false)
+        {
+            Anim.SetBool("Jump", true);
+        }
+        else
+        {
+            Anim.SetBool("Jump", false);
+        }
     }
     void AtackBoolUpdater()
     {
