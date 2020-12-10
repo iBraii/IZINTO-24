@@ -25,7 +25,7 @@ public class LvlSetValue : MonoBehaviour
     {
 
         lvlValue = lvlNum;
-        Debug.Log(lvlValue);
+        //Debug.Log(lvlValue);
         DontDestroyOnLoad(gameObject);
 
     }

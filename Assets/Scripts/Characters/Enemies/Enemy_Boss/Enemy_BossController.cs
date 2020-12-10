@@ -14,7 +14,7 @@ public class Enemy_BossController : MonoBehaviour
 
     public Transform myTransform;
     public List<Transform> martilloPosiciones;
-    public bool golpeAlSuelo;
+    //public bool golpeAlSuelo;
     public int lugarGolpeMartillo;
     public float tMartillo;
     public float tMVolverInicio;
@@ -88,7 +88,8 @@ public class Enemy_BossController : MonoBehaviour
     }
     void GolpeconMartillo()
     {
-        if (golpeAlSuelo == true & lugarGolpeMartillo <= 5)
+        //if (golpeAlSuelo == true & lugarGolpeMartillo <= 5
+        if (lugarGolpeMartillo <= 5)
         {
             PosicionMartillo();
             if (tMartillo >= tMVolverInicio)
@@ -96,17 +97,15 @@ public class Enemy_BossController : MonoBehaviour
                 myTransform.transform.position = martilloPosiciones[0].transform.position;
             }
         }
-
-        if (lugarGolpeMartillo >= 6)
+        else
         {
-            golpeAlSuelo = false;
-            lugarGolpeMartillo = 1;
+            //golpeAlSuelo = false;
+            lugarGolpeMartillo = 2;
             //tMartillo = 3;
         }
     }
     void GolpeMartillo()
     {
-        //Debug.Log("Funciona" + lugarGolpeMartillo);
         myTransform.transform.position = martilloPosiciones[lugarGolpeMartillo].transform.position;
     }
     void PosicionMartillo()
