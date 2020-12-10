@@ -316,7 +316,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-            cmp_atk.WaitCounterCaller(0.35f, cmp_atk.sword_obj);
+            cmp_atk.WaitCounterCaller(0.70f, cmp_atk.sword_obj);
             cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
             if(cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <=0)
             {
