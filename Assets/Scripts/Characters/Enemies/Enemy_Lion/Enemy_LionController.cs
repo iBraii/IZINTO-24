@@ -75,7 +75,7 @@ public class Enemy_LionController : MonoBehaviour
         }
         else
         {
-            
+            Anim.SetBool("Walking", false);
         }
         EnemyAttack();  
     }
@@ -126,18 +126,16 @@ public class Enemy_LionController : MonoBehaviour
     {
         if (cmp_enemyLionMod.enemyLife <= 0)
         {
-            if (GameObject.Find("LevelStat"))
-            {
-            GameObject.Find("LevelStat").GetComponent<LevelStats>().enemyKillCounter++;
-            }
-
-
             Anim.SetBool("Die", true);
             dieAnimTimer += Time.deltaTime;
             dying = true;
 
             if (dieAnimTimer >= 1.5f)
             {
+                if (GameObject.Find("LevelStat"))
+                {
+                    GameObject.Find("LevelStat").GetComponent<LevelStats>().enemyKillCounter++;
+                }
                 dying = false;
                 gameObject.SetActive(false);
                 dieAnimTimer = 0;

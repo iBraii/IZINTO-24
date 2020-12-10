@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float dieAnimTimer;
     public float recoverLifeTimer;
     public bool recoverLife;
+    public float actualDrag;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        actualDrag = GetComponent<Rigidbody>().drag;
         inmuneTimer = 0;
         cmp_test = GetComponent<testscript>();
         cmp_modelo_Ply = GetComponent<PlayerModelo>();
@@ -156,10 +158,12 @@ public class PlayerController : MonoBehaviour
         if(cmp_modelo_Ply.grounded == false)
         {
             Anim.SetBool("Jump", true);
+            GetComponent<Rigidbody>().drag = 0.1f;
         }
         else
         {
             Anim.SetBool("Jump", false);
+            GetComponent<Rigidbody>().drag = actualDrag;
         }
     }
     void AtackBoolUpdater()
@@ -179,7 +183,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(key_jump) && cmp_modelo_Ply.grounded == true && cmp_modelo_Ply.atk_active == false)
         {
-
+     
             cmp_mov.Jump(cmp_modelo_Ply.jmp_force);
         }
 
@@ -312,7 +316,13 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-            cmp_atk.WaitCounterCaller(1.04f, cmp_atk.sword_obj);
+            cmp_atk.WaitCounterCaller(0.35f, cmp_atk.sword_obj);
+            cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+            if(cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <=0)
+            {
+                cmp_modelo_Ply.weapon = null;
+                cmp_modelo_Ply.using_weapon = false;
+            }
         }    
         if (cmp_modelo_Ply.atk_active==true)
         {
@@ -325,8 +335,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
         {
             cmp_atk.atacking = true;
-            cmp_mov.Move_in_transform(-10);
+            cmp_mov.Move_in_transform(-50);
             cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
+            cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+            if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
+            {
+                cmp_modelo_Ply.weapon = null;
+                cmp_modelo_Ply.using_weapon = false;
+            }
             /*if (enemy_detect != null)
             {
                 //cmp_atk.SpearAtk(1, enemy_detect);

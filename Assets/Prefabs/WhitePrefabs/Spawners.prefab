@@ -209,10 +209,7 @@ MonoBehaviour:
   maxSceneObjs: 20
   max_timer: 2
   spawnPositions:
-  - {x: 8.5, y: 7.5, z: -16}
-  - {x: 8.5, y: 7.5, z: -43.5}
-  - {x: 51.5, y: 7.5, z: -43.5}
-  - {x: 51.5, y: 7.5, z: -16}
+  - {x: 33.5, y: 9, z: -8}
 --- !u!1 &3380521312305393289
 GameObject:
   m_ObjectHideFlags: 0

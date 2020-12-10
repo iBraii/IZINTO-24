@@ -14,6 +14,7 @@ public class PlayerView : MonoBehaviour
 
     private PlayerController cmp_ctrl;
     private PlayerModelo cmp_playerMod;
+    public Attacks cmp_atk;
     
     
     public GameObject spearObj;
@@ -23,6 +24,7 @@ public class PlayerView : MonoBehaviour
     {
         cmp_ctrl = GetComponent<PlayerController>();
         cmp_playerMod = GetComponent<PlayerModelo>();
+        cmp_atk = GetComponent<Attacks>();
         heart1 = GameObject.Find("Heart1");
         heart2 = GameObject.Find("Heart2");
         heart3 = GameObject.Find("Heart3");
@@ -37,7 +39,10 @@ public class PlayerView : MonoBehaviour
     void Update()
     {
         LiveChecker();
-        WeaponChecker();
+        if (cmp_atk.atacking == false)
+        {
+            WeaponChecker();
+        }
         ShieldChecker();
     
     }

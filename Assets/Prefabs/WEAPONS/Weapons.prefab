@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6236752440417053212}
   - component: {fileID: 6236752440417053213}
   - component: {fileID: 6236752440417053214}
+  - component: {fileID: 7555371366788937221}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Sword
@@ -343,6 +344,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7555371366788937221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236752440417056224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2d6353bd08748488dd695c93e1bc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 3
 --- !u!1 &6236752441155851110
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,6 +715,7 @@ GameObject:
   - component: {fileID: 6236752441838748530}
   - component: {fileID: 6236752441838748531}
   - component: {fileID: 6236752441838748532}
+  - component: {fileID: 205344896852138737}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Spear
@@ -1029,6 +1044,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &205344896852138737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236752441838748534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2d6353bd08748488dd695c93e1bc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 3
 --- !u!1 &6236752442396253183
 GameObject:
   m_ObjectHideFlags: 0

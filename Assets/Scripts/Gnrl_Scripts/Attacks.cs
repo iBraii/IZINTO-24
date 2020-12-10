@@ -50,7 +50,7 @@ public class Attacks : MonoBehaviour
 
         if (atacking == true)
         {
-            Vector3 strt_ply_rot = transform.eulerAngles;
+            //Vector3 strt_ply_rot = transform.eulerAngles;
             //cmp_rot.ForLoopRot(0, -1, 0, 2.1f, true);
 
         }
