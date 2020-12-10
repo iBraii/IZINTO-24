@@ -274,31 +274,31 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SwordAtk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Die
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: SpearAtk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Jump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -445,7 +445,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Corriendo
-  m_Speed: 2.5
+  m_Speed: 2.1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8939755686491276381}
@@ -725,7 +725,7 @@ AnimatorStateMachine:
     m_Position: {x: 1060, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6922154007924545385}
-    m_Position: {x: 230, y: 60, z: 0}
+    m_Position: {x: 220, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5865438376952089124}
     m_Position: {x: 730, y: -80, z: 0}

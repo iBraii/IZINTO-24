@@ -4373,7 +4373,6 @@ MonoBehaviour:
   - {fileID: 1877111613}
   - {fileID: 526066874}
   - {fileID: 611589103}
-  golpeAlSuelo: 1
   lugarGolpeMartillo: 1
   tMartillo: 3
   tMVolverInicio: 2
