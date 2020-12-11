@@ -90,9 +90,9 @@
      <Compile Include="Assets\Scripts\Obj&amp;Props\Bomb\BombSpawner.cs" />
      <Compile Include="Assets\Scripts\Obj&amp;Props\BossHammer\BossHammer.cs" />
      <Compile Include="Assets\Scripts\Obj&amp;Props\Hazards\FireHazard.cs" />
+     <Compile Include="Assets\Scripts\Obj&amp;Props\RclctbleWpns\UseDurationItm.cs" />
      <Compile Include="Assets\Scripts\Obj&amp;Props\Spear\SpearProyectil.cs" />
      <Compile Include="Assets\Scripts\Obj&amp;Props\Spear\SpearSpawner.cs" />
-     <Compile Include="Assets\Scripts\ProveScripts\PlayerControllerII.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\Camara.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\DoorsTransition.cs" />
      <Compile Include="Assets\Scripts\UI&amp;UX\LvlSetValue.cs" />
