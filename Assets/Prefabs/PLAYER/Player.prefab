@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageIndicator: {fileID: 0}
+  cmp_atk: {fileID: 0}
   spearObj: {fileID: 5089366432058053470}
   swordObj: {fileID: 4100414743774156031}
 --- !u!114 &355144732140519767
@@ -548,6 +549,9 @@ MonoBehaviour:
   sword_obj: {fileID: 355144732251250630}
   spear_obj: {fileID: 355144732998296269}
   atacking: 0
+  cooldownActive: 0
+  atkCDTimer: 0
+  cooldown: 1
 --- !u!114 &355144732140519762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -610,6 +614,7 @@ MonoBehaviour:
   dieAnimTimer: 0
   recoverLifeTimer: 0
   recoverLife: 0
+  actualDrag: 0
   rotatioProves: {x: 0, y: 0, z: 0}
   key_up: 119
   key_down: 115

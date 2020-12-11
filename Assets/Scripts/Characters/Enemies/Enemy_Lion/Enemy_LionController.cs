@@ -77,7 +77,15 @@ public class Enemy_LionController : MonoBehaviour
         {
             Anim.SetBool("Walking", false);
         }
-        EnemyAttack();  
+        if(cmp_atk.cooldownActive == false)
+        {
+            EnemyAttack();
+        }
+        else
+        {
+
+        }
+        
     }
     void Casco()
     {

@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour
             }
         }
         // Prueba energia del player
-        if (Input.GetKeyDown(KeyCode.G))
+        /*if (Input.GetKeyDown(KeyCode.G))
         {
             if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
             {
                 DamageItself(1);
             }
-        }
+        }*/
         /*if (Input.GetKeyDown(KeyCode.C))
         {
             Escudo();
@@ -315,18 +315,27 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKeyDown(key_ability) && cmp_modelo_Ply.grounded == true)
         {
-            cmp_atk.atacking = true;
-            cmp_atk.WaitCounterCaller(0.70f, cmp_atk.sword_obj);
-            cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
-            if(cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <=0)
+            if (cmp_atk.cooldownActive == false)
             {
-                cmp_modelo_Ply.weapon = null;
-                cmp_modelo_Ply.using_weapon = false;
+                cmp_atk.atacking = true;
+                cmp_atk.WaitCounterCaller(0.70f, cmp_atk.sword_obj);
+                cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+                if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
+                {
+                    cmp_modelo_Ply.weapon = null;
+                    cmp_modelo_Ply.using_weapon = false;
+                }
             }
         }    
         if (cmp_modelo_Ply.atk_active==true)
         {
-            cmp_atk.SwordAtk(2);
+            if (cmp_atk.cooldownActive == false)
+            {
+                cmp_atk.SwordAtk(2);
+                inmune = true;
+            }
+            else
+            { }
         }
     }
 
@@ -334,24 +343,32 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(key_ability) & cmp_modelo_Ply.grounded == true)
         {
-            cmp_atk.atacking = true;
-            cmp_mov.Move_in_transform(-50);
-            cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
-            cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
-            if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
+            if (cmp_atk.cooldownActive == false)
             {
-                cmp_modelo_Ply.weapon = null;
-                cmp_modelo_Ply.using_weapon = false;
+                cmp_atk.atacking = true;
+                cmp_mov.Move_in_transform(-50);
+                cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
+                cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+                if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
+                {
+                    cmp_modelo_Ply.weapon = null;
+                    cmp_modelo_Ply.using_weapon = false;
+                }
+                /*if (enemy_detect != null)
+                {
+                    //cmp_atk.SpearAtk(1, enemy_detect);
+                }*/
             }
-            /*if (enemy_detect != null)
-            {
-                //cmp_atk.SpearAtk(1, enemy_detect);
-            }*/
         }
 
         if (cmp_modelo_Ply.atk_active == true)
         {
-            cmp_atk.SpearAtk(2);
+            if(cmp_atk.cooldownActive == false)
+            {
+                cmp_atk.SpearAtk(2);
+                inmune = true;
+            }
+            else { }
         }
     }
     

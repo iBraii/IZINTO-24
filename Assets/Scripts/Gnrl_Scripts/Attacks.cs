@@ -12,6 +12,8 @@ public class Attacks : MonoBehaviour
     public GameObject spear_obj;
 
     public bool atacking;
+    public bool cooldownActive;
+    public float atkCDTimer, cooldown;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,42 +37,49 @@ public class Attacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        CDTimer(cooldown);
     }
     public void SwordAtk( int atk_dmg)
     {
-        atacking = true;
-        if (sword_obj && sword_obj.activeSelf==false)
-        {
-            sword_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
-            sword_obj.SetActive(true);
-            //StartCoroutine(WaitCounterToFalseATK(time_atk, sword_obj));
-        }
+
         
 
-        if (atacking == true)
-        {
-            //Vector3 strt_ply_rot = transform.eulerAngles;
-            //cmp_rot.ForLoopRot(0, -1, 0, 2.1f, true);
+        atacking = true;
+            if (sword_obj && sword_obj.activeSelf == false)
+            {
+                sword_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
+                sword_obj.SetActive(true);
+                //StartCoroutine(WaitCounterToFalseATK(time_atk, sword_obj));
+            }
 
-        }
+
+            if (atacking == true)
+            {
+                //Vector3 strt_ply_rot = transform.eulerAngles;
+                //cmp_rot.ForLoopRot(0, -1, 0, 2.1f, true);
+                cooldownActive = true;
+            }
+        
     }
 
     public void SpearAtk( int atk_dmg)
     {
+
+        
         if (spear_obj && spear_obj.activeSelf == false)
-        {
-            spear_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
-            spear_obj.SetActive(true);
-            cmp_mov.Move_in_transform(-20);
-        }
+            {
+                spear_obj.GetComponent<InstantTrigerDamage>().itm_dmg = atk_dmg;
+                spear_obj.SetActive(true);
+                cmp_mov.Move_in_transform(-20);
+            }
 
-        if (atacking == true)
-        {
-            Vector3 strt_ply_rot = transform.eulerAngles;
-            
+            if (atacking == true)
+            {
+                Vector3 strt_ply_rot = transform.eulerAngles;
+                cooldownActive = true;
 
-        }
+            }
+        
     }
 
     public IEnumerator WaitCounterToFalseATK(float seconds, GameObject desact_obj)
@@ -92,5 +101,17 @@ public class Attacks : MonoBehaviour
     public void WaitCounterCaller(float secs, GameObject dscObj)
     {
         StartCoroutine(WaitCounterToFalseATK(secs, dscObj));
+    }
+    void CDTimer(float cooldownTime)
+    {
+        if(cooldownActive == true)
+        {
+            atkCDTimer += Time.deltaTime;
+        }
+        if(atkCDTimer >= cooldownTime)
+        {
+            cooldownActive = false;
+            atkCDTimer = 0;
+        }
     }
 }
