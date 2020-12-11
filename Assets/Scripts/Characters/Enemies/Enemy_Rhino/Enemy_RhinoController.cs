@@ -7,8 +7,11 @@ public class Enemy_RhinoController : MonoBehaviour
     private Enemy_RhinoModel cmp_RhinoMod;
     private Movement cmp_mov;
     private Rotatement cmp_rot;
+    private AudioSource audiorhino;
 
     public float random_rot;
+    public AudioClip wall;
+
 
     // Start is called before the first frame update
     void Start()

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private TimersNTools cmp_timers;
     private Life cmp_life;
     private testscript cmp_test;
+    private AudioSource audioplayer;
 
     public bool inmune, dying;
     public GameObject enemy_detect;
@@ -30,6 +31,9 @@ public class PlayerController : MonoBehaviour
     public float recoverLifeTimer;
     public bool recoverLife;
     public float actualDrag;
+    public AudioClip walkClip;
+    public AudioClip attackClip;
+
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -44,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         actualDrag = GetComponent<Rigidbody>().drag;
         inmuneTimer = 0;
         cmp_test = GetComponent<testscript>();
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
         cmp_life.life = cmp_modelo_Ply.playerLife;
         protecting = false;
         cmp_life.protec = protecting;
+        audioplayer = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {

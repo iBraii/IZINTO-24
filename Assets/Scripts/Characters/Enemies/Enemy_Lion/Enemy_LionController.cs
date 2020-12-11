@@ -18,6 +18,10 @@ public class Enemy_LionController : MonoBehaviour
     public Animator Anim;
     public bool dying = false;
     public float dieAnimTimer;
+    public AudioClip attack;
+    public AudioClip die;
+    private AudioSource enemy;
+
 
     // Start is called before the first frame update
     void Start()
