@@ -167,7 +167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7848573696380838431}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 8, z: -40}
+  m_LocalPosition: {x: 10, y: 8, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1674540224084430312}
@@ -409,7 +409,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 0e8a821e06a4fc2409676cd34bce9425, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  movSpd: 30
+  movSpd: 25
 --- !u!114 &7848573696380838421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +684,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.186
       objectReference: {fileID: 0}
+    - target: {fileID: 5901893356585517859, guid: 2cdf2bfa91142254e9b93a7e24214ac0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e8a821e06a4fc2409676cd34bce9425, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cdf2bfa91142254e9b93a7e24214ac0, type: 3}
 --- !u!4 &2397707175557285316 stripped

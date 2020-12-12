@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip walkClip;
     public AudioClip attackClip;
     public GameObject actualCollider;
+    public float recharHeadDmgTimer;
+    public bool jmpAtck;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -49,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        jmpAtck = true;
+        recharHeadDmgTimer = 0;
         actualDrag = GetComponent<Rigidbody>().drag;
         inmuneTimer = 0;
         cmp_test = GetComponent<testscript>();
@@ -123,6 +127,7 @@ public class PlayerController : MonoBehaviour
         EscudoUptater();
         AtackBoolUpdater();
         WeaponUpdater();
+        JmpAtackUpdater();
         if (cmp_plyView.damageIndicator.activeInHierarchy == true)
         {
             timer += Time.deltaTime;
@@ -145,9 +150,12 @@ public class PlayerController : MonoBehaviour
             Escudo();
         }*/
 
-        if (inmune == true)
+        if (inmune == true /*&& dying == false && cmp_modelo_Ply.playerLife > 0*/)
         {
-            Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
+            /*if (dying == false && cmp_modelo_Ply.playerLife > 0)
+            {*/
+                Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
+            //}
             float mxtimer = 1.5f;
             inmuneTimer += Time.deltaTime;
             blinkTime -= Time.deltaTime;
@@ -160,11 +168,14 @@ public class PlayerController : MonoBehaviour
             {
                 PPRenderer.enabled = true;
                 inmune = false;
-                Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), false);
+                if (actualCollider != null)
+                {
+                    Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), false);
+                }
                 inmuneTimer = 0;
             }
         }
-        if (atkInmune == true)
+        if (atkInmune == true )
         {
             float mxtimer = 1.5f;
             atkInmuneTimer += Time.deltaTime;
@@ -202,6 +213,18 @@ public class PlayerController : MonoBehaviour
             cmp_modelo_Ply.walk_active = true;
         }
     }
+    void JmpAtackUpdater()
+    {
+        if (jmpAtck == false)
+        {
+            recharHeadDmgTimer += Time.deltaTime;
+            if (recharHeadDmgTimer >= 1)
+            {
+                recharHeadDmgTimer = 0;
+                jmpAtck = true;
+            }
+        }
+    }
 
     void PlayerJump()
     {
@@ -213,8 +236,23 @@ public class PlayerController : MonoBehaviour
 
         if (cmp_grnd_Updater.overEnemy == true)
         {
-            cmp_mov.Jump(600);
-            cmp_mov.Move_in_transform(-6);
+            if (actualCollider.CompareTag("Enemy") && jmpAtck == true)
+            {
+                if (actualCollider.gameObject.GetComponent<Enemy_LionController>())
+                {
+                    jmpAtck = false;
+                    actualCollider.gameObject.GetComponent<Enemy_LionController>().DamageItself(1);
+                    cmp_mov.Jump(600);
+                    cmp_mov.Move_in_transform(-6);
+                }
+            }
+            else
+            {
+                cmp_mov.Jump(600);
+                cmp_mov.Move_in_transform(-6);
+            }
+            
+            
         }
 
     }
@@ -505,6 +543,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        actualCollider = collision.gameObject;
+       
+        if (collision.gameObject.CompareTag("Ground")==false && collision.gameObject.CompareTag("Wall") == false)
+        {
+            actualCollider = collision.gameObject;
+        }
+        
     }
 }

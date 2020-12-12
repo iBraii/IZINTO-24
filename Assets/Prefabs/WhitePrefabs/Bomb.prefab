@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6445516313460540743
 Transform:
   m_ObjectHideFlags: 0
@@ -346,9 +346,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  goplayerPosition1: {x: 24.957441, y: 1.9730301, z: -24.348751}
+  floorHeigth: 1
+  goplayerPosition1: {x: 28.283554, y: 1.9730301, z: -28.328617}
   explosion: {fileID: 2273993426428722565, guid: af6c8729dc372b448b27ad9b2e8cbb52,
     type: 3}
+  fire: {fileID: 7228512038537995159, guid: 2ff45a45fd2d0e944a521fc611ddbeef, type: 3}
   spawnexplosion: 1
 --- !u!114 &6445516313460540741
 MonoBehaviour:
@@ -357,7 +359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6445516313460540748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e983c3bd40d54fe49b7e315333ca6ecc, type: 3}
   m_Name: 

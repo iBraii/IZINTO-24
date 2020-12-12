@@ -44,6 +44,8 @@ public class Enemy_LionController : MonoBehaviour
     }
     private void OnEnable()
     {
+        EnemyHasHelmet = true;
+        cmp_life.protec = EnemyHasHelmet;
         cmp_life.life = 1;
         dying = false;
         dieAnimTimer = 0;
@@ -54,18 +56,19 @@ public class Enemy_LionController : MonoBehaviour
     void Update()
     {
         cmp_enemyLionMod.enemyLife = cmp_life.life;
+        EnemyHasHelmet = cmp_life.protec;
         CascoUpdater();
         ShieldUpdater();
         Die();
         AttackBoolUpdater();
-        if (EnemyHasShield == true)
+        /*if (EnemyHasShield == true)
         {
             Shield();
         }
         else
         {
             cmp_life.protec = false;
-        }
+        }*/
 
         DetectIfClose();
         if (follow == true)

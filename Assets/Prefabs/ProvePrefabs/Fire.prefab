@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7c4f597c5a9e44fb952aae882f6b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desapearTime: 7
+  desapearTime: 6
   timeLapse: 1
   naturalDmg: 1
   boostedFire: 0
