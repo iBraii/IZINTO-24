@@ -24,7 +24,7 @@ public class InstantTrigerDamage : MonoBehaviour
         {
             if(other.GetComponent<PlayerController>())
             {
-                if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
+                if (GameObject.Find("Player").GetComponent<PlayerController>().inmune == false && GameObject.Find("Player").GetComponent<PlayerController>().atkInmune == false)
                 {
                     other.GetComponent<PlayerController>().DamageItself(itm_dmg);
                 }                   

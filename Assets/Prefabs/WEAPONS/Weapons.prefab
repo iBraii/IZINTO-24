@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUses: 3
+  actualUses: 0
 --- !u!1 &6236752441155851110
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +373,7 @@ GameObject:
   - component: {fileID: 6236752441155851106}
   - component: {fileID: 6236752441155851107}
   - component: {fileID: 6236752441155851108}
+  - component: {fileID: 6577567392117004575}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Shield
@@ -700,6 +702,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6577567392117004575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236752441155851110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2d6353bd08748488dd695c93e1bc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 3
+  actualUses: 0
 --- !u!1 &6236752441838748534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1057,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUses: 3
+  actualUses: 0
 --- !u!1 &6236752442396253183
 GameObject:
   m_ObjectHideFlags: 0

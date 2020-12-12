@@ -146,8 +146,6 @@ GameObject:
   - component: {fileID: 355144732140519762}
   - component: {fileID: 355144732140519761}
   - component: {fileID: 355144732140519760}
-  - component: {fileID: 355144732140519756}
-  - component: {fileID: 355144732140519770}
   - component: {fileID: 355144732140519757}
   m_Layer: 0
   m_Name: Player
@@ -598,11 +596,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019386c5e92db454f9b0281801279a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PPRenderer: {fileID: 6845030292541291686}
   inmune: 0
+  atkInmune: 0
   dying: 0
   enemy_detect: {fileID: 0}
   timer: 0
+  atkInmuneTimer: 0
   inmuneTimer: 0
+  blinkTime: 0
+  blink: 0
   protecting: 0
   shield: {fileID: 4719414547242221111}
   usingSpear: 0
@@ -615,6 +618,9 @@ MonoBehaviour:
   recoverLifeTimer: 0
   recoverLife: 0
   actualDrag: 0
+  walkClip: {fileID: 0}
+  attackClip: {fileID: 0}
+  actualCollider: {fileID: 0}
   rotatioProves: {x: 0, y: 0, z: 0}
   key_up: 119
   key_down: 115
@@ -623,44 +629,6 @@ MonoBehaviour:
   key_jump: 32
   key_ability: 323
   key_pickUp: 113
---- !u!114 &355144732140519756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355144732140519772}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2994b14e45f7f42992a4702cd36259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundedPlayer: 0
-  plyChaController: {fileID: 355144732140519770}
-  turnSmoothTime: 0.1
-  turnSmoothVelocity: 0
-  speed: 4
-  spearTimer: 0
-  mxTimer: 0
-  spAtk: 0
---- !u!143 &355144732140519770
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355144732140519772}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &355144732140519757
 Rigidbody:
   m_ObjectHideFlags: 0

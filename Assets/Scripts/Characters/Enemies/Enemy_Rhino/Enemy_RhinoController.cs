@@ -24,7 +24,9 @@ public class Enemy_RhinoController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(); 
+
+            Move();
+        
     }
     void Move()
     {
@@ -47,9 +49,10 @@ public class Enemy_RhinoController : MonoBehaviour
             if(GameObject.Find("Player").GetComponent<PlayerController>().inmune == false)
             {
                 other.gameObject.GetComponent<PlayerController>().DamageItself(1);
+                //Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
             }     
-            random_rot = Random.Range(135f, 225f);
-            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+            //random_rot = Random.Range(135f, 225f);
+            //cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -57,7 +60,8 @@ public class Enemy_RhinoController : MonoBehaviour
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
     }
-    /*private void OnCollisionStay(Collision other)
+ 
+    private void OnCollisionStay(Collision other)
     {
         
         if (other.gameObject.CompareTag("Wall"))
@@ -70,5 +74,5 @@ public class Enemy_RhinoController : MonoBehaviour
             random_rot = Random.Range(135f, 225f);
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
-    }*/
+    }
 }

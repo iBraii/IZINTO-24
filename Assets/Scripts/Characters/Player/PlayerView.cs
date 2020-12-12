@@ -7,8 +7,8 @@ public class PlayerView : MonoBehaviour
     private GameObject heart1;
     private GameObject heart2;
     private GameObject heart3;
-    private GameObject spearImage;
-    private GameObject swordImage;
+    private GameObject spearImage1, spearImage2, spearImage3;
+    private GameObject swordImage1, swordImage2, swordImage3;
     private GameObject shieldImage;
     public GameObject damageIndicator;
 
@@ -19,17 +19,26 @@ public class PlayerView : MonoBehaviour
     
     public GameObject spearObj;
     public GameObject swordObj;
+
     // Start is called before the first frame update
     void Start()
     {
         cmp_ctrl = GetComponent<PlayerController>();
         cmp_playerMod = GetComponent<PlayerModelo>();
         cmp_atk = GetComponent<Attacks>();
+
         heart1 = GameObject.Find("Heart1");
         heart2 = GameObject.Find("Heart2");
         heart3 = GameObject.Find("Heart3");
-        swordImage = GameObject.Find("SwordImage");
-        spearImage = GameObject.Find("SpearImage");
+
+        swordImage1 = GameObject.Find("SwordImage1");
+        swordImage2 = GameObject.Find("SwordImage2");
+        swordImage3 = GameObject.Find("SwordImage3");
+
+        spearImage1 = GameObject.Find("SpearImage1");
+        spearImage2 = GameObject.Find("SpearImage2");
+        spearImage3 = GameObject.Find("SpearImage3");
+
         shieldImage = GameObject.Find("Shield1");
         
 
@@ -79,34 +88,111 @@ public class PlayerView : MonoBehaviour
         {
             if (cmp_playerMod.weapon.CompareTag("Sword"))
             {
-                swordImage.SetActive(true);
-                spearImage.SetActive(false);
-
                 swordObj.SetActive(true);
                 spearObj.SetActive(false);
+                if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses >= 3)
+                {
+                    swordImage1.SetActive(true);
+                    swordImage2.SetActive(true);
+                    swordImage3.SetActive(true);
+
+                    spearImage1.SetActive(false);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses == 2)
+                {
+                    swordImage1.SetActive(true);
+                    swordImage2.SetActive(true);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(false);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses == 1)
+                {
+                    swordImage1.SetActive(true);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(false);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses > 1)
+                {
+                    swordImage1.SetActive(false);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(false);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+
+                    swordObj.SetActive(false);
+                    spearObj.SetActive(false);
+                }
 
             }
             else if (cmp_playerMod.weapon.CompareTag("Spear"))
             {
-                spearImage.SetActive(true);
-                swordImage.SetActive(false);
-
+                swordObj.SetActive(false);
                 spearObj.SetActive(true);
-                swordObj.SetActive(false);
-            }
-            else
-            {
-                swordImage.SetActive(false);
-                spearImage.SetActive(false);
+                if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses >= 3)
+                {
+                    swordImage1.SetActive(false);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
 
-                swordObj.SetActive(false);
-                spearObj.SetActive(false);
+                    spearImage1.SetActive(true);
+                    spearImage2.SetActive(true);
+                    spearImage3.SetActive(true);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses == 2)
+                {
+                    swordImage1.SetActive(false);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(true);
+                    spearImage2.SetActive(true);
+                    spearImage3.SetActive(false);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses == 1)
+                {
+                    swordImage1.SetActive(false);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(true);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+                }
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses > 1)
+                {
+                    swordImage1.SetActive(false);
+                    swordImage2.SetActive(false);
+                    swordImage3.SetActive(false);
+
+                    spearImage1.SetActive(false);
+                    spearImage2.SetActive(false);
+                    spearImage3.SetActive(false);
+
+                    swordObj.SetActive(false);
+                    spearObj.SetActive(false);
+                }
             }
         }
         else
         {
-            swordImage.SetActive(false);
-            spearImage.SetActive(false);
+            spearImage1.SetActive(false);
+            spearImage2.SetActive(false);
+            spearImage3.SetActive(false);
+
+            swordImage1.SetActive(false);
+            swordImage2.SetActive(false);
+            swordImage3.SetActive(false);
 
             swordObj.SetActive(false);
             spearObj.SetActive(false);

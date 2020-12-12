@@ -17,9 +17,10 @@ public class PlayerController : MonoBehaviour
     private testscript cmp_test;
     private AudioSource audioplayer;
 
-    public bool inmune, dying;
+    public Renderer PPRenderer;
+    public bool inmune, atkInmune, dying;
     public GameObject enemy_detect;
-    public float timer, inmuneTimer;
+    public float timer, atkInmuneTimer, inmuneTimer, blinkTime = 1.5f, blink;
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public float actualDrag;
     public AudioClip walkClip;
     public AudioClip attackClip;
-
+    public GameObject actualCollider;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -63,14 +64,13 @@ public class PlayerController : MonoBehaviour
         cmp_life.life = cmp_modelo_Ply.playerLife;
         protecting = false;
         cmp_life.protec = protecting;
-        audioplayer = GetComponent<AudioSource>();
     }
     private void FixedUpdate()
     {
         if(dying == false)
         {
             PlayerWalk();
-        }    
+        }
     }
     // Update is called once per frame
     void Update()
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         {
             Anim.SetBool("Walking", false);
         }*/
-        if(cmp_atk.atacking && usingSword == true)
+        if (cmp_atk.atacking && usingSword == true)
         {
             Anim.SetBool("SwordAtk", true);
         }
@@ -106,8 +106,8 @@ public class PlayerController : MonoBehaviour
         protecting = cmp_life.protec;
         GroundUpdater();
         PlayerJump();
-        
-        if(recoverLife == true)
+
+        if (recoverLife == true)
         {
             RecoverLife();
         }
@@ -123,13 +123,13 @@ public class PlayerController : MonoBehaviour
         EscudoUptater();
         AtackBoolUpdater();
         WeaponUpdater();
-        if(cmp_plyView.damageIndicator.activeInHierarchy == true)
+        if (cmp_plyView.damageIndicator.activeInHierarchy == true)
         {
             timer += Time.deltaTime;
             if (timer >= 1.5f)
             {
                 timer = 0;
-                cmp_plyView.damageIndicator.SetActive(false);   
+                cmp_plyView.damageIndicator.SetActive(false);
             }
         }
         // Prueba energia del player
@@ -144,18 +144,37 @@ public class PlayerController : MonoBehaviour
         {
             Escudo();
         }*/
-        if(inmune == true)
+
+        if (inmune == true)
         {
+            Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
             float mxtimer = 1.5f;
             inmuneTimer += Time.deltaTime;
-            if(inmuneTimer >= mxtimer)
+            blinkTime -= Time.deltaTime;
+            if (blinkTime <= 0)
             {
+                PPRenderer.enabled = !PPRenderer.enabled;
+                blinkTime = blink;
+            }
+            if (inmuneTimer >= mxtimer)
+            {
+                PPRenderer.enabled = true;
                 inmune = false;
+                Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), false);
                 inmuneTimer = 0;
             }
         }
+        if (atkInmune == true)
+        {
+            float mxtimer = 1.5f;
+            atkInmuneTimer += Time.deltaTime;
+            if (atkInmuneTimer >= mxtimer)
+            {
+                atkInmune = false;
+                atkInmuneTimer = 0;
+            }
+        }
     }
-
     void GroundUpdater()
     {
         cmp_modelo_Ply.grounded = cmp_grnd_Updater.grounded;
@@ -302,17 +321,6 @@ public class PlayerController : MonoBehaviour
                 Anim.SetBool("Walking", false);
             }
         }
-        
-        /*float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f,vertical).normalized;
-        if(direction.magnitude>=0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-            plyChaController.Move(direction * cmp_modelo_Ply.spd_mov * Time.deltaTime);
-        }*/
 
     }
 
@@ -337,7 +345,7 @@ public class PlayerController : MonoBehaviour
             if (cmp_atk.cooldownActive == false)
             {
                 cmp_atk.SwordAtk(2);
-                inmune = true;
+                atkInmune = true;
             }
             else
             { }
@@ -371,7 +379,7 @@ public class PlayerController : MonoBehaviour
             if(cmp_atk.cooldownActive == false)
             {
                 cmp_atk.SpearAtk(2);
-                inmune = true;
+                atkInmune = true;
             }
             else { }
         }
@@ -421,11 +429,16 @@ public class PlayerController : MonoBehaviour
 
     public void DamageItself(int dmg)
     {
+            PPRenderer.enabled = false;
+            blinkTime = blink;
+
         cmp_life.LoseLife(dmg);
         recoverLife = false;
         recoverLifeTimer = 0;
-        inmune = true;
-        cmp_plyView.damageIndicator.SetActive(true);
+
+            inmune = true;
+        
+        //cmp_plyView.damageIndicator.SetActive(true);
     }
     void RecoverLife()
     { 
@@ -438,9 +451,10 @@ public class PlayerController : MonoBehaviour
     {
         if (cmp_modelo_Ply.playerLife <= 0)
         {
+            dying = true;
             Anim.SetBool("Die", true);
             dieAnimTimer += Time.deltaTime;
-            dying = true;
+            
 
             if(dieAnimTimer >= 3)
             {
@@ -489,5 +503,8 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
-    
+    private void OnCollisionEnter(Collision collision)
+    {
+        actualCollider = collision.gameObject;
+    }
 }
