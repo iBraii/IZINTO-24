@@ -40,8 +40,8 @@ public class PlayerView : MonoBehaviour
         spearImage3 = GameObject.Find("SpearImage3");
 
         shieldImage = GameObject.Find("Shield1");
-        
 
+        
     }
 
     // Update is called once per frame

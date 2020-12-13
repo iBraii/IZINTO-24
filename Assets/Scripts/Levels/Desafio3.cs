@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Desafio3 : MonoBehaviour
 {
-    private LevelStats cmp_levelSt;
+    public LevelStats cmp_levelSt;
     private Spawning cmp_spwn;
     private PlayerModelo cmp_plyMod;
 
