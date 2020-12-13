@@ -196,6 +196,7 @@ public class PlayerView : MonoBehaviour
 
             swordObj.SetActive(false);
             spearObj.SetActive(false);
+            cmp_playerMod.using_weapon = false;
         }
     }
     void ShieldChecker()

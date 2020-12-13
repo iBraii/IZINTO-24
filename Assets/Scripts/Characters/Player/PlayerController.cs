@@ -374,7 +374,7 @@ public class PlayerController : MonoBehaviour
                 if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
                 {
                     cmp_modelo_Ply.weapon = null;
-                    cmp_modelo_Ply.using_weapon = false;
+                    //cmp_modelo_Ply.using_weapon = false;
                 }
             }
         }    
@@ -403,7 +403,7 @@ public class PlayerController : MonoBehaviour
                 if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
                 {
                     cmp_modelo_Ply.weapon = null;
-                    cmp_modelo_Ply.using_weapon = false;
+                    //cmp_modelo_Ply.using_weapon = false;
                 }
                 /*if (enemy_detect != null)
                 {
