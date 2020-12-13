@@ -2660,7 +2660,7 @@ MonoBehaviour:
   dsfThree: {fileID: 1388125631}
   nextChallTimer: 0
   challengeBreaksTime: 5
-  nxtLvlNameScn: Nivel 2
+  nxtLvlNameScn: Victoria
 --- !u!1 &1352023520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 355144732140519772, guid: 58ead7d4f13648e4492549765c831ccc,
@@ -4748,6 +4748,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bosslife: 10
+  bossOnAtack: 0
 --- !u!114 &2117420646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4769,10 +4770,6 @@ MonoBehaviour:
   - {fileID: 1877111613}
   - {fileID: 526066874}
   - {fileID: 611589103}
-  lugarGolpeMartillo: 1
-  tMartillo: 3
-  tMVolverInicio: 2
-  tMSiguienteataque: 4
 --- !u!114 &2117420647
 MonoBehaviour:
   m_ObjectHideFlags: 0

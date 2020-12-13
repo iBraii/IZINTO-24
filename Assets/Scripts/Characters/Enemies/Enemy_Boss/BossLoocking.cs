@@ -9,14 +9,17 @@ public class BossLoocking : MonoBehaviour
 
     public Transform playerTransform;
     public float aproxRange;
-    private float range;
+    public float offSetZ;
+    private float rangeX;
+    private float rangeZ;
 
     
     // Start is called before the first frame update
     void Start()
     {
         cmp_bossMdl = bossObj.GetComponent<Enemy_BossModel>();
-        range = bossObj.transform.position.x + aproxRange;
+        rangeX = bossObj.transform.position.x + aproxRange;
+        rangeZ = bossObj.transform.position.z + offSetZ + aproxRange;
         //cmp_bossMdl
     }
 
@@ -28,17 +31,17 @@ public class BossLoocking : MonoBehaviour
 
             //Eje X
             float newPosX;
-            if (playerTransform.position.x >= (range - (aproxRange * 2)) && playerTransform.position.x <= range)
+            if (playerTransform.position.x >= (rangeX - (aproxRange * 2)) && playerTransform.position.x <= rangeX)
             {
                 newPosX = playerTransform.position.x;
             }
-            else if(transform.position.x > range)
+            else if(transform.position.x > rangeX)
             {
-                newPosX = range;
+                newPosX = rangeX;
             }
-            else if(transform.position.x < (range - (aproxRange * 2)))
+            else if(transform.position.x < (rangeX - (aproxRange * 2)))
             {
-                newPosX = (range - (aproxRange * 2));
+                newPosX = (rangeX - (aproxRange * 2));
             }
             else
             {
@@ -48,17 +51,17 @@ public class BossLoocking : MonoBehaviour
 
             //Eje Z
             float newPosZ;
-            if (playerTransform.position.z >= (range - (aproxRange * 2)) && playerTransform.position.z <= range)
+            if (playerTransform.position.z >= (rangeZ - (aproxRange * 2)) && playerTransform.position.z <= rangeZ)
             {
                 newPosZ = playerTransform.position.z;
             }
-            else if (transform.position.z > range)
+            else if (transform.position.z > rangeZ)
             {
-                newPosZ = range;
+                newPosZ = rangeZ;
             }
-            else if (transform.position.z < (range - (aproxRange * 2)))
+            else if (transform.position.z < (rangeZ - (aproxRange * 2)))
             {
-                newPosZ = (range - (aproxRange * 2));
+                newPosZ = (rangeZ - (aproxRange * 2));
             }
             else
             {

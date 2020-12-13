@@ -259,7 +259,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerWalk()
     {
-        if (cmp_modelo_Ply.grounded == true & cmp_modelo_Ply.walk_active == true)
+        if (cmp_modelo_Ply.grounded == true && cmp_modelo_Ply.walk_active == true)
         {
             
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
@@ -544,7 +544,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
        
-        if (collision.gameObject.CompareTag("Ground")==false && collision.gameObject.CompareTag("Wall") == false)
+        if (collision.gameObject.CompareTag("Ground")==false && collision.gameObject.CompareTag("Wall") == false && collision.gameObject.CompareTag("Boss") == false)
         {
             actualCollider = collision.gameObject;
         }

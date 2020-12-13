@@ -20,7 +20,21 @@ public class InstantTrigerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag(tag_name_obj))
+        if (tag_name_obj == "Enemy")
+        {
+            if (other.gameObject.CompareTag(tag_name_obj) || other.gameObject.CompareTag("Boss"))
+            { 
+                if (other.GetComponent<Enemy_BossController>())
+                {
+                    other.GetComponent<Enemy_BossController>().DamageItself(itm_dmg);
+                }
+                if (other.GetComponent<Enemy_LionController>())
+                {
+                    other.GetComponent<Enemy_LionController>().DamageItself(itm_dmg);
+                }
+            }
+        }
+        else if (other.gameObject.CompareTag(tag_name_obj))
         {
             if(other.GetComponent<PlayerController>())
             {

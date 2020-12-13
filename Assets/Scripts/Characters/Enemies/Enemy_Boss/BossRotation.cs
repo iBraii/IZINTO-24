@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossRotation : MonoBehaviour
 {
     private Rotatement cmp_rot;
+    public Enemy_BossModel cmp_bossMdl;
 
     public Transform loockRotation;
     // Start is called before the first frame update
@@ -16,6 +17,9 @@ public class BossRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cmp_rot.LookSmt(loockRotation.position,30);
+        if (cmp_bossMdl.bosslife > 0)
+        {
+            cmp_rot.LookSmt(loockRotation.position, 30);
+        }
     }
 }

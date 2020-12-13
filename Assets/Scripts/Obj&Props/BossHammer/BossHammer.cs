@@ -26,7 +26,8 @@ public class BossHammer : MonoBehaviour
     {
         to_down = false;
         timer = 0;
-        cmp_rot.InstantRotation(180, 0, 0, Space.World);
+        //cmp_rot.InstantRotation(180, 0, 0, Space.World);
+        transform.eulerAngles = new Vector3(0,0,0);
 
     }
 
