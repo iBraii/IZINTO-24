@@ -10,7 +10,8 @@ public class PlayerView : MonoBehaviour
     private GameObject spearImage1, spearImage2, spearImage3;
     private GameObject swordImage1, swordImage2, swordImage3;
     private GameObject shieldImage;
-    public GameObject damageIndicator;
+    public GameObject baseArmas;
+    //public GameObject damageIndicator;
 
     private PlayerController cmp_ctrl;
     private PlayerModelo cmp_playerMod;
@@ -41,7 +42,8 @@ public class PlayerView : MonoBehaviour
 
         shieldImage = GameObject.Find("Shield1");
 
-        
+        //baseArmas = GameObject.Find("BaseArmas");
+
     }
 
     // Update is called once per frame
@@ -53,7 +55,7 @@ public class PlayerView : MonoBehaviour
             WeaponChecker();
         }
         ShieldChecker();
-    
+        BaseArmas();
     }
     void LiveChecker ()
     {
@@ -208,6 +210,17 @@ public class PlayerView : MonoBehaviour
         else
         {
             shieldImage.SetActive(false);
+        }
+    }
+    void BaseArmas()
+    {
+        if(cmp_playerMod.using_weapon == true)
+        {
+            baseArmas.SetActive(true);
+        }
+        else
+        {
+            baseArmas.SetActive(false);
         }
     }
 }

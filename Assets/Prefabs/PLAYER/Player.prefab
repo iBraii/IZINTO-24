@@ -605,7 +605,6 @@ MonoBehaviour:
   atkInmuneTimer: 0
   inmuneTimer: 0
   blinkTime: 0
-  blink: 0
   protecting: 0
   shield: {fileID: 4719414547242221111}
   usingSpear: 0
@@ -621,14 +620,16 @@ MonoBehaviour:
   walkClip: {fileID: 0}
   attackClip: {fileID: 0}
   actualCollider: {fileID: 0}
+  recharHeadDmgTimer: 0
+  jmpAtck: 0
   rotatioProves: {x: 0, y: 0, z: 0}
   key_up: 119
   key_down: 115
   key_der: 100
   key_izq: 97
   key_jump: 32
-  key_ability: 323
-  key_pickUp: 113
+  key_ability: 106
+  key_pickUp: 107
 --- !u!54 &355144732140519757
 Rigidbody:
   m_ObjectHideFlags: 0

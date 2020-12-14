@@ -11,11 +11,13 @@ public class Enemy_RhinoController : MonoBehaviour
 
     public float random_rot;
     public AudioClip wall;
+    public bool canOpenRhino;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        canOpenRhino = true;
         cmp_RhinoMod = GetComponent<Enemy_RhinoModel>();
         cmp_mov = GetComponent<Movement>();
         cmp_rot = GetComponent <Rotatement>();

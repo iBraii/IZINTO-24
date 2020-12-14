@@ -155,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 8581015536845795158, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.031
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795158, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
@@ -224,23 +224,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
-        type: 3}
       propertyPath: ShapeModule.type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 30
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
@@ -250,7 +245,27 @@ PrefabInstance:
     - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 1
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
+        type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8581015536845795161, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8581015536845795163, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
@@ -265,12 +280,12 @@ PrefabInstance:
     - target: {fileID: 8581015537941595190, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8581015537941595190, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.9
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 8581015537941595191, guid: 1c5b87d5bfca13e428ed2fc10227a71f,
         type: 3}

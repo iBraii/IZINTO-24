@@ -17,6 +17,7 @@ TagManager:
   - Door
   - Barra
   - DmgInd
+  - SpearPro
   layers:
   - Default
   - TransparentFX

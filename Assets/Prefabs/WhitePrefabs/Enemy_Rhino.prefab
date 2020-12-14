@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   random_rot: 0
   wall: {fileID: 0}
+  canOpenRhino: 0
 --- !u!114 &1949363059115010997
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public Renderer PPRenderer;
     public bool inmune, atkInmune, dying;
     public GameObject enemy_detect;
-    public float timer, atkInmuneTimer, inmuneTimer, blinkTime = 1.5f, blink;
+    public float timer, atkInmuneTimer, inmuneTimer, blinkTime;
     public bool protecting;
     public GameObject shield;
     public bool usingSpear, usingSword;
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
         cmp_life.life = cmp_modelo_Ply.playerLife;
         protecting = false;
         cmp_life.protec = protecting;
+        actualCollider = null;
     }
     private void FixedUpdate()
     {
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
         AtackBoolUpdater();
         WeaponUpdater();
         JmpAtackUpdater();
-        if (cmp_plyView.damageIndicator.activeInHierarchy == true)
+        /*if (cmp_plyView.damageIndicator.activeInHierarchy == true)
         {
             timer += Time.deltaTime;
             if (timer >= 1.5f)
@@ -136,7 +137,7 @@ public class PlayerController : MonoBehaviour
                 timer = 0;
                 cmp_plyView.damageIndicator.SetActive(false);
             }
-        }
+        }*/
         // Prueba energia del player
         /*if (Input.GetKeyDown(KeyCode.G))
         {
@@ -152,22 +153,22 @@ public class PlayerController : MonoBehaviour
 
         if (inmune == true /*&& dying == false && cmp_modelo_Ply.playerLife > 0*/)
         {
-            /*if (dying == false && cmp_modelo_Ply.playerLife > 0)
-            {*/
+            if (actualCollider != null)
+            {
                 Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), true);
-            //}
+            }
             float mxtimer = 1.5f;
             inmuneTimer += Time.deltaTime;
-            blinkTime -= Time.deltaTime;
-            if (blinkTime <= 0)
+            blinkTime += Time.deltaTime;
+            if (blinkTime >= 0.2f)
             {
                 PPRenderer.enabled = !PPRenderer.enabled;
-                blinkTime = blink;
+                blinkTime = 0;
             }
             if (inmuneTimer >= mxtimer)
             {
-                PPRenderer.enabled = true;
                 inmune = false;
+                PPRenderer.enabled = true;            
                 if (actualCollider != null)
                 {
                     Physics.IgnoreCollision(actualCollider.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>(), false);
@@ -185,6 +186,19 @@ public class PlayerController : MonoBehaviour
                 atkInmuneTimer = 0;
             }
         }
+    }
+    public void DamageItself(int dmg)
+    {
+        /*PPRenderer.enabled = false;
+        blinkTime = blink;*/
+
+        cmp_life.LoseLife(dmg);
+        recoverLife = false;
+        recoverLifeTimer = 0;
+
+        inmune = true;
+
+        //cmp_plyView.damageIndicator.SetActive(true);
     }
     void GroundUpdater()
     {
@@ -397,8 +411,8 @@ public class PlayerController : MonoBehaviour
             if (cmp_atk.cooldownActive == false)
             {
                 cmp_atk.atacking = true;
-                cmp_mov.Move_in_transform(-50);
-                cmp_atk.WaitCounterCaller(1, cmp_atk.spear_obj);
+                //cmp_mov.Move_in_transform(-50);
+                cmp_atk.WaitCounterCaller(0.70f, cmp_atk.spear_obj);
                 cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
                 if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
                 {
@@ -465,19 +479,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DamageItself(int dmg)
-    {
-            PPRenderer.enabled = false;
-            blinkTime = blink;
-
-        cmp_life.LoseLife(dmg);
-        recoverLife = false;
-        recoverLifeTimer = 0;
-
-            inmune = true;
-        
-        //cmp_plyView.damageIndicator.SetActive(true);
-    }
+    
     void RecoverLife()
     { 
         cmp_life.GainLife(1);
@@ -507,15 +509,23 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.CompareTag("Sword") && Input.GetKeyDown(key_pickUp))
+        PickUp(other);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        PickUp(other);
+    }
+    void PickUp(Collider other)
+    {
+        if (other.gameObject.CompareTag("Sword") && Input.GetKeyDown(key_pickUp))
         {
             cmp_modelo_Ply.using_weapon = true;
             if (cmp_modelo_Ply.weapon != other.gameObject && cmp_modelo_Ply.weapon != null)
             {
                 cmp_modelo_Ply.weapon.SetActive(true);
-                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x, transform.position.y,transform.position.z);
-                cmp_modelo_Ply.weapon = other.gameObject;               
-            }   
+                cmp_modelo_Ply.weapon.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                cmp_modelo_Ply.weapon = other.gameObject;
+            }
             usingSword = true;
             usingSpear = false;
             cmp_modelo_Ply.weapon = other.gameObject;

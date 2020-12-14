@@ -21,11 +21,13 @@ public class Enemy_LionController : MonoBehaviour
     public AudioClip attack;
     public AudioClip die;
     private AudioSource enemy;
+    public bool canOpenLion;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        canOpenLion = true;
         cmp_life = GetComponent<Life>();
         //EnemyHasHelmet = false;
         cmp_life.protec = EnemyHasHelmet;

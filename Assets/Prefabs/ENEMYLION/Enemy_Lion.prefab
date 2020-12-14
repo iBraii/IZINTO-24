@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4494625904905463618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46, y: 2, z: -40.5}
+  m_LocalPosition: {x: 11, y: 2, z: -20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4494625904804383924}
@@ -1405,6 +1405,7 @@ MonoBehaviour:
   dieAnimTimer: 0
   attack: {fileID: 8300000, guid: 83e2f63a696d65d459d672395db80db0, type: 3}
   die: {fileID: 8300000, guid: beebbd26f8503f74eb2b9bd2b329ec55, type: 3}
+  canOpenLion: 0
 --- !u!54 &4494625904905463637
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1442,7 +1443,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4494625904905463618}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 83e2f63a696d65d459d672395db80db0, type: 3}

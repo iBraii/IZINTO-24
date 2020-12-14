@@ -6,6 +6,7 @@ public class ChallengeController : MonoBehaviour
 {
     private LevelStats cmp_lvlSts;
     private SceneChange cmp_scnChng;
+    private TXTGeneral cmp_showText;
 
 
     public int numPivotChallenge;
@@ -19,6 +20,7 @@ public class ChallengeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cmp_showText = GetComponent<TXTGeneral>();
         numPivotChallenge = 0;
         nextChallTimer = 0;
 
@@ -55,14 +57,17 @@ public class ChallengeController : MonoBehaviour
         if (numPivotChallenge == 1)
         {
             dsfOne.GetComponent<Desafio1>().EmpezarDesafio();
+            cmp_showText.WriteSthTemporal("Desafio 1", 10);
         }
         else if (numPivotChallenge == 2)
         {
             dsfTwo.GetComponent<Desafio2>().EmpezarDesafio();
+            cmp_showText.WriteSthTemporal("Desafio 2", 10);
         }
         else if(numPivotChallenge == 3)
         {
             dsfThree.GetComponent<Desafio3>().EmpezarDesafio();
+            cmp_showText.WriteSthTemporal("Desafio 3", 10);
         }
         else if (numPivotChallenge >=4)
         {

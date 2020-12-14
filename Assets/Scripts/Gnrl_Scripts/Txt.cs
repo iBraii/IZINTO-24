@@ -42,5 +42,25 @@ public class Txt : MonoBehaviour
             elTexto.text = ("" + GameObject.Find("Desafio3").GetComponent<Desafio3>().timer.ToString("00"));
             
         }
+        else if (GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 1 && GameObject.Find("Desafio1B"))
+        {
+            baseTimer.SetActive(true);
+            elTexto.text = ("" + GameObject.Find("Desafio1B").GetComponent<Desafio1>().timer.ToString("00"));
+
+
+        }
+        else if (GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 2 && GameObject.Find("Desafio2B"))
+        {
+            baseTimer.SetActive(false);
+            elTexto.text = ("");
+        }
+        else if (GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 3 && GameObject.Find("Desafio3B"))
+        {
+
+            baseTimer.SetActive(true);
+            elTexto.text = ("" + GameObject.Find("Desafio3B").GetComponent<Desafio3>().timer.ToString("00"));
+
+        }
+
     }
 }

@@ -8,7 +8,7 @@ public class BombSpawner : MonoBehaviour
     public GameObject[] bomb_obj;
     public int maxSceneObjs;
 
-    float timer = 0;
+    public float timer = 0;
     public float max_timer = 4;
 
     public Vector3[] spawnPositions;

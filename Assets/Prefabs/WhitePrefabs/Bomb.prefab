@@ -347,7 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   floorHeigth: 1
-  goplayerPosition1: {x: 28.283554, y: 1.9730301, z: -28.328617}
+  goplayerPosition1: {x: 32.18631, y: 1.9730301, z: -17.482164}
   explosion: {fileID: 2273993426428722565, guid: af6c8729dc372b448b27ad9b2e8cbb52,
     type: 3}
   fire: {fileID: 7228512038537995159, guid: 2ff45a45fd2d0e944a521fc611ddbeef, type: 3}
