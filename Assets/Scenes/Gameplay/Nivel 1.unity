@@ -1849,7 +1849,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh5029488
+  m_Name: pb_Mesh1983912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2853,7 +2853,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5933098
+  m_Name: pb_Mesh-518850
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4344,6 +4344,9 @@ MonoBehaviour:
   - {fileID: 1877111613}
   - {fileID: 526066874}
   - {fileID: 611589103}
+  spwnerRhinos: {fileID: 0}
+  spwnerLions: {fileID: 0}
+  spwnerBombs: {fileID: 0}
 --- !u!114 &2117420647
 MonoBehaviour:
   m_ObjectHideFlags: 0

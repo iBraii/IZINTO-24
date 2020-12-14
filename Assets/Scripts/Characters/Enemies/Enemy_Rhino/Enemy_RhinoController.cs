@@ -13,6 +13,8 @@ public class Enemy_RhinoController : MonoBehaviour
     public AudioClip wall;
     public bool canOpenRhino;
 
+    public float onStayTimer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +38,18 @@ public class Enemy_RhinoController : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other)
     {
+        onStayTimer = 0;
         if (other.gameObject.CompareTag("Wall"))
         {
             random_rot = Random.Range(135f, 225f);
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
         }
         if (other.gameObject.CompareTag("Rhino"))
+        {
+            random_rot = Random.Range(135f, 225f);
+            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+        }
+        if (other.gameObject.CompareTag("Boss"))
         {
             random_rot = Random.Range(135f, 225f);
             cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
@@ -65,16 +73,20 @@ public class Enemy_RhinoController : MonoBehaviour
  
     private void OnCollisionStay(Collision other)
     {
-        
-        if (other.gameObject.CompareTag("Wall"))
+        onStayTimer += Time.deltaTime;
+
+        if (onStayTimer >= 3.5f)
         {
-            random_rot = Random.Range(135f, 225f);
-            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
-        }
-        if (other.gameObject.CompareTag("Rhino"))
-        {
-            random_rot = Random.Range(135f, 225f);
-            cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+            /*if (other.gameObject.CompareTag("Wall"))
+            {*/
+                random_rot = Random.Range(135f, 225f);
+                cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+            /*}
+            if (other.gameObject.CompareTag("Rhino"))
+            {
+                random_rot = Random.Range(135f, 225f);
+                cmp_rot.InstantRotation(0, random_rot, 0, Space.Self);
+            }*/
         }
     }
 }

@@ -47,7 +47,12 @@ public class Enemy_LionController : MonoBehaviour
     private void OnEnable()
     {
         EnemyHasHelmet = true;
-        cmp_life.protec = EnemyHasHelmet;
+        cmp_atk.atacking = false;
+        
+        /*if (cmp_life.protec !=EnemyHasHelmet)
+        {
+            cmp_life.protec = EnemyHasHelmet;
+        }*/
         cmp_life.life = 1;
         dying = false;
         dieAnimTimer = 0;

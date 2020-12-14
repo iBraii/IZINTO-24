@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 166b0918cedbf614a89f100db021f15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageIndicator: {fileID: 0}
+  baseArmas: {fileID: 0}
   cmp_atk: {fileID: 0}
   spearObj: {fileID: 5089366432058053470}
   swordObj: {fileID: 4100414743774156031}
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd_mov: 300
-  jmp_force: 1700
+  jmp_force: 1850
   atk_damage: 0
   playerLife: 3
   grounded: 0
@@ -628,8 +628,8 @@ MonoBehaviour:
   key_der: 100
   key_izq: 97
   key_jump: 32
-  key_ability: 106
-  key_pickUp: 107
+  key_ability: 323
+  key_pickUp: 113
 --- !u!54 &355144732140519757
 Rigidbody:
   m_ObjectHideFlags: 0

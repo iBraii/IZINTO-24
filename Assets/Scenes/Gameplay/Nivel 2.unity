@@ -1866,6 +1866,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5e042bd6c981a4da0a8ce111a48f8c, type: 3}
+--- !u!95 &952323887 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5210220312830775523, guid: db5e042bd6c981a4da0a8ce111a48f8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 952323886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1031141071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2494,7 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d742a5394d326469cba101471c8556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 2134705908}
+  transition: {fileID: 952323887}
 --- !u!114 &1266869509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,6 +5191,9 @@ MonoBehaviour:
   - {fileID: 1877111613}
   - {fileID: 526066874}
   - {fileID: 611589103}
+  spwnerRhinos: {fileID: 0}
+  spwnerLions: {fileID: 0}
+  spwnerBombs: {fileID: 0}
 --- !u!114 &2117420647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5343,12 +5352,6 @@ Transform:
   m_Father: {fileID: 2117420644}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &2134705908 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1534287914508171824, guid: db5e042bd6c981a4da0a8ce111a48f8c,
-    type: 3}
-  m_PrefabInstance: {fileID: 952323886}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3544829405517434360
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,10 @@ public class Enemy_BossController : MonoBehaviour
     public Transform playerTransform;
 
     public List<Transform> martilloPosiciones;
+
+    public GameObject spwnerRhinos;
+    public GameObject spwnerLions;
+    public GameObject spwnerBombs;
     //public bool golpeAlSuelo;
     /*public int lugarGolpeMartillo;
     public float tMartillo;
@@ -34,6 +38,11 @@ public class Enemy_BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spwnerBombs.SetActive(false);
+        spwnerLions.SetActive(false);
+        spwnerRhinos.SetActive(false);
+
+        atackTimer = 0;
         cmp_life = GetComponent<Life>();
         cmp_enemy_model = GetComponent<Enemy_BossModel>();
         cmp_spwn = GetComponent<Spawning>();
@@ -54,6 +63,18 @@ public class Enemy_BossController : MonoBehaviour
 
         Die();
         AtackPatterns();
+        if(cmp_enemy_model.bossOnAtack == true)
+        {
+            atackTimer += Time.deltaTime;
+            if (atackTimer >= 5)
+            {
+                cmp_enemy_model.meleAtack = false;
+                cmp_enemy_model.throwAtack = false;
+                atackTimer = 0;
+                cmp_enemy_model.bossOnAtack = false;
+            }
+
+        }
 
         /*if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -130,27 +151,45 @@ public class Enemy_BossController : MonoBehaviour
     {
         if (cmp_enemy_model.bosslife <= 0)
         {
-
+            spwnerBombs.SetActive(false);
+            spwnerLions.SetActive(false);
+            spwnerRhinos.SetActive(false);
         }
         else if(cmp_enemy_model.bosslife <= (cmp_life.maxlife/4))
         {
             numForTimer = timePatternsArray[3];
             RangeDetectAtk();
+            spwnerBombs.SetActive(true);
+            spwnerLions.SetActive(true);
+            spwnerRhinos.SetActive(true);
+            spwnerLions.GetComponent<LionSpawner>().max_timer = 15;
         }
         else if (cmp_enemy_model.bosslife <= (cmp_life.maxlife / 2))
         {
             numForTimer = timePatternsArray[2];
             RangeDetectAtk();
+            spwnerBombs.SetActive(false);
+            spwnerLions.SetActive(true);
+            spwnerRhinos.SetActive(true);
+            spwnerLions.GetComponent<LionSpawner>().max_timer = 15;
         }
         else if (cmp_enemy_model.bosslife <= ((cmp_life.maxlife / 4)*3))
         {
             numForTimer = timePatternsArray[1];
             RangeDetectAtk();
+            spwnerBombs.SetActive(false);
+            spwnerLions.SetActive(true);
+            spwnerRhinos.SetActive(false);
+            spwnerLions.GetComponent<LionSpawner>().max_timer = 15;
         }
         else if (cmp_enemy_model.bosslife <= cmp_life.maxlife)
         {
             numForTimer = timePatternsArray[0];
             RangeDetectAtk();
+            spwnerBombs.SetActive(false);
+            spwnerLions.SetActive(true);
+            spwnerRhinos.SetActive(false);
+            spwnerLions.GetComponent<LionSpawner>().max_timer = 20;
         }
 
     }
@@ -163,8 +202,9 @@ public class Enemy_BossController : MonoBehaviour
             
             if (Vector3.Distance(playerTransform.position, transform.position) < 7)
             {
-                
-                MeleAtack();
+
+                //MeleAtack();
+                ThrowAtack();
             }
             else
             {
