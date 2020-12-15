@@ -19,13 +19,13 @@ public class TXTGeneral : MonoBehaviour
     {
         timer += Time.deltaTime;
     }
-    public void WriteSthTemporal(string myText, float maxtimer)
+    public void WriteSthTemporal(string myText/*, float maxtimer*/)
     {
         urText.text = (myText);
-        if(timer >= maxtimer)
+        /*if(timer >= maxtimer)
         {
             urText.text = ("");
             timer = 0;
-        }
+        }*/
     }
 }

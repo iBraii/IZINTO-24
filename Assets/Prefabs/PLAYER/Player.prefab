@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd_mov: 300
-  jmp_force: 1850
+  jmp_force: 2000
   atk_damage: 0
   playerLife: 3
   grounded: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   key_izq: 97
   key_jump: 32
   key_ability: 323
-  key_pickUp: 113
+  key_pickUp: 101
 --- !u!54 &355144732140519757
 Rigidbody:
   m_ObjectHideFlags: 0

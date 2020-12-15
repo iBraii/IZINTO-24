@@ -25,7 +25,7 @@ public class Enemy_LionController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         canOpenLion = true;
         cmp_life = GetComponent<Life>();

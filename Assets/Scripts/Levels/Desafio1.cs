@@ -14,11 +14,12 @@ public class Desafio1 : MonoBehaviour
     public GameObject[] spawner;
     public GameObject[] itmsObj;
     public Vector3 itmPosGen;
-
+   
 
     // Start is called before the first frame update
     void Start()
     {
+        
         cmp_spwn = GetComponent<Spawning>();
         if (GameObject.Find("Player"))
         {

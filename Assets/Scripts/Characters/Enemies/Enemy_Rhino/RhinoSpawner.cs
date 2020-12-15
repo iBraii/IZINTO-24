@@ -13,10 +13,15 @@ public class RhinoSpawner : MonoBehaviour
 
     public Vector3[] spawnPositions;
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
+    {
+        cmp_spwn.ArraySpawnGeneretor(rhino_obj[0], spawnPositions[Random.Range(0, spawnPositions.Length)]);
+    }
+    void Awake()
     {
         cmp_spwn = GetComponent<Spawning>();
         cmp_spwn.obj_spwn_Array = rhino_obj;
+        
     }
 
     // Update is called once per frame

@@ -110,7 +110,12 @@ public class PlayerController : MonoBehaviour
         cmp_modelo_Ply.playerLife = cmp_life.life;
         protecting = cmp_life.protec;
         GroundUpdater();
-        PlayerJump();
+
+        if(GameObject.Find("PauseManager").GetComponent<Pause>().paused == false)
+        {
+            PlayerJump();
+        }
+        
 
         if (recoverLife == true)
         {
@@ -119,7 +124,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             recoverLifeTimer += Time.deltaTime;
-            if (recoverLifeTimer >= 15)
+            if (recoverLifeTimer >= 20)
             {
                 recoverLife = true;
             }
@@ -247,7 +252,7 @@ public class PlayerController : MonoBehaviour
      
             cmp_mov.Jump(cmp_modelo_Ply.jmp_force);
         }
-
+        
         if (cmp_grnd_Updater.overEnemy == true)
         {
             if (actualCollider.CompareTag("Enemy") && jmpAtck == true)
@@ -554,7 +559,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
        
-        if (collision.gameObject.CompareTag("Ground")==false && collision.gameObject.CompareTag("Wall") == false && collision.gameObject.CompareTag("Boss") == false)
+        if (collision.gameObject.CompareTag("Ground")==false && collision.gameObject.CompareTag("Wall") == false && collision.gameObject.CompareTag("Boss") == false && collision.gameObject.CompareTag("Sword") == false && collision.gameObject.CompareTag("Shield") == false && collision.gameObject.CompareTag("Spear") == false)
         {
             actualCollider = collision.gameObject;
         }

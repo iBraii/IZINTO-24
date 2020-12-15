@@ -636,7 +636,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5889368
+  m_Name: pb_Mesh-1074496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 321747191}
   - component: {fileID: 321747193}
   - component: {fileID: 321747192}
+  - component: {fileID: 321747194}
   m_Layer: 0
   m_Name: Desafio1
   m_TagString: Untagged
@@ -884,6 +885,20 @@ MonoBehaviour:
   - {fileID: 422255026}
   - {fileID: 422255025}
   itmPosGen: {x: 30, y: 2, z: -30}
+--- !u!114 &321747194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321747190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37afe77432e4abe40bdaac25e2759a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urText: {fileID: 170050912}
+  timer: 0
 --- !u!1001 &422255024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1058,7 +1073,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5889374
+  m_Name: pb_Mesh-1074518
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1434,7 +1449,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5889366
+  m_Name: pb_Mesh-1074494
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1849,7 +1864,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1983912
+  m_Name: pb_Mesh2217234
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2073,8 +2088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spear_obj:
   - {fileID: 7848573696380838431, guid: 6671a7dc33bbb594b9267df7346b04e6, type: 3}
-  maxSceneObjs: 5
-  max_timer: 2
+  maxSceneObjs: 50
+  max_timer: 1.5
   spawnPositions:
   - {x: 10, y: 8, z: -20}
   - {x: 10, y: 8, z: -40}
@@ -2498,6 +2513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ae748c1d1b1ff45be8233d952782c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseDesTxt: {fileID: 1788387688}
+  timer: 0
   numPivotChallenge: 0
   dsfOne: {fileID: 321747190}
   dsfTwo: {fileID: 7981517854101742104}
@@ -2542,6 +2559,7 @@ GameObject:
   - component: {fileID: 1388125632}
   - component: {fileID: 1388125634}
   - component: {fileID: 1388125633}
+  - component: {fileID: 1388125635}
   m_Layer: 0
   m_Name: Desafio3
   m_TagString: Untagged
@@ -2606,6 +2624,20 @@ MonoBehaviour:
   - {fileID: 422255026}
   - {fileID: 422255025}
   itmPosGen: {x: 30, y: 2, z: -30}
+--- !u!114 &1388125635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388125631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37afe77432e4abe40bdaac25e2759a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urText: {fileID: 170050912}
+  timer: 0
 --- !u!1 &1437840120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,7 +2684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lion_obj:
   - {fileID: 4494625904905463618, guid: e4a6b455d22daf249ae45d28864fb3cd, type: 3}
-  maxSceneObjs: 10
+  maxSceneObjs: 8
   max_timer: 10
   spawnPositions:
   - {x: 11, y: 2, z: -40.5}
@@ -2684,7 +2716,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5889372
+  m_Name: pb_Mesh-1074516
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2853,7 +2885,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-518850
+  m_Name: pb_Mesh-1118516
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3499,6 +3531,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1788387688 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7554636123233119940, guid: 91ac6c115ed48544cb62157cc1967a87,
+    type: 3}
+  m_PrefabInstance: {fileID: 2550853782014454104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1816884466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7394658473073814884, guid: 91ac6c115ed48544cb62157cc1967a87,
@@ -3756,8 +3794,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lion_obj:
   - {fileID: 4494625904905463618, guid: e4a6b455d22daf249ae45d28864fb3cd, type: 3}
-  maxSceneObjs: 20
-  max_timer: 2
+  maxSceneObjs: 30
+  max_timer: 3.5
   spawnPositions:
   - {x: 11, y: 2, z: -40.5}
   - {x: 11, y: 2, z: -30.5}
@@ -3788,7 +3826,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5889370
+  m_Name: pb_Mesh-1074498
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4957,7 +4995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomb_obj:
   - {fileID: 6445516313460540748, guid: 75980587c2d335d49b10e0c508c70b72, type: 3}
-  maxSceneObjs: 20
+  maxSceneObjs: 14
   timer: 0
   max_timer: 6
   spawnPositions:
@@ -5007,8 +5045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96dd96b43bd4b24892a6cb312fd4ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj_spwn_Array:
-  - {fileID: 1949363059115010989, guid: 74ba25e433c97ba4eb4f9843ba331438, type: 3}
+  obj_spwn_Array: []
   objActiveCounter: 0
   latestGen: {fileID: 0}
 --- !u!4 &646985062074487406
@@ -5039,8 +5076,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rhino_obj:
   - {fileID: 1949363059115010989, guid: 74ba25e433c97ba4eb4f9843ba331438, type: 3}
-  maxSceneObjs: 8
-  max_timer: 5
+  maxSceneObjs: 5
+  max_timer: 10
   spawnPositions:
   - {x: 13, y: 2, z: -40.5}
   - {x: 13, y: 2, z: -30.5}
@@ -5093,8 +5130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lion_obj:
   - {fileID: 4494625904905463618, guid: e4a6b455d22daf249ae45d28864fb3cd, type: 3}
-  maxSceneObjs: 8
-  max_timer: 10
+  maxSceneObjs: 4
+  max_timer: 20
   spawnPositions:
   - {x: 11, y: 2, z: -40.5}
   - {x: 11, y: 2, z: -30.5}
@@ -5333,6 +5370,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7554636123233119940, guid: 91ac6c115ed48544cb62157cc1967a87,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ac6c115ed48544cb62157cc1967a87, type: 3}
 --- !u!1 &7981517853604714292
@@ -5394,6 +5436,7 @@ GameObject:
   - component: {fileID: 7981517854101742110}
   - component: {fileID: 7981517854101742105}
   - component: {fileID: 7981517854101742111}
+  - component: {fileID: 7981517854101742106}
   m_Layer: 0
   m_Name: Desafio2
   m_TagString: Untagged
@@ -5415,7 +5458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   timerstart: 1
-  enemyCountForEnd: 10
+  enemyCountForEnd: 20
   opcionesTimer:
   - 7
   - 15
@@ -5427,6 +5470,20 @@ MonoBehaviour:
   - {fileID: 422255025}
   itmPosGen: {x: 30, y: 2, z: -30}
   enemysBefDesf: 0
+--- !u!114 &7981517854101742106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7981517854101742104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37afe77432e4abe40bdaac25e2759a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  urText: {fileID: 170050912}
+  timer: 0
 --- !u!4 &7981517854101742110
 Transform:
   m_ObjectHideFlags: 0

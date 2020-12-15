@@ -14,12 +14,13 @@ public class Desafio2 : MonoBehaviour
     public GameObject[] spawner;
     public GameObject[] itmsObj;
     public Vector3 itmPosGen;
-
+    
     public int enemysBefDesf;
     
     // Start is called before the first frame update
     void Start()
     {
+        
         cmp_spwn = GetComponent<Spawning>();
         if (GameObject.Find("LevelStat"))
         {
@@ -55,6 +56,7 @@ public class Desafio2 : MonoBehaviour
     }
     public void EmpezarDesafio()
     {
+        
         timer = 0;
         timerstart = true;
         cmp_levelSt.challengeActive = true;

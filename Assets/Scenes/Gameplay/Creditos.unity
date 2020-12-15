@@ -1117,7 +1117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: -42}
+  m_AnchoredPosition: {x: -120, y: -68}
   m_SizeDelta: {x: 364.29993, y: 293.1082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508904153
@@ -1152,10 +1152,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Equipo de Gesti\xF3n:\n\t-Diego Tinoco Galarza\n\t-Adrian Blume La Torre\n\t-Alejandro
-    Medina Pratto\n\nEquipo de Desarrollo;\n\t-Mart\xEDn Canales Martinez\n\t-Alejandro
-    Martinez Reynoso\n\t-Albert Sanchez Mejia\n\t-Sebasti\xE1n Delgado S\xE1nchez\n\t-Jean
-    Castro Ochoa\n\t-Daril Rios Fernandez"
+  m_Text: "Equipo de Desarrollo:\n\t-Adrian Blume La Torre\n\t-Albert Sanchez Mejia\n\t-Alejandro
+    Martinez Reynoso\n\t-Alejandro Medina Pratto\n\t-Daril Rios Fernandez\n\t-Diego
+    Tinoco Galarza\n\t-Jean Castro Ochoa\n\t-Mart\xEDn Canales Martinez\n\t-Sebasti\xE1n
+    Delgado S\xE1nchez"
 --- !u!222 &1508904154
 CanvasRenderer:
   m_ObjectHideFlags: 0

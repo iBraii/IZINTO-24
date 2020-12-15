@@ -6,13 +6,15 @@ public class ChallengeController : MonoBehaviour
 {
     private LevelStats cmp_lvlSts;
     private SceneChange cmp_scnChng;
+
     private TXTGeneral cmp_showText;
-
-
+    public GameObject baseDesTxt;
+    public float timer;
     public int numPivotChallenge;
     public GameObject dsfOne;
     public GameObject dsfTwo;
     public GameObject dsfThree;
+
 
     public float nextChallTimer;
     public float challengeBreaksTime;
@@ -36,6 +38,7 @@ public class ChallengeController : MonoBehaviour
     void Update()
     {
         ChallengeTimerPass();
+        
     }
 
     void ChallengeTimerPass()
@@ -57,22 +60,27 @@ public class ChallengeController : MonoBehaviour
         if (numPivotChallenge == 1)
         {
             dsfOne.GetComponent<Desafio1>().EmpezarDesafio();
-            cmp_showText.WriteSthTemporal("Desafio 1", 10);
+            timer += Time.deltaTime; 
+            cmp_showText.WriteSthTemporal("Desafio 1" /*10*/);
+            baseDesTxt.SetActive(true);
         }
         else if (numPivotChallenge == 2)
         {
             dsfTwo.GetComponent<Desafio2>().EmpezarDesafio();
-            cmp_showText.WriteSthTemporal("Desafio 2", 10);
+            cmp_showText.WriteSthTemporal("Desafio 2"/* 10*/);
+            baseDesTxt.SetActive(true);
         }
         else if(numPivotChallenge == 3)
         {
             dsfThree.GetComponent<Desafio3>().EmpezarDesafio();
-            cmp_showText.WriteSthTemporal("Desafio 3", 10);
+            cmp_showText.WriteSthTemporal("Desafio 3"/*, 10*/);
+            baseDesTxt.SetActive(true);
         }
         else if (numPivotChallenge >=4)
         {
             cmp_scnChng.Change(nxtLvlNameScn);
         }
+
     }
 
     

@@ -15,10 +15,10 @@ public class Desafio3 : MonoBehaviour
     public GameObject[] itmsObj;
     public Vector3 itmPosGen;
 
-
     // Start is called before the first frame update
     void Start()
     {
+        
         cmp_spwn = GetComponent<Spawning>();
         if (GameObject.Find("Player"))
         {
@@ -56,6 +56,7 @@ public class Desafio3 : MonoBehaviour
     }
     public void EmpezarDesafio()
     {
+        
         timer = 0;
         timerstart = true;
         cmp_levelSt.challengeActive = true;
