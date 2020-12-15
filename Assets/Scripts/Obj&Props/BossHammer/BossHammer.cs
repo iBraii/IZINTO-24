@@ -11,6 +11,7 @@ public class BossHammer : MonoBehaviour
     private float timer;
     public float up_spd;
     public bool to_down;
+    private GameObject bossCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class BossHammer : MonoBehaviour
     void Update()
     {
         Proyectile();
+        
     }
 
     public void Proyectile()
@@ -63,13 +65,19 @@ public class BossHammer : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerController>().DamageItself(1);
         }
+        /*else if (other.gameObject.CompareTag("Boss") && to_down == true)
+        {
+            bossCollider = other.gameObject;
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), bossCollider.GetComponent<Collider>(), true);
+        }*/
     }
     
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Boss"))
         {
-
+            bossCollider = collision.gameObject;
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), bossCollider.GetComponent<Collider>(), true);
         }
         else if (to_down == true)
         {

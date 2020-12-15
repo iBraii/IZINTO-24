@@ -15,7 +15,9 @@ public class RhinoSpawner : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
+
         cmp_spwn.ArraySpawnGeneretor(rhino_obj[0], spawnPositions[Random.Range(0, spawnPositions.Length)]);
+        timer = 0;
     }
     void Awake()
     {
