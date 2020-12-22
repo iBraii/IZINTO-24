@@ -6555,7 +6555,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh6470094
+  m_Name: pb_Mesh674958
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11398,6 +11398,10 @@ MonoBehaviour:
   weapons:
   - {fileID: 623599365}
   - {fileID: 1975547684}
+  - {fileID: 1999358372}
+  - {fileID: 623599365}
+  - {fileID: 1999358372}
+  - {fileID: 623599365}
   - {fileID: 1999358372}
   weaponsPosGen: {x: 21, y: 1, z: -38}
   spawnTimer: 0

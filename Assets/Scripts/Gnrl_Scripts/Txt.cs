@@ -26,7 +26,7 @@ public class Txt : MonoBehaviour
         if(GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 1 && GameObject.Find("Desafio1"))
         {
             baseTimer.SetActive(true);
-            elTexto.text = ("" + GameObject.Find("Desafio1").GetComponent<Desafio1>().timer.ToString("00"));
+            elTexto.text = ("" + GameObject.Find("ReverseTimer").GetComponent<ReverseTime>().showTime./*GameObject.Find("Desafio1").GetComponent<Desafio1>().timer.*/ToString("00"));
             
             
         }
@@ -39,7 +39,7 @@ public class Txt : MonoBehaviour
         {
 
             baseTimer.SetActive(true);
-            elTexto.text = ("" + GameObject.Find("Desafio3").GetComponent<Desafio3>().timer.ToString("00"));
+            elTexto.text = ("" + GameObject.Find("ReverseTimer").GetComponent<ReverseTime>().showTime./*GameObject.Find("Desafio3").GetComponent<Desafio3>().timer.*/ToString("00"));
             
         }
         else if (GameObject.Find("ChallengesController").GetComponent<ChallengeController>().numPivotChallenge == 1 && GameObject.Find("Desafio1B"))
