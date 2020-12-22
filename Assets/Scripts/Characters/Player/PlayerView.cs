@@ -122,7 +122,7 @@ public class PlayerView : MonoBehaviour
                     spearImage2.SetActive(false);
                     spearImage3.SetActive(false);
                 }
-                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses > 1)
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses < 1)
                 {
                     swordImage1.SetActive(false);
                     swordImage2.SetActive(false);
@@ -134,6 +134,7 @@ public class PlayerView : MonoBehaviour
 
                     swordObj.SetActive(false);
                     spearObj.SetActive(false);
+                    cmp_playerMod.using_weapon = false;
                 }
 
             }
@@ -171,7 +172,7 @@ public class PlayerView : MonoBehaviour
                     spearImage2.SetActive(false);
                     spearImage3.SetActive(false);
                 }
-                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses > 1)
+                else if (cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses < 1)
                 {
                     swordImage1.SetActive(false);
                     swordImage2.SetActive(false);
@@ -183,6 +184,7 @@ public class PlayerView : MonoBehaviour
 
                     swordObj.SetActive(false);
                     spearObj.SetActive(false);
+                    cmp_playerMod.using_weapon = false;
                 }
             }
         }

@@ -35,8 +35,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip walkClip;
     public AudioClip attackClip;
     public GameObject actualCollider;
-    public float recharHeadDmgTimer;
-    public bool jmpAtck;
+    public float recharHeadDmgTimer, pickUpCD;
+    public bool jmpAtck, PickCDA;
 
     public Vector3 rotatioProves;
     //-----Escoger Teclas------//
@@ -80,6 +80,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PickCDA == true)
+        {
+            pickUpCD += Time.deltaTime;
+            if(pickUpCD >= 0.5f)
+            {
+                pickUpCD = 0;
+                PickCDA = false;
+            }
+        }
         /*if(Input.GetKey(key_der) || Input.GetKey(key_izq) || Input.GetKey(key_down) || Input.GetKey(key_up))
         {
             Anim.SetBool("Walking", true);
@@ -522,9 +531,10 @@ public class PlayerController : MonoBehaviour
     }
     void PickUp(Collider other)
     {
-        if (other.gameObject.CompareTag("Sword") && Input.GetKeyDown(key_pickUp))
+        if (other.gameObject.CompareTag("Sword") && Input.GetKeyDown(key_pickUp) && PickCDA == false)
         {
             cmp_modelo_Ply.using_weapon = true;
+            PickCDA = true;
             if (cmp_modelo_Ply.weapon != other.gameObject && cmp_modelo_Ply.weapon != null)
             {
                 cmp_modelo_Ply.weapon.SetActive(true);
@@ -536,8 +546,9 @@ public class PlayerController : MonoBehaviour
             cmp_modelo_Ply.weapon = other.gameObject;
             other.gameObject.SetActive(false);
         }
-        else if (other.gameObject.CompareTag("Spear") && Input.GetKeyDown(key_pickUp))
+        else if (other.gameObject.CompareTag("Spear") && Input.GetKeyDown(key_pickUp) && PickCDA == false)
         {
+            PickCDA = true;
             cmp_modelo_Ply.using_weapon = true;
             if (cmp_modelo_Ply.weapon != other.gameObject && cmp_modelo_Ply.weapon != null)
             {
