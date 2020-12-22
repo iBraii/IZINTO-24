@@ -9,14 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Gameplay/Menu.unity
     guid: 73967f1b8457e204a9fbf13d82728125
   - enabled: 1
-    path: Assets/Scenes/Gameplay/Tutorial.unity
-    guid: ab0d43353c588ed49bebc8b6bdada303
-  - enabled: 1
     path: Assets/Scenes/Gameplay/Nivel 1.unity
     guid: 4ae0daa0227418b459675f92ee8c5404
-  - enabled: 1
-    path: Assets/Scenes/Gameplay/Nivel 2.unity
-    guid: 4be57439b47619f4c80c7757fb62b1e7
   - enabled: 1
     path: Assets/Scenes/Gameplay/Nivel 3.unity
     guid: 50749d21caff4ea49b04835ab8f1e0c7
@@ -32,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay/Creditos.unity
     guid: 2b1790b1fedac8246bc874f4fe0b8800
+  - enabled: 1
+    path: Assets/Scenes/Gameplay/Tutorial 1.unity
+    guid: 607f33237f2f4864295f88ee2bfaa21d
   m_configObjects: {}

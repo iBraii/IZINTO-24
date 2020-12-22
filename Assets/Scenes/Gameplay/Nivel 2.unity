@@ -284,6 +284,72 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &87895708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87895711}
+  - component: {fileID: 87895710}
+  - component: {fileID: 87895709}
+  m_Layer: 0
+  m_Name: WeaponSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87895709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87895708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b61184853ebaa4d9477e9557a4571c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  weaponsPosGen: {x: 21, y: 1, z: -38}
+  spawnTimer: 0
+  maxSpawnTimer: 30
+--- !u!114 &87895710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87895708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96dd96b43bd4b24892a6cb312fd4ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj_spwn_Array: []
+  objActiveCounter: 0
+  latestGen: {fileID: 0}
+--- !u!4 &87895711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87895708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.81, y: 3.93, z: -37.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92632643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,7 +1295,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6238466
+  m_Name: pb_Mesh-141684
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3217,6 +3283,7 @@ Transform:
   - {fileID: 136737877}
   - {fileID: 941608085}
   - {fileID: 4164509056685836088}
+  - {fileID: 1553477803}
   m_Father: {fileID: 1046459070}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3254,7 +3321,7 @@ MonoBehaviour:
   spawner:
   - {fileID: 4164509056685836086}
   - {fileID: 4164509057660755078}
-  - {fileID: 941608084}
+  - {fileID: 1553477802}
   itmsObj:
   - {fileID: 1225133606}
   - {fileID: 1225133605}
@@ -3423,6 +3490,74 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1553477802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1553477803}
+  - component: {fileID: 1553477805}
+  - component: {fileID: 1553477804}
+  m_Layer: 0
+  m_Name: BombSpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1553477803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553477802}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 51.399998, y: 7.49, z: -34.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1388125632}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1553477804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553477802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a54cdd7e6481fec45b2663cef8972024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb_obj:
+  - {fileID: 6445516313460540748, guid: 75980587c2d335d49b10e0c508c70b72, type: 3}
+  maxSceneObjs: 20
+  timer: 0
+  max_timer: 2
+  spawnPositions:
+  - {x: 10, y: 8, z: -20}
+  - {x: 10, y: 8, z: -40}
+  - {x: 46.5, y: 8, z: -30}
+--- !u!114 &1553477805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553477802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b96dd96b43bd4b24892a6cb312fd4ab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj_spwn_Array: []
+  objActiveCounter: 0
+  latestGen: {fileID: 0}
 --- !u!114 &1585123278 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7745543445871853241, guid: 91ac6c115ed48544cb62157cc1967a87,
@@ -4299,7 +4434,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh6316776
+  m_Name: pb_Mesh292910
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5941,7 +6076,6 @@ MonoBehaviour:
   - 7
   - 15
   spawner:
-  - {fileID: 3544829405517434360}
   - {fileID: 3544829406832713583}
   itmsObj:
   - {fileID: 1225133606}

@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BossAliveController : MonoBehaviour
 {
     private Enemy_BossModel cmp_enemyBoss;
     private PlayerModelo cmp_PlyMod;
     private SceneChange cmp_scnChng;
-
+    private TransitionInScene cmp_scnCh;
+    public float timer;
     public string lvl3Victory;
     public string playerDefeat;
 
@@ -16,6 +19,7 @@ public class BossAliveController : MonoBehaviour
     {
         cmp_enemyBoss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Enemy_BossModel>();
         cmp_scnChng = GetComponent<SceneChange>();
+        cmp_scnCh = GetComponent<TransitionInScene>();
         cmp_PlyMod = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerModelo>();
     }
 
@@ -24,6 +28,11 @@ public class BossAliveController : MonoBehaviour
     {
         BossAliveChecker();
         PlayerAliveChecker();
+        timer += Time.deltaTime;
+        if(timer >= 3 && timer < 3.01)
+        {
+            cmp_scnCh.Change(3);
+        }
     }
     public void BossAliveChecker()
     {

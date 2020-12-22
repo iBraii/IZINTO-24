@@ -1,23 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InstantTrigerDamage : MonoBehaviour
 {
     public string tag_name_obj;
     public int itm_dmg;
+    private PlayerModelo cmp_playerMod;
+    public bool atkUses = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cmp_playerMod = GameObject.Find("Player").GetComponent<PlayerModelo>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
+    private void OnEnable()
+    {
+        atkUses = true;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (tag_name_obj == "Enemy")
@@ -27,10 +34,28 @@ public class InstantTrigerDamage : MonoBehaviour
                 if (other.GetComponent<Enemy_BossController>())
                 {
                     other.GetComponent<Enemy_BossController>().DamageItself(itm_dmg);
+                    if (cmp_playerMod.weapon != null)
+
+                    {
+                        if (atkUses == true)
+                        {
+                            cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses--;
+                            atkUses = false;
+                        }
+                    }
                 }
                 if (other.GetComponent<Enemy_LionController>())
                 {
                     other.GetComponent<Enemy_LionController>().DamageItself(itm_dmg);
+                    if (cmp_playerMod.weapon != null)
+
+                    {
+                        if (atkUses == true)
+                        {
+                            cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses--;
+                            atkUses = false;
+                        }
+                    }
                 }
             }
         }
@@ -46,10 +71,28 @@ public class InstantTrigerDamage : MonoBehaviour
             if (other.GetComponent<Enemy_BossController>())
             {
                 other.GetComponent<Enemy_BossController>().DamageItself(itm_dmg);
+                if (cmp_playerMod.weapon != null)
+
+                {
+                    if (atkUses == true)
+                    {
+                        cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses--;
+                        atkUses = false;
+                    }
+                }
             }
             if (other.GetComponent<Enemy_LionController>())
             {
                 other.GetComponent<Enemy_LionController>().DamageItself(itm_dmg);
+                if (cmp_playerMod.weapon != null)
+
+                {
+                    if (atkUses == true)
+                    {
+                        cmp_playerMod.weapon.GetComponent<UseDurationItm>().actualUses--;
+                        atkUses = false;
+                    }
+                }
             }
             if (other.GetComponent<Dummy>())
             {

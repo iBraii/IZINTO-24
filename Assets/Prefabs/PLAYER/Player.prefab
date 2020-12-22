@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spd_mov: 300
-  jmp_force: 2000
+  jmp_force: 1500
   atk_damage: 0
   playerLife: 3
   grounded: 0

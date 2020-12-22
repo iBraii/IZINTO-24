@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerWalk()
     {
-        if (cmp_modelo_Ply.grounded == true && cmp_modelo_Ply.walk_active == true)
+        if (/*cmp_modelo_Ply.grounded == true &&*/ cmp_modelo_Ply.walk_active == true)
         {
             
             float angl_rot = gameObject.transform.eulerAngles.y % 360;
@@ -389,7 +389,7 @@ public class PlayerController : MonoBehaviour
             {
                 cmp_atk.atacking = true;
                 cmp_atk.WaitCounterCaller(0.70f, cmp_atk.sword_obj);
-                cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+                //cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
                 if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
                 {
                     cmp_modelo_Ply.weapon = null;
@@ -418,7 +418,7 @@ public class PlayerController : MonoBehaviour
                 cmp_atk.atacking = true;
                 //cmp_mov.Move_in_transform(-50);
                 cmp_atk.WaitCounterCaller(0.70f, cmp_atk.spear_obj);
-                cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
+                //cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses--;
                 if (cmp_modelo_Ply.weapon.GetComponent<UseDurationItm>().actualUses <= 0)
                 {
                     cmp_modelo_Ply.weapon = null;

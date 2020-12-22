@@ -462,6 +462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   random_rot: 0
+  wall: {fileID: 0}
+  canOpenRhino: 0
+  onStayTimer: 0
 --- !u!1 &504932860
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,11 +836,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019386c5e92db454f9b0281801279a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PPRenderer: {fileID: 0}
   inmune: 0
+  atkInmune: 0
   dying: 0
   enemy_detect: {fileID: 0}
   timer: 0
+  atkInmuneTimer: 0
   inmuneTimer: 0
+  blinkTime: 0
   protecting: 0
   shield: {fileID: 1308280564}
   usingSpear: 0
@@ -849,6 +856,12 @@ MonoBehaviour:
   dieAnimTimer: 0
   recoverLifeTimer: 0
   recoverLife: 0
+  actualDrag: 0
+  walkClip: {fileID: 0}
+  attackClip: {fileID: 0}
+  actualCollider: {fileID: 0}
+  recharHeadDmgTimer: 0
+  jmpAtck: 0
   rotatioProves: {x: 0, y: 0, z: 0}
   key_up: 119
   key_down: 115
@@ -894,6 +907,9 @@ MonoBehaviour:
   sword_obj: {fileID: 1563023368}
   spear_obj: {fileID: 743791025}
   atacking: 0
+  cooldownActive: 0
+  atkCDTimer: 0
+  cooldown: 0
 --- !u!114 &539145284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,6 +1344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bosslife: 10
+  bossOnAtack: 0
+  throwAtack: 0
+  meleAtack: 0
 --- !u!114 &759005293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,18 +1360,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ply: {fileID: 539145271}
+  dieAnimTimer: 0
+  dying: 0
+  numForTimer: 0
+  atackTimer: 0
+  waitAtackTimer: 0
+  timePatternsArray: []
   martiloProyectil: {fileID: 1494981448}
+  martilloMeleHit: {fileID: 0}
+  spwnHammPoint: {fileID: 0}
   myTransform: {fileID: 953969167}
+  playerTransform: {fileID: 0}
   martilloPosiciones:
   - {fileID: 641240390}
   - {fileID: 1385296190}
   - {fileID: 2002030108}
   - {fileID: 1169421702}
   - {fileID: 743411048}
-  lugarGolpeMartillo: 1
-  tMartillo: 3
-  tMVolverInicio: 2
-  tMSiguienteataque: 4
+  spwnerRhinos: {fileID: 0}
+  spwnerLions: {fileID: 0}
+  spwnerBombs: {fileID: 0}
 --- !u!114 &759005294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1870,13 +1897,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.06510797, y: -0, z: -0, w: 0.99787825}
-  m_LocalPosition: {x: 0, y: 4.7, z: -16.2}
+  m_LocalRotation: {x: 0.26834786, y: -0, z: -0, w: 0.96332204}
+  m_LocalPosition: {x: 0, y: 12.4, z: -21.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7.4660006, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 31.132002, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,7 +1911,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 459ed13956a7925459a3f7471c0e6372, type: 3}
   m_Name: 
@@ -2284,6 +2311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   random_rot: 0
+  wall: {fileID: 0}
+  canOpenRhino: 0
+  onStayTimer: 0
 --- !u!114 &1083842387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,6 +2591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   random_rot: 0
+  wall: {fileID: 0}
+  canOpenRhino: 0
+  onStayTimer: 0
 --- !u!114 &1194788639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,6 +2952,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   random_rot: 0
+  wall: {fileID: 0}
+  canOpenRhino: 0
+  onStayTimer: 0
 --- !u!114 &1324583245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3771,6 +3807,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   random_rot: 0
+  wall: {fileID: 0}
+  canOpenRhino: 0
+  onStayTimer: 0
 --- !u!114 &1891809148
 MonoBehaviour:
   m_ObjectHideFlags: 0

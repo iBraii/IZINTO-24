@@ -6,6 +6,7 @@ public class ChallengeController : MonoBehaviour
 {
     private LevelStats cmp_lvlSts;
     private SceneChange cmp_scnChng;
+    private TransitionInScene cmp_scnCh;
 
     private TXTGeneral cmp_showText;
     public GameObject baseDesTxt;
@@ -13,8 +14,8 @@ public class ChallengeController : MonoBehaviour
     public int numPivotChallenge;
     public GameObject dsfOne;
     public GameObject dsfTwo;
-    public GameObject dsfThree;
-
+    public GameObject dsfThree, T1,T2,T3;
+    public bool partStart;
 
     public float nextChallTimer;
     public float challengeBreaksTime;
@@ -27,7 +28,8 @@ public class ChallengeController : MonoBehaviour
         nextChallTimer = 0;
 
         cmp_scnChng = GetComponent<SceneChange>();
-
+        cmp_scnCh = GetComponent<TransitionInScene>();
+        
         if (GameObject.Find("LevelStat"))
         {
             cmp_lvlSts = GameObject.Find("LevelStat").GetComponent<LevelStats>();
@@ -38,7 +40,6 @@ public class ChallengeController : MonoBehaviour
     void Update()
     {
         ChallengeTimerPass();
-        
     }
 
     void ChallengeTimerPass()
@@ -50,7 +51,23 @@ public class ChallengeController : MonoBehaviour
         if (nextChallTimer >= challengeBreaksTime)
         {
             numPivotChallenge++;
+            if (numPivotChallenge == 1)
+            {
+                cmp_scnCh.transition = GameObject.Find("DeepToB1").GetComponent<Animator>();
+                cmp_scnCh.Change(3);
+            }
+            else if(numPivotChallenge == 2)
+            {
+                cmp_scnCh.transition = GameObject.Find("DeepToB2").GetComponent<Animator>();
+                cmp_scnCh.Change(3);
+            }
+            else if(numPivotChallenge == 3)
+            {
+                cmp_scnCh.transition = GameObject.Find("DeepToB3").GetComponent<Animator>();
+                cmp_scnCh.Change(3);
+            }
             StartChallenge();
+            partStart = true;
             nextChallTimer = 0;
         }
     }
@@ -60,25 +77,20 @@ public class ChallengeController : MonoBehaviour
         if (numPivotChallenge == 1)
         {
             dsfOne.GetComponent<Desafio1>().EmpezarDesafio();
-            timer += Time.deltaTime; 
-            cmp_showText.WriteSthTemporal("Desafio 1" /*10*/);
-            baseDesTxt.SetActive(true);
+            timer += Time.deltaTime;
+            
         }
         else if (numPivotChallenge == 2)
         {
             dsfTwo.GetComponent<Desafio2>().EmpezarDesafio();
-            cmp_showText.WriteSthTemporal("Desafio 2"/* 10*/);
-            baseDesTxt.SetActive(true);
         }
         else if(numPivotChallenge == 3)
         {
             dsfThree.GetComponent<Desafio3>().EmpezarDesafio();
-            cmp_showText.WriteSthTemporal("Desafio 3"/*, 10*/);
-            baseDesTxt.SetActive(true);
         }
         else if (numPivotChallenge >=4)
         {
-            cmp_scnChng.Change(nxtLvlNameScn);
+            cmp_scnChng.Change("Nivel 3");
         }
 
     }
